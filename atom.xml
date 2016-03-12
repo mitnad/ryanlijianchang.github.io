@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Ryan&#39;s Blog</title>
+  <title>Ryane&#39;s Blog</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>lijianchang.xyz/</id>
   
   <author>
-    <name>Ryan Lee</name>
+    <name>Ryane Lee</name>
     <email>lijianchang@163.com</email>
   </author>
   
