@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-03-15T17:21:48.910Z</updated>
+  <updated>2016-03-15T17:27:03.787Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="lijianchang.xyz/2016/03/16/%E5%B0%8F%E7%99%BD%E7%8B%AC%E7%AB%8B%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2--Github%20Pages%E5%92%8CHexo%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
-    <id>lijianchang.xyz/2016/03/16/小白独立搭建博客--Github Pages和Hexo简明教程/</id>
-    <published>2016-03-15T17:18:32.878Z</published>
-    <updated>2016-03-15T17:21:48.910Z</updated>
+    <title>小白独立搭建博客--Github Pages和Hexo简明教程</title>
+    <link href="lijianchang.xyz/2016/03/16/%E5%B0%8F%E7%99%BD%E7%8B%AC%E7%AB%8B%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-Github-Pages%E5%92%8CHexo%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
+    <id>lijianchang.xyz/2016/03/16/小白独立搭建博客-Github-Pages和Hexo简明教程/</id>
+    <published>2016-03-15T17:23:56.000Z</published>
+    <updated>2016-03-15T17:27:03.787Z</updated>
     
-    <content type="html">&lt;p&gt;#小白独立搭建博客–Github Pages和Hexo简明教程&lt;/p&gt;
-&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ryanlijianchang.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ryanlijianchang.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;摘要：这是一篇有关如何使用Github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的Github项目中，域名注册，以及域名的绑定，还有我在搭建自己博客过程中所遇到的各种困难。&lt;/p&gt;
 &lt;p&gt;##前言&lt;br&gt;我是一名安卓入门开发者，但，我只是&lt;strong&gt;入门&lt;/strong&gt;！而且我对网站开发以及前端的知识几乎是零基础，所以在自己刚接触这个东西的时候，我像很多人一样，都是上网找教程，但是要知道，&lt;strong&gt;那都是程序员的教程。&lt;/strong&gt;所以对于我这个网站技术小白来说，真是很难受，所以藉此机会写一篇让小白看得懂的教程。如果你是一个小白而且又想做自己的博客，可以，请跟着我的脚步，我会带你真真正正做一个属于你自己的博客。&lt;/p&gt;
@@ -261,12 +260,15 @@ f1g1ns1.dnspod.net
     
     <summary type="html">
     
-      &lt;p&gt;#小白独立搭建博客–Github Pages和Hexo简明教程&lt;/p&gt;
-&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github地址：&lt;a href=&quot;https://
+      &lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ryanlijianch
     
     </summary>
     
+      <category term="Hexo" scheme="lijianchang.xyz/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="lijianchang.xyz/tags/Hexo/"/>
     
   </entry>
   
