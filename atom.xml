@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-03-15T17:36:59.396Z</updated>
+  <updated>2016-03-15T17:43:00.992Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -20,9 +20,12 @@
     <link href="lijianchang.xyz/2016/03/16/%E5%B0%8F%E7%99%BD%E7%8B%AC%E7%AB%8B%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-Github-Pages%E5%92%8CHexo%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>lijianchang.xyz/2016/03/16/小白独立搭建博客-Github-Pages和Hexo简明教程/</id>
     <published>2016-03-15T17:23:56.142Z</published>
-    <updated>2016-03-15T17:36:59.396Z</updated>
+    <updated>2016-03-15T17:43:00.992Z</updated>
     
-    <content type="html">&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;hr&gt;
+&lt;h2 id=&quot;date-2016-03-16-01-41-40&quot;&gt;&lt;a href=&quot;#date-2016-03-16-01-41-40&quot; class=&quot;headerlink&quot; title=&quot;date: 2016-03-16 01:41:40&quot;&gt;&lt;/a&gt;date: 2016-03-16 01:41:40&lt;/h2&gt;&lt;hr&gt;
+&lt;h2 id=&quot;category-Hexo&quot;&gt;&lt;a href=&quot;#category-Hexo&quot; class=&quot;headerlink&quot; title=&quot;category: Hexo&quot;&gt;&lt;/a&gt;category: Hexo&lt;/h2&gt;&lt;hr&gt;
+&lt;h2 id=&quot;tags-Hexo&quot;&gt;&lt;a href=&quot;#tags-Hexo&quot; class=&quot;headerlink&quot; title=&quot;tags: Hexo&quot;&gt;&lt;/a&gt;tags: Hexo&lt;/h2&gt;&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ryanlijianchang.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ryanlijianchang.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;摘要：这是一篇有关如何使用Github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的Github项目中，域名注册，以及域名的绑定，还有我在搭建自己博客过程中所遇到的各种困难。&lt;/p&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我是一名安卓入门开发者，但，我只是&lt;strong&gt;入门&lt;/strong&gt;！而且我对网站开发以及前端的知识几乎是零基础，所以在自己刚接触这个东西的时候，我像很多人一样，都是上网找教程，但是要知道，&lt;strong&gt;那都是程序员的教程。&lt;/strong&gt;所以对于我这个网站技术小白来说，真是很难受，所以藉此机会写一篇让小白看得懂的教程。如果你是一个小白而且又想做自己的博客，可以，请跟着我的脚步，我会带你真真正正做一个属于你自己的博客。&lt;/p&gt;
@@ -62,11 +65,11 @@
 npm install hexo --save
 #如果命令无法运行，可以尝试更换taobao的npm源
 npm install -g cnpm --registry=https://registry.npm.taobao.org
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、Hexo初始化配置&quot;&gt;&lt;a href=&quot;#二、Hexo初始化配置&quot; class=&quot;headerlink&quot; title=&quot;二、Hexo初始化配置&quot;&gt;&lt;/a&gt;二、Hexo初始化配置&lt;/h3&gt;&lt;h5 id=&quot;创建Hexo文件夹&quot;&gt;&lt;a href=&quot;#创建Hexo文件夹&quot; class=&quot;headerlink&quot; title=&quot;创建Hexo文件夹&quot;&gt;&lt;/a&gt;创建Hexo文件夹&lt;/h5&gt;&lt;p&gt;安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、Hexo初始化配置&quot;&gt;&lt;a href=&quot;#二、Hexo初始化配置&quot; class=&quot;headerlink&quot; title=&quot;二、Hexo初始化配置&quot;&gt;&lt;/a&gt;二、Hexo初始化配置&lt;/h3&gt;&lt;h4 id=&quot;创建Hexo文件夹&quot;&gt;&lt;a href=&quot;#创建Hexo文件夹&quot; class=&quot;headerlink&quot; title=&quot;创建Hexo文件夹&quot;&gt;&lt;/a&gt;创建Hexo文件夹&lt;/h4&gt;&lt;p&gt;安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo init
 $ npm install
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/hexo-content.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;安装Hexo插件&quot;&gt;&lt;a href=&quot;#安装Hexo插件&quot; class=&quot;headerlink&quot; title=&quot;安装Hexo插件&quot;&gt;&lt;/a&gt;安装Hexo插件&lt;/h5&gt;&lt;p&gt;如果想不出错，就将下面的插件都安装完。&lt;/p&gt;
+&lt;h4 id=&quot;安装Hexo插件&quot;&gt;&lt;a href=&quot;#安装Hexo插件&quot; class=&quot;headerlink&quot; title=&quot;安装Hexo插件&quot;&gt;&lt;/a&gt;安装Hexo插件&lt;/h4&gt;&lt;p&gt;如果想不出错，就将下面的插件都安装完。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;npm install hexo-generator-index --save
 npm install hexo-generator-archive --save
 npm install hexo-generator-category --save
@@ -80,7 +83,7 @@ npm install hexo-renderer-marked@0.2 --save
 npm install hexo-renderer-stylus@0.2 --save
 npm install hexo-generator-feed@1 --save
 npm install hexo-generator-sitemap@1 --save
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;本地查看效果&quot;&gt;&lt;a href=&quot;#本地查看效果&quot; class=&quot;headerlink&quot; title=&quot;本地查看效果&quot;&gt;&lt;/a&gt;本地查看效果&lt;/h5&gt;&lt;p&gt;执行下面语句，执行完即可登录localhost:4000查看效果&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;本地查看效果&quot;&gt;&lt;a href=&quot;#本地查看效果&quot; class=&quot;headerlink&quot; title=&quot;本地查看效果&quot;&gt;&lt;/a&gt;本地查看效果&lt;/h4&gt;&lt;p&gt;执行下面语句，执行完即可登录localhost:4000查看效果&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hexo generate
 hexo server
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;登录localhost:4000，即可看到本地的效果如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/imagelocalhost.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -94,11 +97,11 @@ hexo server
 &lt;li&gt;创建要点如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/how-to-create-reposity.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&quot;三、配置SSH密钥&quot;&gt;&lt;a href=&quot;#三、配置SSH密钥&quot; class=&quot;headerlink&quot; title=&quot;三、配置SSH密钥&quot;&gt;&lt;/a&gt;三、配置SSH密钥&lt;/h3&gt;&lt;p&gt;配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：&lt;/p&gt;
-&lt;h5 id=&quot;第一步、看看是否存在SSH密钥-keys&quot;&gt;&lt;a href=&quot;#第一步、看看是否存在SSH密钥-keys&quot; class=&quot;headerlink&quot; title=&quot;第一步、看看是否存在SSH密钥(keys)&quot;&gt;&lt;/a&gt;第一步、看看是否存在SSH密钥(keys)&lt;/h5&gt;&lt;p&gt;首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:&lt;/p&gt;
+&lt;h4 id=&quot;第一步、看看是否存在SSH密钥-keys&quot;&gt;&lt;a href=&quot;#第一步、看看是否存在SSH密钥-keys&quot; class=&quot;headerlink&quot; title=&quot;第一步、看看是否存在SSH密钥(keys)&quot;&gt;&lt;/a&gt;第一步、看看是否存在SSH密钥(keys)&lt;/h4&gt;&lt;p&gt;首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ cd ~/. ssh 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;检查你本机用户home目录下是否存在.ssh目录&lt;/p&gt;
 &lt;p&gt;如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，直接进入第三步操作。&lt;/p&gt;
-&lt;h5 id=&quot;第二步、创建一对新的SSH密钥-keys&quot;&gt;&lt;a href=&quot;#第二步、创建一对新的SSH密钥-keys&quot; class=&quot;headerlink&quot; title=&quot;第二步、创建一对新的SSH密钥(keys)&quot;&gt;&lt;/a&gt;第二步、创建一对新的SSH密钥(keys)&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;$ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot;
+&lt;h4 id=&quot;第二步、创建一对新的SSH密钥-keys&quot;&gt;&lt;a href=&quot;#第二步、创建一对新的SSH密钥-keys&quot; class=&quot;headerlink&quot; title=&quot;第二步、创建一对新的SSH密钥(keys)&quot;&gt;&lt;/a&gt;第二步、创建一对新的SSH密钥(keys)&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;$ssh-keygen -t rsa -C &amp;quot;your_email@example.com&amp;quot;
 #这将按照你提供的邮箱地址，创建一对密钥
 Generating public/private rsa key pair.
 Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]
@@ -111,7 +114,7 @@ Enter same passphrase again: [Type passphrase again]
 Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.
 The key fingerprint is:
 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;第三步、在GitHub账户中添加你的公钥&quot;&gt;&lt;a href=&quot;#第三步、在GitHub账户中添加你的公钥&quot; class=&quot;headerlink&quot; title=&quot;第三步、在GitHub账户中添加你的公钥&quot;&gt;&lt;/a&gt;第三步、在GitHub账户中添加你的公钥&lt;/h5&gt;&lt;p&gt;运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;第三步、在GitHub账户中添加你的公钥&quot;&gt;&lt;a href=&quot;#第三步、在GitHub账户中添加你的公钥&quot; class=&quot;headerlink&quot; title=&quot;第三步、在GitHub账户中添加你的公钥&quot;&gt;&lt;/a&gt;第三步、在GitHub账户中添加你的公钥&lt;/h4&gt;&lt;p&gt;运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;clip &amp;lt; ~/.ssh/id_rsa.pub
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接着：&lt;/p&gt;
 &lt;ol&gt;
@@ -122,7 +125,7 @@ The key fingerprint is:
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/SSH-github-setting-SSH.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;3.粘贴密钥，添加即可&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/SSH-github-SSH-OK.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第四步、测试&quot;&gt;&lt;a href=&quot;#第四步、测试&quot; class=&quot;headerlink&quot; title=&quot;第四步、测试&quot;&gt;&lt;/a&gt;第四步、测试&lt;/h5&gt;&lt;p&gt;可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：&lt;/p&gt;
+&lt;h4 id=&quot;第四步、测试&quot;&gt;&lt;a href=&quot;#第四步、测试&quot; class=&quot;headerlink&quot; title=&quot;第四步、测试&quot;&gt;&lt;/a&gt;第四步、测试&lt;/h4&gt;&lt;p&gt;可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ssh -T git@github.com
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果是下面的反馈：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;The authenticity of host &amp;apos;github.com (207.97.227.239)&amp;apos; can&amp;apos;t be established.
@@ -130,23 +133,23 @@ RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
 Are you sure you want to continue connecting (yes/no)?
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不要紧张，输入yes就好，然后会看到：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;Hi cnfeat! You&amp;apos;ve successfully authenticated, but GitHub does not provide shell access.
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;第五步、设置用户信息&quot;&gt;&lt;a href=&quot;#第五步、设置用户信息&quot; class=&quot;headerlink&quot; title=&quot;第五步、设置用户信息&quot;&gt;&lt;/a&gt;第五步、设置用户信息&lt;/h5&gt;&lt;p&gt;现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。&lt;br&gt;Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;第五步、设置用户信息&quot;&gt;&lt;a href=&quot;#第五步、设置用户信息&quot; class=&quot;headerlink&quot; title=&quot;第五步、设置用户信息&quot;&gt;&lt;/a&gt;第五步、设置用户信息&lt;/h4&gt;&lt;p&gt;现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。&lt;br&gt;Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字必须是你的真名，而不是GitHub的昵称。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ git config --global user.name &amp;quot;cnfeat&amp;quot;//用户名
 $ git config --global user.email  &amp;quot;cnfeat@gmail.com&amp;quot;//填写自己的邮箱
-&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;第六步、SSH-Key配置成功&quot;&gt;&lt;a href=&quot;#第六步、SSH-Key配置成功&quot; class=&quot;headerlink&quot; title=&quot;第六步、SSH Key配置成功&quot;&gt;&lt;/a&gt;第六步、SSH Key配置成功&lt;/h5&gt;&lt;p&gt;本机已成功连接到github。&lt;br&gt;如有问题，请参考：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&quot;第六步、SSH-Key配置成功&quot;&gt;&lt;a href=&quot;#第六步、SSH-Key配置成功&quot; class=&quot;headerlink&quot; title=&quot;第六步、SSH Key配置成功&quot;&gt;&lt;/a&gt;第六步、SSH Key配置成功&lt;/h4&gt;&lt;p&gt;本机已成功连接到github。&lt;br&gt;如有问题，请参考：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/generating-an-ssh-key/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub Help - Generating SSH Keys&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/error-permission-denied-publickey/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Error: Permission denied (publickey)&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;a href=&quot;#四、将本地的Hexo文件更新到Github的库中&quot; class=&quot;headerlink&quot; title=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;/a&gt;四、将本地的Hexo文件更新到Github的库中&lt;/h3&gt;&lt;h5 id=&quot;第一步、登录Github打开自己的项目-username-github-io&quot;&gt;&lt;a href=&quot;#第一步、登录Github打开自己的项目-username-github-io&quot; class=&quot;headerlink&quot; title=&quot;第一步、登录Github打开自己的项目 username.github.io&quot;&gt;&lt;/a&gt;第一步、登录Github打开自己的项目 username.github.io&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;a href=&quot;#第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot; class=&quot;headerlink&quot; title=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;/a&gt;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第三步、复制地址&quot;&gt;&lt;a href=&quot;#第三步、复制地址&quot; class=&quot;headerlink&quot; title=&quot;第三步、复制地址&quot;&gt;&lt;/a&gt;第三步、复制地址&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot;&gt;&lt;a href=&quot;#第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot; class=&quot;headerlink&quot; title=&quot;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&quot;&gt;&lt;/a&gt;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第五步、在配置文件里作如下修改，保存&quot;&gt;&lt;a href=&quot;#第五步、在配置文件里作如下修改，保存&quot; class=&quot;headerlink&quot; title=&quot;第五步、在配置文件里作如下修改，保存&quot;&gt;&lt;/a&gt;第五步、在配置文件里作如下修改，保存&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h5 id=&quot;第六步、在Hexo文件夹下执行：&quot;&gt;&lt;a href=&quot;#第六步、在Hexo文件夹下执行：&quot; class=&quot;headerlink&quot; title=&quot;第六步、在Hexo文件夹下执行：&quot;&gt;&lt;/a&gt;第六步、在Hexo文件夹下执行：&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;hexo g
+&lt;h3 id=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;a href=&quot;#四、将本地的Hexo文件更新到Github的库中&quot; class=&quot;headerlink&quot; title=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;/a&gt;四、将本地的Hexo文件更新到Github的库中&lt;/h3&gt;&lt;h4 id=&quot;第一步、登录Github打开自己的项目-username-github-io&quot;&gt;&lt;a href=&quot;#第一步、登录Github打开自己的项目-username-github-io&quot; class=&quot;headerlink&quot; title=&quot;第一步、登录Github打开自己的项目 username.github.io&quot;&gt;&lt;/a&gt;第一步、登录Github打开自己的项目 username.github.io&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;a href=&quot;#第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot; class=&quot;headerlink&quot; title=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;/a&gt;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第三步、复制地址&quot;&gt;&lt;a href=&quot;#第三步、复制地址&quot; class=&quot;headerlink&quot; title=&quot;第三步、复制地址&quot;&gt;&lt;/a&gt;第三步、复制地址&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot;&gt;&lt;a href=&quot;#第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot; class=&quot;headerlink&quot; title=&quot;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&quot;&gt;&lt;/a&gt;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第五步、在配置文件里作如下修改，保存&quot;&gt;&lt;a href=&quot;#第五步、在配置文件里作如下修改，保存&quot; class=&quot;headerlink&quot; title=&quot;第五步、在配置文件里作如下修改，保存&quot;&gt;&lt;/a&gt;第五步、在配置文件里作如下修改，保存&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第六步、在Hexo文件夹下执行：&quot;&gt;&lt;a href=&quot;#第六步、在Hexo文件夹下执行：&quot; class=&quot;headerlink&quot; title=&quot;第六步、在Hexo文件夹下执行：&quot;&gt;&lt;/a&gt;第六步、在Hexo文件夹下执行：&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;hexo g
 hexo d
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者直接执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hexo g -d
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行完之后会让你输入github的账号和密码，输入完后就可以登录我们自己的部署在Github Pages服务器上的博客了。对应的地址是 username.github.io(我的是：ryanlijianchang.github.io)。&lt;/p&gt;
-&lt;h5 id=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;a href=&quot;#第七步、在浏览器上输入自己的主页地址&quot; class=&quot;headerlink&quot; title=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;/a&gt;第七步、在浏览器上输入自己的主页地址&lt;/h5&gt;&lt;p&gt;在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/blog-main.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;a href=&quot;#第七步、在浏览器上输入自己的主页地址&quot; class=&quot;headerlink&quot; title=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;/a&gt;第七步、在浏览器上输入自己的主页地址&lt;/h4&gt;&lt;p&gt;在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/blog-main.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;美化自己博客&quot;&gt;&lt;a href=&quot;#美化自己博客&quot; class=&quot;headerlink&quot; title=&quot;美化自己博客&quot;&gt;&lt;/a&gt;美化自己博客&lt;/h2&gt;&lt;p&gt;那么现在我们的博客已经挂在了服务器上面，别人已经可以通过网址来登陆我们的博客了，但是我们这时就有了新的需求，就是自己的博客并不好看，那怎么办的？这很简单，要知道很多前端开发者在Hexo框架下开发了很多的主题给我们使用，我们只需要把他们的主题克隆过来，然后通过修改配置文件即可达到我们所需要的效果。&lt;/p&gt;
 &lt;p&gt;那么我们应该怎么修改呢？&lt;/p&gt;
 &lt;h3 id=&quot;一、进入Hexo的官网主题专栏&quot;&gt;&lt;a href=&quot;#一、进入Hexo的官网主题专栏&quot; class=&quot;headerlink&quot; title=&quot;一、进入Hexo的官网主题专栏&quot;&gt;&lt;/a&gt;一、进入&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo的官网主题专栏&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/themes.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -177,14 +180,14 @@ $ hexo d #部署 # 可与hexo g合并为 hexo d -g
 &lt;p&gt;复制进去之后，只要执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo d -g 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;推送到我们的Github仓库即可。&lt;/p&gt;
-&lt;h5 id=&quot;那么什么是Markdown？&quot;&gt;&lt;a href=&quot;#那么什么是Markdown？&quot; class=&quot;headerlink&quot; title=&quot;那么什么是Markdown？&quot;&gt;&lt;/a&gt;那么什么是Markdown？&lt;/h5&gt;&lt;p&gt;Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。&lt;/p&gt;
-&lt;h5 id=&quot;Markdown有什么优点？&quot;&gt;&lt;a href=&quot;#Markdown有什么优点？&quot; class=&quot;headerlink&quot; title=&quot;Markdown有什么优点？&quot;&gt;&lt;/a&gt;Markdown有什么优点？&lt;/h5&gt;&lt;ul&gt;
+&lt;h4 id=&quot;那么什么是Markdown？&quot;&gt;&lt;a href=&quot;#那么什么是Markdown？&quot; class=&quot;headerlink&quot; title=&quot;那么什么是Markdown？&quot;&gt;&lt;/a&gt;那么什么是Markdown？&lt;/h4&gt;&lt;p&gt;Markdown 是一种轻量级的「标记语言」，它的优点很多，目前也被越来越多的写作爱好者，撰稿者广泛使用。看到这里请不要被「标记」、「语言」所迷惑，Markdown 的语法十分简单。常用的标记符号也不超过十个，这种相对于更为复杂的HTML 标记语言来说，Markdown 可谓是十分轻量的，学习成本也不需要太多，且一旦熟悉这种语法规则，会有一劳永逸的效果。&lt;/p&gt;
+&lt;h4 id=&quot;Markdown有什么优点？&quot;&gt;&lt;a href=&quot;#Markdown有什么优点？&quot; class=&quot;headerlink&quot; title=&quot;Markdown有什么优点？&quot;&gt;&lt;/a&gt;Markdown有什么优点？&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;专注你的文字内容而不是排版样式。&lt;/li&gt;
 &lt;li&gt;轻松的导出 HTML、PDF 和本身的 .md 文件。&lt;/li&gt;
 &lt;li&gt;纯文本内容，兼容所有的文本编辑器与字处理软件。&lt;/li&gt;
 &lt;li&gt;可读，直观。适合所有人的写作语言。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h5 id=&quot;我该用什么工具？&quot;&gt;&lt;a href=&quot;#我该用什么工具？&quot; class=&quot;headerlink&quot; title=&quot;我该用什么工具？&quot;&gt;&lt;/a&gt;我该用什么工具？&lt;/h5&gt;&lt;ul&gt;
+&lt;h4 id=&quot;我该用什么工具？&quot;&gt;&lt;a href=&quot;#我该用什么工具？&quot; class=&quot;headerlink&quot; title=&quot;我该用什么工具？&quot;&gt;&lt;/a&gt;我该用什么工具？&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;Windows下可以使用 MarkdownPad2。&lt;/li&gt;
 &lt;li&gt;在 Mac OS X 上，我建议你用 Mou 这款免费且十分好用的 Markdown 编辑器。&lt;/li&gt;
 &lt;li&gt;Web 端上，我强烈推荐 简书 这款产品。&lt;/li&gt;
@@ -236,8 +239,8 @@ f1g1ns1.dnspod.net
     
     <summary type="html">
     
-      &lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ryanlijianch
+      &lt;hr&gt;
+&lt;h2 id=&quot;date-2016-03-16-01-41-40&quot;&gt;&lt;a href=&quot;#date-2016-03-16-01-41-40&quot; class=&quot;headerlink&quot; title=&quot;date: 2016-03-16 01:41:40&quot;&gt;&lt;/a&gt;date: 20
     
     </summary>
     
