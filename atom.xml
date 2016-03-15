@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-03-15T17:27:03.787Z</updated>
+  <updated>2016-03-15T17:36:59.396Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -16,39 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>小白独立搭建博客--Github Pages和Hexo简明教程</title>
+    <title>小白独立搭建博客-Github-Pages和Hexo简明教程</title>
     <link href="lijianchang.xyz/2016/03/16/%E5%B0%8F%E7%99%BD%E7%8B%AC%E7%AB%8B%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-Github-Pages%E5%92%8CHexo%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B/"/>
     <id>lijianchang.xyz/2016/03/16/小白独立搭建博客-Github-Pages和Hexo简明教程/</id>
-    <published>2016-03-15T17:23:56.000Z</published>
-    <updated>2016-03-15T17:27:03.787Z</updated>
+    <published>2016-03-15T17:23:56.142Z</published>
+    <updated>2016-03-15T17:36:59.396Z</updated>
     
     <content type="html">&lt;p&gt;首先欢迎各位来参观我的博客：&lt;a href=&quot;http://lijianchang.xyz/&quot;&gt;Ryane’s Blog&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ryanlijianchang.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ryanlijianchang.github.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;摘要：这是一篇有关如何使用Github Pages和Hexo搭建自己独立博客的详尽教程，里面介绍了如何使用和配置Hexo框架，如何将Hexo部署到自己的Github项目中，域名注册，以及域名的绑定，还有我在搭建自己博客过程中所遇到的各种困难。&lt;/p&gt;
-&lt;p&gt;##前言&lt;br&gt;我是一名安卓入门开发者，但，我只是&lt;strong&gt;入门&lt;/strong&gt;！而且我对网站开发以及前端的知识几乎是零基础，所以在自己刚接触这个东西的时候，我像很多人一样，都是上网找教程，但是要知道，&lt;strong&gt;那都是程序员的教程。&lt;/strong&gt;所以对于我这个网站技术小白来说，真是很难受，所以藉此机会写一篇让小白看得懂的教程。如果你是一个小白而且又想做自己的博客，可以，请跟着我的脚步，我会带你真真正正做一个属于你自己的博客。&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;我是一名安卓入门开发者，但，我只是&lt;strong&gt;入门&lt;/strong&gt;！而且我对网站开发以及前端的知识几乎是零基础，所以在自己刚接触这个东西的时候，我像很多人一样，都是上网找教程，但是要知道，&lt;strong&gt;那都是程序员的教程。&lt;/strong&gt;所以对于我这个网站技术小白来说，真是很难受，所以藉此机会写一篇让小白看得懂的教程。如果你是一个小白而且又想做自己的博客，可以，请跟着我的脚步，我会带你真真正正做一个属于你自己的博客。&lt;/p&gt;
 &lt;p&gt;如果你还不知道你为什么要做一个博客，推荐你看：&lt;a href=&quot;http://www.cnblogs.com/jhzhu/p/3893297.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《我为什么写博客》&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##入门门槛&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;入门门槛&quot;&gt;&lt;a href=&quot;#入门门槛&quot; class=&quot;headerlink&quot; title=&quot;入门门槛&quot;&gt;&lt;/a&gt;入门门槛&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;必须耐得住折腾。&lt;/li&gt;
 &lt;li&gt;刻苦的学习精神和耐心。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;##关于Github&lt;/p&gt;
-&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/github-jxw.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
+&lt;h2 id=&quot;关于Github&quot;&gt;&lt;a href=&quot;#关于Github&quot; class=&quot;headerlink&quot; title=&quot;关于Github&quot;&gt;&lt;/a&gt;关于Github&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/github-jxw.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
 
-&lt;p&gt;###一、Github的优点&lt;/p&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;一、Github的优点&quot;&gt;&lt;a href=&quot;#一、Github的优点&quot; class=&quot;headerlink&quot; title=&quot;一、Github的优点&quot;&gt;&lt;/a&gt;一、Github的优点&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;GitHub是基于git实现的代码托管。git可能是目前最好用的版本控制系统了，非常受欢迎。&lt;/li&gt;
 &lt;li&gt;GitHub可以免费使用，并且快速稳定。&lt;/li&gt;
 &lt;li&gt;Github上面的世界很精彩，用久了你的眼界会开阔很多。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;###二、什么是Github Pages&lt;br&gt;Github Pages可以被认为是用户编写的、托管在github上的静态网页。&lt;/p&gt;
-&lt;p&gt;###三、为什么要使用Github Pages&lt;/p&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;二、什么是Github-Pages&quot;&gt;&lt;a href=&quot;#二、什么是Github-Pages&quot; class=&quot;headerlink&quot; title=&quot;二、什么是Github Pages&quot;&gt;&lt;/a&gt;二、什么是Github Pages&lt;/h3&gt;&lt;p&gt;Github Pages可以被认为是用户编写的、托管在github上的静态网页。&lt;/p&gt;
+&lt;h3 id=&quot;三、为什么要使用Github-Pages&quot;&gt;&lt;a href=&quot;#三、为什么要使用Github-Pages&quot; class=&quot;headerlink&quot; title=&quot;三、为什么要使用Github Pages&quot;&gt;&lt;/a&gt;三、为什么要使用Github Pages&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;可以绑定你的域名(但暂时貌似只能绑定一个)。&lt;/li&gt;
 &lt;li&gt;简单快捷，使用Github Pages可以为你提供一个免费的服务器，免去了自己搭建服务器和写数据库的麻烦。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;##安装Node.js&lt;br&gt;在 Windows 环境下安装 Node.js 非常简单，仅须到&lt;a href=&quot;https://nodejs.org/en/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;安装文件并执行即可完成安装。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/image-nodeJs-dl.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;像我的是Windows 64位，直接下载安装，不需要配置环境变量。&lt;/p&gt;
-&lt;p&gt;##安装Git&lt;br&gt;下载 msysgit 并执行即可完成安装。(上官网要翻墙，如果你的是64位，可以&lt;a href=&quot;http://pan.baidu.com/s/1i4xAM9Z&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击此处&lt;/a&gt;下载)&lt;/p&gt;
+&lt;h2 id=&quot;安装Node-js&quot;&gt;&lt;a href=&quot;#安装Node-js&quot; class=&quot;headerlink&quot; title=&quot;安装Node.js&quot;&gt;&lt;/a&gt;安装Node.js&lt;/h2&gt;&lt;p&gt;在 Windows 环境下安装 Node.js 非常简单，仅须到&lt;a href=&quot;https://nodejs.org/en/download/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网下载&lt;/a&gt;安装文件并执行即可完成安装。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/image-nodeJs-dl.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;像我的是Windows 64位，直接下载安装，不需要配置环境变量。&lt;/p&gt;
+&lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h2&gt;&lt;p&gt;下载 msysgit 并执行即可完成安装。(上官网要翻墙，如果你的是64位，可以&lt;a href=&quot;http://pan.baidu.com/s/1i4xAM9Z&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击此处&lt;/a&gt;下载)&lt;/p&gt;
 &lt;p&gt;怎么打开Git？&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/gitbash-1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/gitbash-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -60,14 +56,13 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/git.png&quot; alt=&quot;&quot;&gt; &lt;/p&gt;
-&lt;p&gt;##Hexo&lt;br&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
-&lt;p&gt;###一、Hexo安装&lt;br&gt;桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装&lt;/p&gt;
+&lt;h2 id=&quot;Hexo&quot;&gt;&lt;a href=&quot;#Hexo&quot; class=&quot;headerlink&quot; title=&quot;Hexo&quot;&gt;&lt;/a&gt;Hexo&lt;/h2&gt;&lt;p&gt;Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
+&lt;h3 id=&quot;一、Hexo安装&quot;&gt;&lt;a href=&quot;#一、Hexo安装&quot; class=&quot;headerlink&quot; title=&quot;一、Hexo安装&quot;&gt;&lt;/a&gt;一、Hexo安装&lt;/h3&gt;&lt;p&gt;桌面右键鼠标，点击Git Bash Here，输入npm命令即可安装&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;npm install hexo-cli -g
 npm install hexo --save
 #如果命令无法运行，可以尝试更换taobao的npm源
 npm install -g cnpm --registry=https://registry.npm.taobao.org
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###二、Hexo初始化配置&lt;/p&gt;
-&lt;h5 id=&quot;创建Hexo文件夹&quot;&gt;&lt;a href=&quot;#创建Hexo文件夹&quot; class=&quot;headerlink&quot; title=&quot;创建Hexo文件夹&quot;&gt;&lt;/a&gt;创建Hexo文件夹&lt;/h5&gt;&lt;p&gt;安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、Hexo初始化配置&quot;&gt;&lt;a href=&quot;#二、Hexo初始化配置&quot; class=&quot;headerlink&quot; title=&quot;二、Hexo初始化配置&quot;&gt;&lt;/a&gt;二、Hexo初始化配置&lt;/h3&gt;&lt;h5 id=&quot;创建Hexo文件夹&quot;&gt;&lt;a href=&quot;#创建Hexo文件夹&quot; class=&quot;headerlink&quot; title=&quot;创建Hexo文件夹&quot;&gt;&lt;/a&gt;创建Hexo文件夹&lt;/h5&gt;&lt;p&gt;安装完成后，根据自己喜好建立目录（如F:\Blog\Hexo），直接进入F:\Blog\Hexo文件夹下右键鼠标，点击Git Bash Here，进入Git命令框，执行以下操作。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo init
 $ npm install
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/hexo-content.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -89,19 +84,16 @@ npm install hexo-generator-sitemap@1 --save
 &lt;pre&gt;&lt;code&gt;hexo generate
 hexo server
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;登录localhost:4000，即可看到本地的效果如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/imagelocalhost.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##将博客部署到Github Pages上&lt;br&gt;那么现在本地的博客已经搭建起来了，但是我们只可以通过本地连接查看我们的博客。那么我们现在需要做的就是把本地的博客发布到服务器上，让别人也可以连接我们的博客，而Github Pages就帮我完成了这件事情。但是Github Pages的代码就是寄存在Github上面的。那么接下来我们需要在Github上面创建一个新的项目。&lt;/p&gt;
-&lt;p&gt;###一、注册Github账户&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;将博客部署到Github-Pages上&quot;&gt;&lt;a href=&quot;#将博客部署到Github-Pages上&quot; class=&quot;headerlink&quot; title=&quot;将博客部署到Github Pages上&quot;&gt;&lt;/a&gt;将博客部署到Github Pages上&lt;/h2&gt;&lt;p&gt;那么现在本地的博客已经搭建起来了，但是我们只可以通过本地连接查看我们的博客。那么我们现在需要做的就是把本地的博客发布到服务器上，让别人也可以连接我们的博客，而Github Pages就帮我完成了这件事情。但是Github Pages的代码就是寄存在Github上面的。那么接下来我们需要在Github上面创建一个新的项目。&lt;/p&gt;
+&lt;h3 id=&quot;一、注册Github账户&quot;&gt;&lt;a href=&quot;#一、注册Github账户&quot; class=&quot;headerlink&quot; title=&quot;一、注册Github账户&quot;&gt;&lt;/a&gt;一、注册Github账户&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;访问&lt;a href=&quot;访问：http://www.github.com/&quot;&gt;Github首页&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;点击右上角的&lt;a href=&quot;https://github.com/join?source=header-home&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt; Sign Up&lt;/a&gt;，注册自己的账户&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;###二、创建项目代码库&lt;/p&gt;
-&lt;ol&gt;
+&lt;h3 id=&quot;二、创建项目代码库&quot;&gt;&lt;a href=&quot;#二、创建项目代码库&quot; class=&quot;headerlink&quot; title=&quot;二、创建项目代码库&quot;&gt;&lt;/a&gt;二、创建项目代码库&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;注册完登陆后，我们就创建一个我们自己的Github Pages项目。点击&lt;a href=&quot;https://github.com/new&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;New repository&lt;/a&gt;。&lt;/li&gt;
 &lt;li&gt;创建要点如下：&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/how-to-create-reposity.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;###三、配置SSH密钥&lt;/p&gt;
-&lt;p&gt;配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：&lt;/p&gt;
+&lt;h3 id=&quot;三、配置SSH密钥&quot;&gt;&lt;a href=&quot;#三、配置SSH密钥&quot; class=&quot;headerlink&quot; title=&quot;三、配置SSH密钥&quot;&gt;&lt;/a&gt;三、配置SSH密钥&lt;/h3&gt;&lt;p&gt;配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：&lt;/p&gt;
 &lt;h5 id=&quot;第一步、看看是否存在SSH密钥-keys&quot;&gt;&lt;a href=&quot;#第一步、看看是否存在SSH密钥-keys&quot; class=&quot;headerlink&quot; title=&quot;第一步、看看是否存在SSH密钥(keys)&quot;&gt;&lt;/a&gt;第一步、看看是否存在SSH密钥(keys)&lt;/h5&gt;&lt;p&gt;首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ cd ~/. ssh 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;检查你本机用户home目录下是否存在.ssh目录&lt;/p&gt;
@@ -144,8 +136,7 @@ $ git config --global user.email  &amp;quot;cnfeat@gmail.com&amp;quot;//填写�
 &lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;第六步、SSH-Key配置成功&quot;&gt;&lt;a href=&quot;#第六步、SSH-Key配置成功&quot; class=&quot;headerlink&quot; title=&quot;第六步、SSH Key配置成功&quot;&gt;&lt;/a&gt;第六步、SSH Key配置成功&lt;/h5&gt;&lt;p&gt;本机已成功连接到github。&lt;br&gt;如有问题，请参考：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/generating-an-ssh-key/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub Help - Generating SSH Keys&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://help.github.com/articles/error-permission-denied-publickey/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Error: Permission denied (publickey)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;###四、将本地的Hexo文件更新到Github的库中&lt;/p&gt;
-&lt;h5 id=&quot;第一步、登录Github打开自己的项目-username-github-io&quot;&gt;&lt;a href=&quot;#第一步、登录Github打开自己的项目-username-github-io&quot; class=&quot;headerlink&quot; title=&quot;第一步、登录Github打开自己的项目 username.github.io&quot;&gt;&lt;/a&gt;第一步、登录Github打开自己的项目 username.github.io&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;a href=&quot;#四、将本地的Hexo文件更新到Github的库中&quot; class=&quot;headerlink&quot; title=&quot;四、将本地的Hexo文件更新到Github的库中&quot;&gt;&lt;/a&gt;四、将本地的Hexo文件更新到Github的库中&lt;/h3&gt;&lt;h5 id=&quot;第一步、登录Github打开自己的项目-username-github-io&quot;&gt;&lt;a href=&quot;#第一步、登录Github打开自己的项目-username-github-io&quot; class=&quot;headerlink&quot; title=&quot;第一步、登录Github打开自己的项目 username.github.io&quot;&gt;&lt;/a&gt;第一步、登录Github打开自己的项目 username.github.io&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h5 id=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;a href=&quot;#第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot; class=&quot;headerlink&quot; title=&quot;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&quot;&gt;&lt;/a&gt;第二步、打开之后，点击HTTPS，选择HTTPS类型地址&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h5 id=&quot;第三步、复制地址&quot;&gt;&lt;a href=&quot;#第三步、复制地址&quot; class=&quot;headerlink&quot; title=&quot;第三步、复制地址&quot;&gt;&lt;/a&gt;第三步、复制地址&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h5 id=&quot;第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot;&gt;&lt;a href=&quot;#第四步、打开你一开始创建的Hexo文件夹（如F-Blog-Hexo），用记事本打开刚文件夹下的-config-yml文件&quot; class=&quot;headerlink&quot; title=&quot;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&quot;&gt;&lt;/a&gt;第四步、打开你一开始创建的Hexo文件夹（如F:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件&lt;/h5&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/getHTTPS-teach_4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -156,41 +147,32 @@ hexo d
 &lt;pre&gt;&lt;code&gt;hexo g -d
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;执行完之后会让你输入github的账号和密码，输入完后就可以登录我们自己的部署在Github Pages服务器上的博客了。对应的地址是 username.github.io(我的是：ryanlijianchang.github.io)。&lt;/p&gt;
 &lt;h5 id=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;a href=&quot;#第七步、在浏览器上输入自己的主页地址&quot; class=&quot;headerlink&quot; title=&quot;第七步、在浏览器上输入自己的主页地址&quot;&gt;&lt;/a&gt;第七步、在浏览器上输入自己的主页地址&lt;/h5&gt;&lt;p&gt;在浏览器上输入即可看到我们自己的博客，别人电脑输入也可以哦。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/blog-main.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##美化自己博客&lt;br&gt;那么现在我们的博客已经挂在了服务器上面，别人已经可以通过网址来登陆我们的博客了，但是我们这时就有了新的需求，就是自己的博客并不好看，那怎么办的？这很简单，要知道很多前端开发者在Hexo框架下开发了很多的主题给我们使用，我们只需要把他们的主题克隆过来，然后通过修改配置文件即可达到我们所需要的效果。&lt;/p&gt;
+&lt;h2 id=&quot;美化自己博客&quot;&gt;&lt;a href=&quot;#美化自己博客&quot; class=&quot;headerlink&quot; title=&quot;美化自己博客&quot;&gt;&lt;/a&gt;美化自己博客&lt;/h2&gt;&lt;p&gt;那么现在我们的博客已经挂在了服务器上面，别人已经可以通过网址来登陆我们的博客了，但是我们这时就有了新的需求，就是自己的博客并不好看，那怎么办的？这很简单，要知道很多前端开发者在Hexo框架下开发了很多的主题给我们使用，我们只需要把他们的主题克隆过来，然后通过修改配置文件即可达到我们所需要的效果。&lt;/p&gt;
 &lt;p&gt;那么我们应该怎么修改呢？&lt;/p&gt;
-&lt;p&gt;###一、进入&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo的官网主题专栏&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/themes.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###二、挑选我们喜欢的主题&lt;br&gt;可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：hexo-theme-next这个主题)&lt;/p&gt;
+&lt;h3 id=&quot;一、进入Hexo的官网主题专栏&quot;&gt;&lt;a href=&quot;#一、进入Hexo的官网主题专栏&quot; class=&quot;headerlink&quot; title=&quot;一、进入Hexo的官网主题专栏&quot;&gt;&lt;/a&gt;一、进入&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo的官网主题专栏&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/themes.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;二、挑选我们喜欢的主题&quot;&gt;&lt;a href=&quot;#二、挑选我们喜欢的主题&quot; class=&quot;headerlink&quot; title=&quot;二、挑选我们喜欢的主题&quot;&gt;&lt;/a&gt;二、挑选我们喜欢的主题&lt;/h3&gt;&lt;p&gt;可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：hexo-theme-next这个主题)&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/address.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###三、克隆主题&lt;/p&gt;
-&lt;p&gt;再打开Hexo文件夹下的themes目录（F:\Blog\hexo\themes），右键Git Bash，在命令行输入:&lt;/p&gt;
+&lt;h3 id=&quot;三、克隆主题&quot;&gt;&lt;a href=&quot;#三、克隆主题&quot; class=&quot;headerlink&quot; title=&quot;三、克隆主题&quot;&gt;&lt;/a&gt;三、克隆主题&lt;/h3&gt;&lt;p&gt;再打开Hexo文件夹下的themes目录（F:\Blog\hexo\themes），右键Git Bash，在命令行输入:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;git clone https://github.com/iissnan/hexo-theme-next(此处地址替换成你需要使用的主题的地址) 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;下载中，等待下载完成：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/downloading.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###四、修改Hexo配置文件&lt;/p&gt;
-&lt;p&gt;下载完成后，打开Hexo文件夹下的配置文件&lt;code&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;四、修改Hexo配置文件&quot;&gt;&lt;a href=&quot;#四、修改Hexo配置文件&quot; class=&quot;headerlink&quot; title=&quot;四、修改Hexo配置文件&quot;&gt;&lt;/a&gt;四、修改Hexo配置文件&lt;/h3&gt;&lt;p&gt;下载完成后，打开Hexo文件夹下的配置文件&lt;code&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;修改参数为：&lt;code&gt;theme: hexo-theme-next&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;###五、部署主题，本地查看效果&lt;/p&gt;
-&lt;p&gt;返回Hexo目录，右键Git Bash，输入&lt;/p&gt;
+&lt;h3 id=&quot;五、部署主题，本地查看效果&quot;&gt;&lt;a href=&quot;#五、部署主题，本地查看效果&quot; class=&quot;headerlink&quot; title=&quot;五、部署主题，本地查看效果&quot;&gt;&lt;/a&gt;五、部署主题，本地查看效果&lt;/h3&gt;&lt;p&gt;返回Hexo目录，右键Git Bash，输入&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hexo g
 hexo s
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;打开浏览器，输入 &lt;code&gt;http://localhost:4000/&lt;/code&gt; 即可看见我们的主题已经更换了。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/new-theme.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###六、如果效果满意，将它部署到Github上&lt;/p&gt;
-&lt;p&gt;打开Hexo文件夹，右键Git Bash，输入&lt;/p&gt;
+&lt;h3 id=&quot;六、如果效果满意，将它部署到Github上&quot;&gt;&lt;a href=&quot;#六、如果效果满意，将它部署到Github上&quot; class=&quot;headerlink&quot; title=&quot;六、如果效果满意，将它部署到Github上&quot;&gt;&lt;/a&gt;六、如果效果满意，将它部署到Github上&lt;/h3&gt;&lt;p&gt;打开Hexo文件夹，右键Git Bash，输入&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hexo clean   (必须要，不然有时因为缓存问题，服务器更新不了主题)
 hexo g -d
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###七、打开自己的主页，即可看到修改后的效果&lt;/p&gt;
-&lt;p&gt;更多修改效果请查看对应主题的说明文档，&lt;a href=&quot;http://theme-next.iissnan.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击此&lt;/a&gt;查看本主题(Next)对应的说明文档。&lt;/p&gt;
-&lt;p&gt;##在博客写文章&lt;/p&gt;
-&lt;p&gt;###一、用hexo发表新文章&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ hexo n &amp;quot;文章标题&amp;quot; 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;七、打开自己的主页，即可看到修改后的效果&quot;&gt;&lt;a href=&quot;#七、打开自己的主页，即可看到修改后的效果&quot; class=&quot;headerlink&quot; title=&quot;七、打开自己的主页，即可看到修改后的效果&quot;&gt;&lt;/a&gt;七、打开自己的主页，即可看到修改后的效果&lt;/h3&gt;&lt;p&gt;更多修改效果请查看对应主题的说明文档，&lt;a href=&quot;http://theme-next.iissnan.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;点击此&lt;/a&gt;查看本主题(Next)对应的说明文档。&lt;/p&gt;
+&lt;h2 id=&quot;在博客写文章&quot;&gt;&lt;a href=&quot;#在博客写文章&quot; class=&quot;headerlink&quot; title=&quot;在博客写文章&quot;&gt;&lt;/a&gt;在博客写文章&lt;/h2&gt;&lt;h3 id=&quot;一、用hexo发表新文章&quot;&gt;&lt;a href=&quot;#一、用hexo发表新文章&quot; class=&quot;headerlink&quot; title=&quot;一、用hexo发表新文章&quot;&gt;&lt;/a&gt;一、用hexo发表新文章&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;$ hexo n &amp;quot;文章标题&amp;quot; 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中 我的家 为文章标题，执行命令 &lt;code&gt;hexo n &amp;quot;我的家&amp;quot;&lt;/code&gt; 后，会在项目 \Hexo\source_posts 中生成 &lt;code&gt;我的家.md&lt;/code&gt;文件，用编辑器打开编写即可。&lt;/p&gt;
 &lt;p&gt;当然，也可以直接在\Hexo\source_posts中新建一个md文件，我就是这么做的。&lt;br&gt;写完后，推送到服务器上，执行以下命令即可在我们的站点看到新的文章。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo g #生成
 $ hexo d #部署 # 可与hexo g合并为 hexo d -g
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###二、用Markdown写文章&lt;/p&gt;
-&lt;p&gt;我们注意到在 \Hexo\source_posts 文件夹下存放着我们的文章，它们的格式都是以&lt;code&gt;.md&lt;/code&gt;格式结尾的，没错，Hexo也是支持Markdown语法的，所以当我们需要写具有格式化的文章时，我们可以使用支持Markdown语法的编辑器进行文章编译，然后保存文件到 \Hexo\source_posts 文件夹下即可。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、用Markdown写文章&quot;&gt;&lt;a href=&quot;#二、用Markdown写文章&quot; class=&quot;headerlink&quot; title=&quot;二、用Markdown写文章&quot;&gt;&lt;/a&gt;二、用Markdown写文章&lt;/h3&gt;&lt;p&gt;我们注意到在 \Hexo\source_posts 文件夹下存放着我们的文章，它们的格式都是以&lt;code&gt;.md&lt;/code&gt;格式结尾的，没错，Hexo也是支持Markdown语法的，所以当我们需要写具有格式化的文章时，我们可以使用支持Markdown语法的编辑器进行文章编译，然后保存文件到 \Hexo\source_posts 文件夹下即可。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/markdown.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;复制进去之后，只要执行&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hexo d -g 
@@ -212,20 +194,16 @@ $ hexo d #部署 # 可与hexo g合并为 hexo d -g
 &lt;li&gt;&lt;a href=&quot;http://sspai.com/25137&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;认识与入门 Markdown&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.douban.com/note/350126154/?type=like&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown入门指南&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;##将自己的域名关联到Github Pages上&lt;/p&gt;
-&lt;p&gt;很多朋友创建了自己的博客之后会选择买一个属于自己的域名，然后将自己域名绑定到自己的Github Pages博客上，其实这也并不难，只要你有个域名。&lt;/p&gt;
-&lt;p&gt;###一、购买域名&lt;/p&gt;
-&lt;p&gt;如果你不是很有钱，在&lt;a href=&quot;https://wanwang.aliyun.com/domain/?spm=5176.383338.1907008.1.LWIFhw&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;上，你只要几块钱就可以买到一个域名。&lt;/p&gt;
+&lt;h2 id=&quot;将自己的域名关联到Github-Pages上&quot;&gt;&lt;a href=&quot;#将自己的域名关联到Github-Pages上&quot; class=&quot;headerlink&quot; title=&quot;将自己的域名关联到Github Pages上&quot;&gt;&lt;/a&gt;将自己的域名关联到Github Pages上&lt;/h2&gt;&lt;p&gt;很多朋友创建了自己的博客之后会选择买一个属于自己的域名，然后将自己域名绑定到自己的Github Pages博客上，其实这也并不难，只要你有个域名。&lt;/p&gt;
+&lt;h3 id=&quot;一、购买域名&quot;&gt;&lt;a href=&quot;#一、购买域名&quot; class=&quot;headerlink&quot; title=&quot;一、购买域名&quot;&gt;&lt;/a&gt;一、购买域名&lt;/h3&gt;&lt;p&gt;如果你不是很有钱，在&lt;a href=&quot;https://wanwang.aliyun.com/domain/?spm=5176.383338.1907008.1.LWIFhw&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云&lt;/a&gt;上，你只要几块钱就可以买到一个域名。&lt;/p&gt;
 &lt;p&gt;选择你喜欢的域名，然后购买即可。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/yuming.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###二、配置CNAME文件&lt;/p&gt;
-&lt;p&gt;在 \hexo\source 文件夹下创建文件 CNAME  （新建记事本文件命名CNAME，然后打开）&lt;/p&gt;
+&lt;h3 id=&quot;二、配置CNAME文件&quot;&gt;&lt;a href=&quot;#二、配置CNAME文件&quot; class=&quot;headerlink&quot; title=&quot;二、配置CNAME文件&quot;&gt;&lt;/a&gt;二、配置CNAME文件&lt;/h3&gt;&lt;p&gt;在 \hexo\source 文件夹下创建文件 CNAME  （新建记事本文件命名CNAME，然后打开）&lt;/p&gt;
 &lt;p&gt;内容为你的域名，例如我的域名是：lijianchang.xyz&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/cname2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;在Hexo文件夹提交&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;hexo g -d
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###三、修改DNS的DNS&lt;/p&gt;
-&lt;p&gt;1.如果你是在阿里云购买域名的话，请登录阿里云网站。打开个人中心，点击域名&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;三、修改DNS的DNS&quot;&gt;&lt;a href=&quot;#三、修改DNS的DNS&quot; class=&quot;headerlink&quot; title=&quot;三、修改DNS的DNS&quot;&gt;&lt;/a&gt;三、修改DNS的DNS&lt;/h3&gt;&lt;p&gt;1.如果你是在阿里云购买域名的话，请登录阿里云网站。打开个人中心，点击域名&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/domain_1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;2.选择管理&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/domain_2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -233,8 +211,7 @@ $ hexo d #部署 # 可与hexo g合并为 hexo d -g
 &lt;pre&gt;&lt;code&gt;f1g1ns2.dnspod.net 
 f1g1ns1.dnspod.net 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/domain_3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###四、域名解析&lt;/p&gt;
-&lt;ol&gt;
+&lt;h3 id=&quot;四、域名解析&quot;&gt;&lt;a href=&quot;#四、域名解析&quot; class=&quot;headerlink&quot; title=&quot;四、域名解析&quot;&gt;&lt;/a&gt;四、域名解析&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;打开&lt;a href=&quot;https://www.dnspod.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;DNSPOD&lt;/a&gt;，注册一个账户&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;点击添加域名，把你的域名添加进去，如无意外，添加完之后就是以下这个状态&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/domain_4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -246,10 +223,9 @@ f1g1ns1.dnspod.net
 &lt;li&gt;&lt;p&gt;将IP输入过去即可。等待生效，最迟72小时生效。即可通过你的域名浏览你的博客主页。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;##结语&lt;br&gt;当你完成了你的博客之后，相信你的心情跟我刚做完的心情是一样的，即便很累，但是当自己的博客成型之后，自己还是有一个成就感的，那么完成后，以后的路还很长，真正想要自己博客能够积累人气，还得靠好的内容，所以认真写文章吧，相信你会受益于此的。&lt;/p&gt;
+&lt;h2 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h2&gt;&lt;p&gt;当你完成了你的博客之后，相信你的心情跟我刚做完的心情是一样的，即便很累，但是当自己的博客成型之后，自己还是有一个成就感的，那么完成后，以后的路还很长，真正想要自己博客能够积累人气，还得靠好的内容，所以认真写文章吧，相信你会受益于此的。&lt;/p&gt;
 &lt;p&gt;如果大家有什么问题的话，可以在我留言板下留言，我看到评论时会第一时间回答大家。&lt;/p&gt;
-&lt;p&gt;#参考资料：&lt;/p&gt;
-&lt;ol&gt;
+&lt;h1 id=&quot;参考资料：&quot;&gt;&lt;a href=&quot;#参考资料：&quot; class=&quot;headerlink&quot; title=&quot;参考资料：&quot;&gt;&lt;/a&gt;参考资料：&lt;/h1&gt;&lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;http://wowubuntu.com/markdown/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown入门手册中文版&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/1e402922ee32/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown–入门指南&lt;/a&gt; &lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何搭建一个独立博客——简明 Github Pages与 jekyll 教程&lt;/a&gt; by cnfeat&lt;/li&gt;
@@ -265,10 +241,6 @@ f1g1ns1.dnspod.net
     
     </summary>
     
-      <category term="Hexo" scheme="lijianchang.xyz/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="lijianchang.xyz/tags/Hexo/"/>
     
   </entry>
   
