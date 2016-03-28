@@ -60,23 +60,20 @@
 
 
 <meta name="description" content="摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。
-实例效果
-前言这是谷歌官方文档给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragm">
+实例效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习-简易ViewPager的使用教程与Demo演示">
 <meta property="og:url" content="lijianchang.xyz/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
 <meta property="og:description" content="摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。
-实例效果
-前言这是谷歌官方文档给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragm">
+实例效果">
 <meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif">
 <meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png">
-<meta property="og:updated_time" content="2016-03-28T19:13:24.476Z">
+<meta property="og:updated_time" content="2016-03-28T19:16:22.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习-简易ViewPager的使用教程与Demo演示">
 <meta name="twitter:description" content="摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。
-实例效果
-前言这是谷歌官方文档给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragm">
+实例效果">
 <meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif">
 
 
@@ -295,6 +292,7 @@
       
         <p>摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。</p>
 <h2 id="实例效果"><a href="#实例效果" class="headerlink" title="实例效果"></a>实例效果</h2><p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif" alt=""></p>
+<a id="more"></a>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是谷歌<a href="http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">官方文档</a>给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png" alt=""></p>
 <h2 id="Demo剖析"><a href="#Demo剖析" class="headerlink" title="Demo剖析"></a>Demo剖析</h2><p>这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。</p>
 <h3 id="一、top-bar部分"><a href="#一、top-bar部分" class="headerlink" title="一、top_bar部分"></a>一、top_bar部分</h3><p>这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）</p>
