@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-03-28T19:09:08.212Z</updated>
+  <updated>2016-03-28T19:11:17.219Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Android学习-简易ViewPager的使用教程与Demo演示</title>
     <link href="lijianchang.xyz/2016/03/29/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
     <id>lijianchang.xyz/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/</id>
-    <published>2016-03-28T19:07:40.000Z</published>
-    <updated>2016-03-28T19:09:08.212Z</updated>
+    <published>2016-03-28T19:10:37.000Z</published>
+    <updated>2016-03-28T19:11:17.219Z</updated>
     
     <content type="html">&lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
 &lt;p&gt;##实例效果##&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
