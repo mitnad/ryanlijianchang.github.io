@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-03-28T19:11:17.219Z</updated>
+  <updated>2016-03-28T19:13:24.476Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -20,18 +20,14 @@
     <link href="lijianchang.xyz/2016/03/29/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
     <id>lijianchang.xyz/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/</id>
     <published>2016-03-28T19:10:37.000Z</published>
-    <updated>2016-03-28T19:11:17.219Z</updated>
+    <updated>2016-03-28T19:13:24.476Z</updated>
     
     <content type="html">&lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
-&lt;p&gt;##实例效果##&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##前言##&lt;/p&gt;
-&lt;p&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##Demo剖析##&lt;/p&gt;
-&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
-&lt;p&gt;###一、top_bar部分###&lt;/p&gt;
-&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
-&lt;p&gt;###二、下标部分###&lt;/p&gt;
-&lt;p&gt;下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。&lt;/p&gt;
+&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Demo剖析&quot;&gt;&lt;a href=&quot;#Demo剖析&quot; class=&quot;headerlink&quot; title=&quot;Demo剖析&quot;&gt;&lt;/a&gt;Demo剖析&lt;/h2&gt;&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
+&lt;h3 id=&quot;一、top-bar部分&quot;&gt;&lt;a href=&quot;#一、top-bar部分&quot; class=&quot;headerlink&quot; title=&quot;一、top_bar部分&quot;&gt;&lt;/a&gt;一、top_bar部分&lt;/h3&gt;&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
+&lt;h3 id=&quot;二、下标部分&quot;&gt;&lt;a href=&quot;#二、下标部分&quot; class=&quot;headerlink&quot; title=&quot;二、下标部分&quot;&gt;&lt;/a&gt;二、下标部分&lt;/h3&gt;&lt;p&gt;下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。&lt;/p&gt;
 &lt;p&gt;设置滑动条的宽度&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; /**
   * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
@@ -68,8 +64,7 @@ private void initTabLineWidth() {
     }
     tablineIv.setLayoutParams(lp);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###三、ViewPager实现部分###&lt;/p&gt;
-&lt;p&gt;ViewPager的实现主要通过以下步骤：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;三、ViewPager实现部分&quot;&gt;&lt;a href=&quot;#三、ViewPager实现部分&quot; class=&quot;headerlink&quot; title=&quot;三、ViewPager实现部分&quot;&gt;&lt;/a&gt;三、ViewPager实现部分&lt;/h3&gt;&lt;p&gt;ViewPager的实现主要通过以下步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;把包含的Fragement存放到一个容器List里面去&lt;/p&gt;
 &lt;/li&gt;
@@ -82,9 +77,7 @@ private void initTabLineWidth() {
 &lt;li&gt;&lt;p&gt;ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法  &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;##代码实现##&lt;/p&gt;
-&lt;p&gt;###一、界面部分###&lt;/p&gt;
-&lt;p&gt;在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。&lt;/p&gt;
+&lt;h2 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h2&gt;&lt;h3 id=&quot;一、界面部分&quot;&gt;&lt;a href=&quot;#一、界面部分&quot; class=&quot;headerlink&quot; title=&quot;一、界面部分&quot;&gt;&lt;/a&gt;一、界面部分&lt;/h3&gt;&lt;p&gt;在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。&lt;/p&gt;
 &lt;p&gt;main.xml&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
     xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
@@ -202,8 +195,7 @@ private void initTabLineWidth() {
         android:text=&amp;quot;设置&amp;quot;/&amp;gt;
 
 &amp;lt;/LinearLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###二、逻辑代码###&lt;/p&gt;
-&lt;p&gt;MainActivity.java&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、逻辑代码&quot;&gt;&lt;a href=&quot;#二、逻辑代码&quot; class=&quot;headerlink&quot; title=&quot;二、逻辑代码&quot;&gt;&lt;/a&gt;二、逻辑代码&lt;/h3&gt;&lt;p&gt;MainActivity.java&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;package com.example.ryan.viewpagerdemo;
 
 import android.graphics.Color;
@@ -416,7 +408,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     }
 
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##源码下载##&lt;br&gt;ps：此Demo是使用Android Studio编写的，请使用AS打开。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h2&gt;&lt;p&gt;ps：此Demo是使用Android Studio编写的，请使用AS打开。&lt;/p&gt;
 &lt;p&gt;下载地址：&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9474994&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9474994&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ViewPagerDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ViewPagerDemo&lt;/a&gt;&lt;/p&gt;
 </content>
@@ -424,7 +416,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     <summary type="html">
     
       &lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
-&lt;p&gt;##实例效果##&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Ho
+&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果
     
     </summary>
     
