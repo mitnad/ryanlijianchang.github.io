@@ -219,7 +219,7 @@
               
                 
                 <a class="post-title-link" href="/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/" itemprop="url">
-                  未命名
+                  Android学习-简易ViewPager的使用教程与Demo演示
                 </a>
               
             
@@ -232,11 +232,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-29T03:05:16+08:00" content="2016-03-29">
+            <time itemprop="dateCreated" datetime="2016-03-29T03:07:40+08:00" content="2016-03-29">
               2016-03-29
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -271,14 +290,15 @@
       
         
           
-            <p>#Android学习-简易ViewPager的使用教程与Demo演示<br>摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。</p>
-<p>##实例效果<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif" alt=""></p>
-<p>##前言<br>这是谷歌<a href="http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">官方文档</a>给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png" alt=""></p>
-<p>##Demo剖析</p>
+            <p>摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。</p>
+<p>##实例效果##<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif" alt=""></p>
+<p>##前言##</p>
+<p>这是谷歌<a href="http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">官方文档</a>给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png" alt=""></p>
+<p>##Demo剖析##</p>
 <p>这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。</p>
-<p>###一、top_bar部分</p>
+<p>###一、top_bar部分###</p>
 <p>这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）</p>
-<p>###二、下标部分</p>
+<p>###二、下标部分###</p>
 <p>下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。</p>
 <p>设置滑动条的宽度</p>
 <pre><code> /**
@@ -316,7 +336,7 @@ private void initTabLineWidth() {
     }
     tablineIv.setLayoutParams(lp);
 }
-</code></pre><p>###三、ViewPager实现部分</p>
+</code></pre><p>###三、ViewPager实现部分###</p>
 <p>ViewPager的实现主要通过以下步骤：</p>
 <ol>
 <li><p>把包含的Fragement存放到一个容器List里面去</p>
@@ -330,8 +350,9 @@ private void initTabLineWidth() {
 <li><p>ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法  </p>
 </li>
 </ol>
-<p>##代码实现</p>
-<p>###一、界面部分<br>在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。</p>
+<p>##代码实现##</p>
+<p>###一、界面部分###</p>
+<p>在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。</p>
 <p>main.xml</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
@@ -449,7 +470,8 @@ private void initTabLineWidth() {
         android:text=&quot;设置&quot;/&gt;
 
 &lt;/LinearLayout&gt;
-</code></pre><p>###二、逻辑代码<br>MainActivity.java</p>
+</code></pre><p>###二、逻辑代码###</p>
+<p>MainActivity.java</p>
 <pre><code>package com.example.ryan.viewpagerdemo;
 
 import android.graphics.Color;
@@ -662,7 +684,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     }
 
 }
-</code></pre><p>##源码下载<br>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
+</code></pre><p>##源码下载##<br>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
 <p>下载地址：<a href="http://download.csdn.net/detail/ljcitworld/9474994" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9474994</a></p>
 <p>Github地址：<a href="https://github.com/ryanlijianchang/ViewPagerDemo" target="_blank" rel="external">https://github.com/ryanlijianchang/ViewPagerDemo</a></p>
 
@@ -1128,7 +1150,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
