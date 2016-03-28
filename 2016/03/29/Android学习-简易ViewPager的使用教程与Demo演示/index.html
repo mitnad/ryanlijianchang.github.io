@@ -69,7 +69,7 @@
 实例效果">
 <meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif">
 <meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png">
-<meta property="og:updated_time" content="2016-03-28T19:24:43.898Z">
+<meta property="og:updated_time" content="2016-03-28T19:33:49.391Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习-简易ViewPager的使用教程与Demo演示">
 <meta name="twitter:description" content="摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。
@@ -298,7 +298,7 @@
 <h3 id="一、top-bar部分"><a href="#一、top-bar部分" class="headerlink" title="一、top_bar部分"></a>一、top_bar部分</h3><p>这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）</p>
 <h3 id="二、下标部分"><a href="#二、下标部分" class="headerlink" title="二、下标部分"></a>二、下标部分</h3><p>下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。</p>
 <p>设置滑动条的宽度<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initTabLineWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	DisplayMetrics dpMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">    getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);</span><br><span class="line">    screenWidth = dpMetrics.widthPixels;</span><br><span class="line">    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tab.getLayoutParams();</span><br><span class="line">    lp.width = screenWidth / <span class="number">3</span>;</span><br><span class="line">    tab.setLayoutParams(lp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在onPagerScrolled方法中设置滑动条的位置变化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> offset,</span><br><span class="line">                                      <span class="keyword">int</span> offsetPixels)</span> </span>&#123;</span><br><span class="line">    	LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();</span><br><span class="line">       Log.i(<span class="string">"mOffset"</span>, <span class="string">"offset:"</span> + offset + <span class="string">",position:"</span> + position);</span><br><span class="line">        </span><br><span class="line">       <span class="keyword">if</span> (currentIndex == <span class="number">0</span> &amp;&amp; position == <span class="number">0</span>)<span class="comment">// 0-&gt;1</span></span><br><span class="line">	&#123;</span><br><span class="line">       	lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                           * (screenWidth / <span class="number">3</span>));</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">0</span>) <span class="comment">// 1-&gt;0</span></span><br><span class="line">       &#123;</span><br><span class="line">           lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset) * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex * (screenWidth / <span class="number">3</span>));</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 1-&gt;2</span></span><br><span class="line">       &#123;</span><br><span class="line">           lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                           * (screenWidth / <span class="number">3</span>));</span><br><span class="line">       &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">2</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 2-&gt;1</span></span><br><span class="line">       &#123;</span><br><span class="line">           lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset) * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex * (screenWidth / <span class="number">3</span>));</span><br><span class="line">       &#125;</span><br><span class="line">       tablineIv.setLayoutParams(lp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在onPagerScrolled方法中设置滑动条的位置变化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> offset,</span><br><span class="line">                           <span class="keyword">int</span> offsetPixels)</span> </span>&#123;</span><br><span class="line">    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();</span><br><span class="line">    Log.i(<span class="string">"mOffset"</span>, <span class="string">"offset:"</span> + offset + <span class="string">",position:"</span> + position);</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来</span><br><span class="line">     * 设置mTabLineIv的左边距 滑动场景：</span><br><span class="line">     * 记3个页面,</span><br><span class="line">     * 从左到右分别为0,1,2</span><br><span class="line">     * 0-&gt;1; 1-&gt;2; 2-&gt;1; 1-&gt;0</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">if</span> (currentIndex == <span class="number">0</span> &amp;&amp; position == <span class="number">0</span>)<span class="comment">// 0-&gt;1</span></span><br><span class="line">    &#123;</span><br><span class="line">        lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                * (screenWidth / <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">0</span>) <span class="comment">// 1-&gt;0</span></span><br><span class="line">    &#123;</span><br><span class="line">        lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset)</span><br><span class="line">                * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                * (screenWidth / <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 1-&gt;2</span></span><br><span class="line">    &#123;</span><br><span class="line">        lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                * (screenWidth / <span class="number">3</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">2</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 2-&gt;1</span></span><br><span class="line">    &#123;</span><br><span class="line">        lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset)</span><br><span class="line">                * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                * (screenWidth / <span class="number">3</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    tablineIv.setLayoutParams(lp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="三、ViewPager实现部分"><a href="#三、ViewPager实现部分" class="headerlink" title="三、ViewPager实现部分"></a>三、ViewPager实现部分</h3><p>ViewPager的实现主要通过以下步骤：</p>
 <ol>
 <li><p>把包含的Fragement存放到一个容器List里面去</p>
@@ -314,336 +314,21 @@
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="一、界面部分"><a href="#一、界面部分" class="headerlink" title="一、界面部分"></a>一、界面部分</h3><p>在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。</p>
 <p>main.xml</p>
-<pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;
-    android:orientation=&quot;vertical&quot;&gt;
-
-    &lt;!-- 顶部的内容 --&gt;
-    &lt;include layout=&quot;@layout/top_bar&quot; /&gt;
-
-    &lt;!-- ViewPager --&gt;
-    &lt;android.support.v4.view.ViewPager
-        android:id=&quot;@+id/viewpager&quot;
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;0dp&quot;
-        android:layout_weight=&quot;1&quot; &gt;
-    &lt;/android.support.v4.view.ViewPager&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><p>top_bar.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-    &lt;!--注意最外层布局的高度不能使用match_parent，不然将会遮挡了ViewPager部分--&gt;
-    &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    android:orientation=&quot;vertical&quot;&gt;
-
-
-    &lt;LinearLayout
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:baselineAligned=&quot;false&quot;
-        android:orientation=&quot;horizontal&quot;&gt;
-
-        &lt;TextView
-            android:id=&quot;@+id/mainTv&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;50dp&quot;
-            android:layout_weight=&quot;1&quot;
-            android:gravity=&quot;center&quot;
-            android:text=&quot;首页&quot;
-            android:textColor=&quot;#0000FF&quot;
-            android:textSize=&quot;18dp&quot; /&gt;
-
-        &lt;TextView
-            android:id=&quot;@+id/momentTv&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;50dp&quot;
-            android:layout_weight=&quot;1&quot;
-            android:gravity=&quot;center&quot;
-            android:text=&quot;朋友圈&quot;
-            android:textColor=&quot;@android:color/black&quot;
-            android:textSize=&quot;18dp&quot; /&gt;
-
-        &lt;TextView
-            android:id=&quot;@+id/settingTv&quot;
-            android:layout_width=&quot;match_parent&quot;
-            android:layout_height=&quot;50dp&quot;
-            android:layout_weight=&quot;1&quot;
-            android:gravity=&quot;center&quot;
-            android:text=&quot;设置&quot;
-            android:textColor=&quot;@android:color/black&quot;
-            android:textSize=&quot;18dp&quot; /&gt;
-
-
-    &lt;/LinearLayout&gt;
-
-    &lt;ImageView
-        android:id=&quot;@+id/iv_tabline&quot;
-        android:layout_width=&quot;200dp&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:contentDescription=&quot;tab&quot;
-        android:background=&quot;@drawable/tab&quot; &gt;
-    &lt;/ImageView&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><p>还有我们的三个Fragment界面，基本一致。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 顶部的内容 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/top_bar"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- ViewPager --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">android.support.v4.view.ViewPager</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/viewpager"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"0dp"</span></span><br><span class="line">        <span class="attr">android:layout_weight</span>=<span class="string">"1"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">android.support.v4.view.ViewPager</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>top_bar.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="comment">&lt;!--注意最外层布局的高度不能使用match_parent，不然将会遮挡了ViewPager部分--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">LinearLayout</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:baselineAligned</span>=<span class="string">"false"</span></span><br><span class="line">        <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/mainTv"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></span><br><span class="line">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span><br><span class="line">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">            <span class="attr">android:text</span>=<span class="string">"首页"</span></span><br><span class="line">            <span class="attr">android:textColor</span>=<span class="string">"#0000FF"</span></span><br><span class="line">            <span class="attr">android:textSize</span>=<span class="string">"18dp"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/momentTv"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></span><br><span class="line">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span><br><span class="line">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">            <span class="attr">android:text</span>=<span class="string">"朋友圈"</span></span><br><span class="line">            <span class="attr">android:textColor</span>=<span class="string">"@android:color/black"</span></span><br><span class="line">            <span class="attr">android:textSize</span>=<span class="string">"18dp"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">            <span class="attr">android:id</span>=<span class="string">"@+id/settingTv"</span></span><br><span class="line">            <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">            <span class="attr">android:layout_height</span>=<span class="string">"50dp"</span></span><br><span class="line">            <span class="attr">android:layout_weight</span>=<span class="string">"1"</span></span><br><span class="line">            <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">            <span class="attr">android:text</span>=<span class="string">"设置"</span></span><br><span class="line">            <span class="attr">android:textColor</span>=<span class="string">"@android:color/black"</span></span><br><span class="line">            <span class="attr">android:textSize</span>=<span class="string">"18dp"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span><br><span class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/iv_tabline"</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"200dp"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:contentDescription</span>=<span class="string">"tab"</span></span><br><span class="line">        <span class="attr">android:background</span>=<span class="string">"@drawable/tab"</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ImageView</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>还有我们的三个Fragment界面，基本一致。</p>
 <p>fragment_main.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-
-    &lt;TextView
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;match_parent&quot;
-        android:gravity=&quot;center&quot;
-        android:text=&quot;首页&quot;/&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><p>fragment_moment.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-
-    &lt;TextView
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;match_parent&quot;
-        android:gravity=&quot;center&quot;
-        android:text=&quot;朋友圈&quot;/&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><p>fragment_setting.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    android:layout_width=&quot;match_parent&quot;
-    android:layout_height=&quot;match_parent&quot;&gt;
-
-    &lt;TextView
-        android:layout_width=&quot;match_parent&quot;
-        android:layout_height=&quot;match_parent&quot;
-        android:gravity=&quot;center&quot;
-        android:text=&quot;设置&quot;/&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><h3 id="二、逻辑代码"><a href="#二、逻辑代码" class="headerlink" title="二、逻辑代码"></a>二、逻辑代码</h3><p>MainActivity.java</p>
-<pre><code>package com.example.ryan.viewpagerdemo;
-
-import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * MainActivity需要继承FragmentActivity
- */
-public class MainActivity extends FragmentActivity {
-    private ViewPager viewPager;
-    private List&lt;Fragment&gt; mFragmentList = new ArrayList&lt;Fragment&gt;();
-    private FragmentAdapter mFragmentAdapter;
-
-    //Tab显示内容TextView
-    private TextView mainTv, momentTv, settingTv;
-    //Tab的那个引导线
-    private ImageView tablineIv;
-
-    //三个Fragment页面
-    private MainFragment mainFg;
-    private MomentFragment momentFg;
-    private SettingFragment settingFg;
-
-    //ViewPager的当前选中页
-    private int currentIndex;
-
-    //屏幕的宽度
-    private int screenWidth;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findById();
-        init();
-        initTabLineWidth();
-
-    }
-
-    /**
-     * 找到控件ID
-     */
-    private void findById() {
-        mainTv = (TextView) this.findViewById(R.id.mainTv);
-        momentTv = (TextView) this.findViewById(R.id.momentTv);
-        settingTv = (TextView) this.findViewById(R.id.settingTv);
-        tablineIv = (ImageView) this.findViewById(R.id.iv_tabline);
-        viewPager = (ViewPager) this.findViewById(R.id.viewpager);
-    }
-
-    /**
-     * 初始化ViewPager和设置监听器
-     */
-    private void init() {
-        mainFg = new MainFragment();
-        momentFg = new MomentFragment();
-        settingFg = new SettingFragment();
-        //将三个页面添加到容器里面
-        mFragmentList.add(mainFg);
-        mFragmentList.add(momentFg);
-        mFragmentList.add(settingFg);
-
-        //重写一个FragmentAdapter继承FragmentPagerAdapter，需要FragmentManager和存放页面的容器过去
-        mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
-        //ViewPager绑定监听器
-        viewPager.setAdapter(mFragmentAdapter);
-        //ViewPager设置默认当前的项
-        viewPager.setCurrentItem(0);
-        //ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法
-        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
-
-        /**
-         * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。
-         * 三个方法的执行顺序为：用手指拖动翻页时，最先执行一遍onPageScrollStateChanged（1），
-         * 然后不断执行onPageScrolled，放手指的时候，直接立即执行一次onPageScrollStateChanged（2），
-         * 然后立即执行一次onPageSelected，然后再不断执行onPageScrolled，
-         * 最后执行一次onPageScrollStateChanged（0）。
-         */
-
-        /**
-         * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。
-         */
-        @Override
-        public void onPageScrollStateChanged(int state) {
-            Log.i(&quot;PageScroll：&quot;, &quot;onPageScrollStateChanged&quot; + &quot;:&quot; + state);
-        }
-
-        /**
-         * position :当前页面，及你点击滑动的页面 offset:当前页面偏移的百分比
-         * offsetPixels:当前页面偏移的像素位置
-         */
-        @Override
-        public void onPageScrolled(int position, float offset,
-                                   int offsetPixels) {
-            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();
-            Log.i(&quot;mOffset&quot;, &quot;offset:&quot; + offset + &quot;,position:&quot; + position);
-            /**
-              * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来
-              * 设置mTabLineIv的左边距 滑动场景：
-                 * 记3个页面,
-                 * 从左到右分别为0,1,2
-                 * 0-&gt;1; 1-&gt;2; 2-&gt;1; 1-&gt;0
-                 */
-                if (currentIndex == 0 &amp;&amp; position == 0)// 0-&gt;1
-                {
-                    lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) +     currentIndex
-                            * (screenWidth / 3));
-
-                } else if (currentIndex == 1 &amp;&amp; position == 0) // 1-&gt;0
-                {
-                    lp.leftMargin = (int) (-(1 - offset)
-                            * (screenWidth * 1.0 / 3) + currentIndex
-                            * (screenWidth / 3));
-
-                } else if (currentIndex == 1 &amp;&amp; position == 1) // 1-&gt;2
-                {
-                    lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) +     currentIndex
-                            * (screenWidth / 3));
-                } else if (currentIndex == 2 &amp;&amp; position == 1) // 2-&gt;1
-                {
-                       lp.leftMargin = (int) (-(1 - offset)
-                            * (screenWidth * 1.0 / 3) + currentIndex
-                            * (screenWidth / 3));
-                }
-                tablineIv.setLayoutParams(lp);
-            }
-
-            /**
-             * 将当前选择的页面的标题设置字体颜色为蓝色
-             */
-            @Override
-            public void onPageSelected(int position) {
-                Log.i(&quot;PageScroll：&quot;, &quot;onPageSelected&quot; + &quot;:&quot; + position);
-                resetTextView();
-                switch (position) {
-                    case 0:
-                        mainTv.setTextColor(Color.BLUE);
-                        break;
-                    case 1:
-                        momentTv.setTextColor(Color.BLUE);
-                        break;
-                    case 2:
-                        settingTv.setTextColor(Color.BLUE);
-                        break;
-                }
-                currentIndex = position;
-            }
-        });
-
-    }
-
-    /**
-     * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
-     */
-    private void initTabLineWidth() {
-           DisplayMetrics dpMetrics = new DisplayMetrics();
-        getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);
-        screenWidth = dpMetrics.widthPixels;
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParam    tablineIv.getLayoutParams();
-        lp.width = screenWidth / 3;
-        tablineIv.setLayoutParams(lp);
-    }
-
-    /**
-     * 重置颜色
-     */
-    private void resetTextView() {
-        mainTv.setTextColor(Color.BLACK);
-        momentTv.setTextColor(Color.BLACK);
-        settingTv.setTextColor(Color.BLACK);
-    }
-}
-</code></pre><p>FragmentAdapter.java</p>
-<pre><code>package com.example.ryan.viewpagerdemo;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-public class FragmentAdapter extends FragmentPagerAdapter {
-
-    List&lt;Fragment&gt; fragmentList = new ArrayList&lt;Fragment&gt;();
-    public FragmentAdapter(FragmentManager fm,List&lt;Fragment&gt; fragmentList) {
-        super(fm);
-        this.fragmentList = fragmentList;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return fragmentList.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return fragmentList.size();
-    }
-
-}
-</code></pre><h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><p>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">        <span class="attr">android:text</span>=<span class="string">"首页"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>fragment_moment.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">        <span class="attr">android:text</span>=<span class="string">"朋友圈"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>fragment_setting.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></span><br><span class="line">        <span class="attr">android:gravity</span>=<span class="string">"center"</span></span><br><span class="line">        <span class="attr">android:text</span>=<span class="string">"设置"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="二、逻辑代码"><a href="#二、逻辑代码" class="headerlink" title="二、逻辑代码"></a>二、逻辑代码</h3><p>MainActivity.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.example.ryan.viewpagerdemo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Color;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.FragmentActivity;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.view.ViewPager;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.view.ViewPager.OnPageChangeListener;</span><br><span class="line"><span class="keyword">import</span> android.util.DisplayMetrics;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"><span class="keyword">import</span> android.widget.LinearLayout;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * MainActivity需要继承FragmentActivity</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">FragmentActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ViewPager viewPager;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Fragment&gt; mFragmentList = <span class="keyword">new</span> ArrayList&lt;Fragment&gt;();</span><br><span class="line">    <span class="keyword">private</span> FragmentAdapter mFragmentAdapter;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Tab显示内容TextView</span></span><br><span class="line">    <span class="keyword">private</span> TextView mainTv, momentTv, settingTv;</span><br><span class="line">    <span class="comment">//Tab的那个引导线</span></span><br><span class="line">    <span class="keyword">private</span> ImageView tablineIv;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//三个Fragment页面</span></span><br><span class="line">    <span class="keyword">private</span> MainFragment mainFg;</span><br><span class="line">    <span class="keyword">private</span> MomentFragment momentFg;</span><br><span class="line">    <span class="keyword">private</span> SettingFragment settingFg;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//ViewPager的当前选中页</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> currentIndex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//屏幕的宽度</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> screenWidth;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        findById();</span><br><span class="line">        init();</span><br><span class="line">        initTabLineWidth();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 找到控件ID</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">findById</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mainTv = (TextView) <span class="keyword">this</span>.findViewById(R.id.mainTv);</span><br><span class="line">        momentTv = (TextView) <span class="keyword">this</span>.findViewById(R.id.momentTv);</span><br><span class="line">        settingTv = (TextView) <span class="keyword">this</span>.findViewById(R.id.settingTv);</span><br><span class="line">        tablineIv = (ImageView) <span class="keyword">this</span>.findViewById(R.id.iv_tabline);</span><br><span class="line">        viewPager = (ViewPager) <span class="keyword">this</span>.findViewById(R.id.viewpager);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 初始化ViewPager和设置监听器</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mainFg = <span class="keyword">new</span> MainFragment();</span><br><span class="line">        momentFg = <span class="keyword">new</span> MomentFragment();</span><br><span class="line">        settingFg = <span class="keyword">new</span> SettingFragment();</span><br><span class="line">        <span class="comment">//将三个页面添加到容器里面</span></span><br><span class="line">        mFragmentList.add(mainFg);</span><br><span class="line">        mFragmentList.add(momentFg);</span><br><span class="line">        mFragmentList.add(settingFg);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//重写一个FragmentAdapter继承FragmentPagerAdapter，需要传FragmentManager和存放页面的容器过去</span></span><br><span class="line">        mFragmentAdapter = <span class="keyword">new</span> FragmentAdapter(<span class="keyword">this</span>.getSupportFragmentManager(), mFragmentList);</span><br><span class="line">        <span class="comment">//ViewPager绑定监听器</span></span><br><span class="line">        viewPager.setAdapter(mFragmentAdapter);</span><br><span class="line">        <span class="comment">//ViewPager设置默认当前的项</span></span><br><span class="line">        viewPager.setCurrentItem(<span class="number">0</span>);</span><br><span class="line">        <span class="comment">//ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法</span></span><br><span class="line">        viewPager.addOnPageChangeListener(<span class="keyword">new</span> OnPageChangeListener() &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。</span><br><span class="line">             * 三个方法的执行顺序为：用手指拖动翻页时，最先执行一遍onPageScrollStateChanged（1），</span><br><span class="line">             * 然后不断执行onPageScrolled，放手指的时候，直接立即执行一次onPageScrollStateChanged（2），</span><br><span class="line">             * 然后立即执行一次onPageSelected，然后再不断执行onPageScrolled，</span><br><span class="line">             * 最后执行一次onPageScrollStateChanged（0）。</span><br><span class="line">             */</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。</span><br><span class="line">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrollStateChanged</span><span class="params">(<span class="keyword">int</span> state)</span> </span>&#123;</span><br><span class="line">                Log.i(<span class="string">"PageScroll："</span>, <span class="string">"onPageScrollStateChanged"</span> + <span class="string">":"</span> + state);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * position :当前页面，及你点击滑动的页面 offset:当前页面偏移的百分比</span><br><span class="line">             * offsetPixels:当前页面偏移的像素位置</span><br><span class="line">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageScrolled</span><span class="params">(<span class="keyword">int</span> position, <span class="keyword">float</span> offset,</span><br><span class="line">                                       <span class="keyword">int</span> offsetPixels)</span> </span>&#123;</span><br><span class="line">                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();</span><br><span class="line">                Log.i(<span class="string">"mOffset"</span>, <span class="string">"offset:"</span> + offset + <span class="string">",position:"</span> + position);</span><br><span class="line">                <span class="comment">/**</span><br><span class="line">                 * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来</span><br><span class="line">                 * 设置mTabLineIv的左边距 滑动场景：</span><br><span class="line">                 * 记3个页面,</span><br><span class="line">                 * 从左到右分别为0,1,2</span><br><span class="line">                 * 0-&gt;1; 1-&gt;2; 2-&gt;1; 1-&gt;0</span><br><span class="line">                 */</span></span><br><span class="line">                <span class="keyword">if</span> (currentIndex == <span class="number">0</span> &amp;&amp; position == <span class="number">0</span>)<span class="comment">// 0-&gt;1</span></span><br><span class="line">                &#123;</span><br><span class="line">                    lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                            * (screenWidth / <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">0</span>) <span class="comment">// 1-&gt;0</span></span><br><span class="line">                &#123;</span><br><span class="line">                    lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset)</span><br><span class="line">                            * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                            * (screenWidth / <span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">1</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 1-&gt;2</span></span><br><span class="line">                &#123;</span><br><span class="line">                    lp.leftMargin = (<span class="keyword">int</span>) (offset * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                            * (screenWidth / <span class="number">3</span>));</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (currentIndex == <span class="number">2</span> &amp;&amp; position == <span class="number">1</span>) <span class="comment">// 2-&gt;1</span></span><br><span class="line">                &#123;</span><br><span class="line">                    lp.leftMargin = (<span class="keyword">int</span>) (-(<span class="number">1</span> - offset)</span><br><span class="line">                            * (screenWidth * <span class="number">1.0</span> / <span class="number">3</span>) + currentIndex</span><br><span class="line">                            * (screenWidth / <span class="number">3</span>));</span><br><span class="line">                &#125;</span><br><span class="line">                tablineIv.setLayoutParams(lp);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span><br><span class="line">             * 将当前选择的页面的标题设置字体颜色为蓝色</span><br><span class="line">             */</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageSelected</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">                Log.i(<span class="string">"PageScroll："</span>, <span class="string">"onPageSelected"</span> + <span class="string">":"</span> + position);</span><br><span class="line">                resetTextView();</span><br><span class="line">                <span class="keyword">switch</span> (position) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                        mainTv.setTextColor(Color.BLUE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                        momentTv.setTextColor(Color.BLUE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                        settingTv.setTextColor(Color.BLUE);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                currentIndex = position;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initTabLineWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DisplayMetrics dpMetrics = <span class="keyword">new</span> DisplayMetrics();</span><br><span class="line">        getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);</span><br><span class="line">        screenWidth = dpMetrics.widthPixels;</span><br><span class="line">        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();</span><br><span class="line">        lp.width = screenWidth / <span class="number">3</span>;</span><br><span class="line">        tablineIv.setLayoutParams(lp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 重置颜色</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resetTextView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mainTv.setTextColor(Color.BLACK);</span><br><span class="line">        momentTv.setTextColor(Color.BLACK);</span><br><span class="line">        settingTv.setTextColor(Color.BLACK);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>FragmentAdapter.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.example.ryan.viewpagerdemo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.Fragment;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.FragmentManager;</span><br><span class="line"><span class="keyword">import</span> android.support.v4.app.FragmentPagerAdapter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FragmentAdapter</span> <span class="keyword">extends</span> <span class="title">FragmentPagerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Fragment&gt; fragmentList = <span class="keyword">new</span> ArrayList&lt;Fragment&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FragmentAdapter</span><span class="params">(FragmentManager fm,List&lt;Fragment&gt; fragmentList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(fm);</span><br><span class="line">        <span class="keyword">this</span>.fragmentList = fragmentList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Fragment <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fragmentList.get(position);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> fragmentList.size();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><p>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
 <p>下载地址：<a href="http://download.csdn.net/detail/ljcitworld/9474994" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9474994</a></p>
 <p>Github地址：<a href="https://github.com/ryanlijianchang/ViewPagerDemo" target="_blank" rel="external">https://github.com/ryanlijianchang/ViewPagerDemo</a></p>
 
