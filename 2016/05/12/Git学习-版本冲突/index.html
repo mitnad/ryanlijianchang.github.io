@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="Git冲突,版本回退," />
 
 
 
@@ -59,18 +59,28 @@
 
 
 
-<meta name="description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
+<meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to my blog">
-<meta property="og:url" content="lijianchang.xyz/2016/03/12/欢迎来到我的博客/index.html">
+<meta property="og:title" content="Android学习-简易ViewPager的使用教程与Demo演示">
+<meta property="og:url" content="lijianchang.xyz/2016/05/12/Git学习-版本冲突/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
-<meta property="og:description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg">
-<meta property="og:updated_time" content="2016-03-16T05:07:32.768Z">
+<meta property="og:description">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictyh.jpg">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictexample.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict1.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict2.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict4.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict5.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict6.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict7.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict8.png">
+<meta property="og:updated_time" content="2016-05-12T03:20:30.203Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to my blog">
-<meta name="twitter:description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
-<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg">
+<meta name="twitter:title" content="Android学习-简易ViewPager的使用教程与Demo演示">
+<meta name="twitter:description">
+<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictyh.jpg">
 
 
 
@@ -88,7 +98,7 @@
   };
 </script>
 
-  <title> Welcome to my blog | Ryane's Blog </title>
+  <title> Android学习-简易ViewPager的使用教程与Demo演示 | Ryane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -218,7 +228,7 @@
             
             
               
-                Welcome to my blog
+                Android学习-简易ViewPager的使用教程与Demo演示
               
             
           </h1>
@@ -230,8 +240,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-12T20:07:40+08:00" content="2016-03-12">
-              2016-03-12
+            <time itemprop="dateCreated" datetime="2016-05-12T11:10:00+08:00" content="2016-05-12">
+              2016-05-12
             </time>
           </span>
 
@@ -244,8 +254,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -261,8 +271,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/12/欢迎来到我的博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/欢迎来到我的博客/" itemprop="commentsCount"></span>
+                <a href="/2016/05/12/Git学习-版本冲突/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Git学习-版本冲突/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -286,8 +296,45 @@
       
 
       
-        <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg" alt=""></p>
-<p>博客刚刚搭建完成，很多东西都不懂，多多指教！</p>
+        <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictyh.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h1><p>  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重复了几次，最后导致Github上面的代码乱码，而我却把上面乱码的代码pull下来，导致我的也乱码。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>  因为我们之前的commit的版本没有问题，所以之前的代码没事，那么我们需要解决的就是实现<strong>版本回退</strong>，就可以把代码恢复至最后一次成功提交的记录。</p>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><p>前提是你已经熟悉掌握如何使用git操作本地仓库和远程仓库的更新。</p>
+<p>我自己创建了一个文件夹 TestGit，里面有两个文件，我按两次分别上传到GitHub上面<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictexample.png" alt=""></p>
+<p>然后我们要做的就是把本地的项目文件和Github仓库恢复至只有一个<strong> 一、正常版本.txt</strong> 文件。</p>
+<h2 id="一、本地git仓库版本回退"><a href="#一、本地git仓库版本回退" class="headerlink" title="一、本地git仓库版本回退"></a>一、本地git仓库版本回退</h2><h3 id="查看提交版本"><a href="#查看提交版本" class="headerlink" title="查看提交版本"></a>查看提交版本</h3><pre><code>$ git log
+</code></pre><p>通过这个命令可以查看历史提交版本，我提交了两个版本，所以显示两个提交版本</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict1.png" alt=""></p>
+<p>这些版本都是按提交时间排序的，最后提交的排在最上面。而每一个版本都会有个id，大家可以看到黄色字体commit后面跟着的一寸数字就是每次提交版本的id。</p>
+<h3 id="撤回之前的版本"><a href="#撤回之前的版本" class="headerlink" title="撤回之前的版本"></a>撤回之前的版本</h3><p>当我们希望退回到上一个版本时可以使用  </p>
+<pre><code>git reset --hard HEAD^
+</code></pre><p>当我们希望退回上两个版本时可以使用</p>
+<pre><code>git reset --hard HEAD^^
+</code></pre><p>当然，往上100个版本就直接</p>
+<pre><code>git reset --hard HEAD~100
+</code></pre><p>OK,那么我执行一下 <code>git reset --hard HEAD^</code></p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict2.png" alt=""></p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png" alt=""></p>
+<p>果然，可以恢复到正常版本了。</p>
+<h3 id="恢复新版本"><a href="#恢复新版本" class="headerlink" title="恢复新版本"></a>恢复新版本</h3><p>当然，我们也会有可能第二天打开电脑想恢复错误版本，我们使用<code>git log</code>是不会显示那个版本的，那么我们可以通过以下命令：</p>
+<pre><code>git reflog
+</code></pre><p>这个命令可以查看我们每一次的命令，可以看到我们的错误版本在这里可以查看的到，每一行前面的黄色字符串就是我们版本的id，当我们需要恢复这些版本时，可以通过这些id来恢复。</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict4.png" alt=""></p>
+<p>当我们想恢复到指定版本时，可以通过以下命令</p>
+<pre><code>git reset --hard commit_id
+</code></pre><p>例如，我恢复id为a016fa8的错误版本时，如下：</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict5.png" alt=""></p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict6.png" alt=""></p>
+<p>果然恢复了！</p>
+<h2 id="二、Github版本回退"><a href="#二、Github版本回退" class="headerlink" title="二、Github版本回退"></a>二、Github版本回退</h2><p>我们在本地回退了版本之后，github并没有回退版本，此时我们需要将它push到github仓库中。我们可以通过以下命令：</p>
+<pre><code>git push &lt;remote&gt; HEAD --force
+</code></pre><p>为此，我将自己的commit回退到只有正常的版本，这是我本地文件状态：</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png" alt=""></p>
+<p>这是我的github项目中的状态：</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict7.png" alt=""></p>
+<p>下面我将本地的版本推送到github<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict8.png" alt=""></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>好了，刚失恋，写完这个算是当做一种宣泄吧，大家晚安。</p>
 
       
     </div>
@@ -302,7 +349,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/Git冲突-版本回退/" rel="tag">#Git冲突,版本回退</a>
           
         </div>
       
@@ -311,13 +358,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/12/Android学习-创建圆角的DialogActivity/" rel="next" title="Android学习-创建圆角的DialogActivity">
+                <i class="fa fa-chevron-left"></i> Android学习-创建圆角的DialogActivity
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/16/小白独立搭建博客-Github-Pages和Hexo简明教程/" rel="prev" title="小白独立搭建博客-Github-Pages和Hexo简明教程">
-                小白独立搭建博客-Github-Pages和Hexo简明教程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -344,7 +391,7 @@
   <div class="comments" id="comments">
     
       <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/03/12/欢迎来到我的博客/" data-title="Welcome to my blog" data-url="lijianchang.xyz/2016/03/12/欢迎来到我的博客/"></div>
+	<div class="ds-thread" data-thread-key="2016/05/12/Git学习-版本冲突/" data-title="Android学习-简易ViewPager的使用教程与Demo演示" data-url="lijianchang.xyz/2016/05/12/Git学习-版本冲突/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -842,7 +889,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前提"><span class="nav-number">3.1.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、本地git仓库版本回退"><span class="nav-number">3.2.</span> <span class="nav-text">一、本地git仓库版本回退</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看提交版本"><span class="nav-number">3.2.1.</span> <span class="nav-text">查看提交版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#撤回之前的版本"><span class="nav-number">3.2.2.</span> <span class="nav-text">撤回之前的版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#恢复新版本"><span class="nav-number">3.2.3.</span> <span class="nav-text">恢复新版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Github版本回退"><span class="nav-number">3.3.</span> <span class="nav-text">二、Github版本回退</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

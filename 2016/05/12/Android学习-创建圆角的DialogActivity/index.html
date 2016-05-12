@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="blog," />
+  <meta name="keywords" content="DialogActivity," />
 
 
 
@@ -59,18 +59,21 @@
 
 
 
-<meta name="description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
+<meta name="description">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Welcome to my blog">
-<meta property="og:url" content="lijianchang.xyz/2016/03/12/欢迎来到我的博客/index.html">
+<meta property="og:title" content="Android学习-创建圆角的DialogActivity">
+<meta property="og:url" content="lijianchang.xyz/2016/05/12/Android学习-创建圆角的DialogActivity/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
-<meta property="og:description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg">
-<meta property="og:updated_time" content="2016-03-16T05:07:32.768Z">
+<meta property="og:description">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-MakeDialogActivitybg.jpg">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif">
+<meta property="og:updated_time" content="2016-05-12T03:09:35.068Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to my blog">
-<meta name="twitter:description" content="博客刚刚搭建完成，很多东西都不懂，多多指教！">
-<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg">
+<meta name="twitter:title" content="Android学习-创建圆角的DialogActivity">
+<meta name="twitter:description">
+<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-MakeDialogActivitybg.jpg">
 
 
 
@@ -88,7 +91,7 @@
   };
 </script>
 
-  <title> Welcome to my blog | Ryane's Blog </title>
+  <title> Android学习-创建圆角的DialogActivity | Ryane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -218,7 +221,7 @@
             
             
               
-                Welcome to my blog
+                Android学习-创建圆角的DialogActivity
               
             
           </h1>
@@ -230,8 +233,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-12T20:07:40+08:00" content="2016-03-12">
-              2016-03-12
+            <time itemprop="dateCreated" datetime="2016-05-12T10:58:54+08:00" content="2016-05-12">
+              2016-05-12
             </time>
           </span>
 
@@ -244,8 +247,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/life/" itemprop="url" rel="index">
-                    <span itemprop="name">life</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -261,8 +264,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/12/欢迎来到我的博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/12/欢迎来到我的博客/" itemprop="commentsCount"></span>
+                <a href="/2016/05/12/Android学习-创建圆角的DialogActivity/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/Android学习-创建圆角的DialogActivity/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -286,8 +289,55 @@
       
 
       
-        <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WelcomeToMyBlogback.jpg" alt=""></p>
-<p>博客刚刚搭建完成，很多东西都不懂，多多指教！</p>
+        <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-MakeDialogActivitybg.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png" alt=""></p>
+<h2 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h2><p>示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png" alt=""></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:</p>
+<p>dialog_theme.xml</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;
+
+    &lt;!-- 填充颜色 --&gt;
+    &lt;solid android:color=&quot;#ffffffff&quot; /&gt;
+
+    &lt;!-- 边框宽度 --&gt;
+    &lt;!-- &lt;stroke android:width=&quot;3dp&quot; /&gt; --&gt;
+
+
+    &lt;!-- 圆角半径 --&gt;
+    &lt;corners android:radius=&quot;10dp&quot; /&gt;
+
+    &lt;!-- 内边距 --&gt;
+    &lt;padding
+        android:bottom=&quot;13dp&quot;
+        android:left=&quot;13dp&quot;
+        android:right=&quot;13dp&quot;
+        android:top=&quot;13dp&quot; /&gt;
+
+&lt;/shape&gt;
+</code></pre><p>2.然后自定义Activity的style为如下：</p>
+<pre><code>&lt;style name=&quot;DialogTheme&quot; parent=&quot;@android:style/Theme.Dialog&quot;&gt;
+
+    &lt;!-- 边框 --&gt;
+    &lt;item name=&quot;android:windowFrame&quot;&gt;@null&lt;/item&gt;
+    &lt;!-- 是否浮现在activity之上 --&gt;
+    &lt;item name=&quot;android:windowIsFloating&quot;&gt;true&lt;/item&gt;
+    &lt;!-- 半透明 --&gt;
+    &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;
+    &lt;!-- 无标题 --&gt;
+    &lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;
+    &lt;!-- 背景透明 --&gt;
+    &lt;item name=&quot;android:windowBackground&quot;&gt;@android:color/transparent&lt;/item&gt;
+    &lt;!-- 模糊 --&gt;
+    &lt;item name=&quot;android:backgroundDimEnabled&quot;&gt;false&lt;/item&gt;
+&lt;/style&gt;
+</code></pre><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>1.Demo效果图</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif" alt=""></p>
+<p>2.github地址<br><a href="https://github.com/ryanlijianchang/DialogActivityDemo" target="_blank" rel="external">https://github.com/ryanlijianchang/DialogActivityDemo</a></p>
+<p>3.下载地址<br><a href="http://download.csdn.net/detail/ljcitworld/9510717" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9510717</a></p>
 
       
     </div>
@@ -302,7 +352,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/blog/" rel="tag">#blog</a>
+            <a href="/tags/DialogActivity/" rel="tag">#DialogActivity</a>
           
         </div>
       
@@ -311,12 +361,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/" rel="next" title="Android学习-简易ViewPager的使用教程与Demo演示">
+                <i class="fa fa-chevron-left"></i> Android学习-简易ViewPager的使用教程与Demo演示
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/16/小白独立搭建博客-Github-Pages和Hexo简明教程/" rel="prev" title="小白独立搭建博客-Github-Pages和Hexo简明教程">
-                小白独立搭建博客-Github-Pages和Hexo简明教程 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/05/12/Git学习-版本冲突/" rel="prev" title="Android学习-简易ViewPager的使用教程与Demo演示">
+                Android学习-简易ViewPager的使用教程与Demo演示 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -344,7 +398,7 @@
   <div class="comments" id="comments">
     
       <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/03/12/欢迎来到我的博客/" data-title="Welcome to my blog" data-url="lijianchang.xyz/2016/03/12/欢迎来到我的博客/"></div>
+	<div class="ds-thread" data-thread-key="2016/05/12/Android学习-创建圆角的DialogActivity/" data-title="Android学习-创建圆角的DialogActivity" data-url="lijianchang.xyz/2016/05/12/Android学习-创建圆角的DialogActivity/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -842,7 +896,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例图"><span class="nav-number">2.</span> <span class="nav-text">示例图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">4.</span> <span class="nav-text">Demo</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
