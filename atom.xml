@@ -733,11 +733,11 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
     <published>2016-08-30T01:49:38.466Z</published>
-    <updated>2016-08-30T03:51:27.921Z</updated>
+    <updated>2016-08-30T05:44:30.411Z</updated>
     
-    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
 &lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;p&gt;按照惯例，先上效果图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;困难&quot;&gt;&lt;a href=&quot;#困难&quot; class=&quot;headerlink&quot; title=&quot;困难&quot;&gt;&lt;/a&gt;困难&lt;/h2&gt;&lt;p&gt;在自己开发学习过程中，主要遇到了两个难点：&lt;/p&gt;
@@ -1000,8 +1000,8 @@ adapter.notifyDataSetChanged();
     
     <summary type="html">
     
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在
+      &lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
+&lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
     
     </summary>
     
