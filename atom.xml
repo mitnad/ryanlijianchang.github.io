@@ -1242,9 +1242,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     <link href="lijianchang.xyz/2016/05/12/Git%E5%AD%A6%E4%B9%A0-%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81/"/>
     <id>lijianchang.xyz/2016/05/12/Git学习-版本冲突/</id>
     <published>2016-05-12T13:37:26.000Z</published>
-    <updated>2016-08-30T06:01:10.338Z</updated>
+    <updated>2016-08-30T06:04:10.538Z</updated>
     
     <content type="html">&lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;p&gt;  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重复了几次，最后导致Github上面的代码乱码，而我却把上面乱码的代码pull下来，导致我的也乱码。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h1 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h1&gt;&lt;p&gt;  因为我们之前的commit的版本没有问题，所以之前的代码没事，那么我们需要解决的就是实现&lt;strong&gt;版本回退&lt;/strong&gt;，就可以把代码恢复至最后一次成功提交的记录。&lt;/p&gt;
 &lt;h1 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h1&gt;&lt;h2 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h2&gt;&lt;p&gt;前提是你已经熟悉掌握如何使用git操作本地仓库和远程仓库的更新。&lt;/p&gt;
 &lt;p&gt;我自己创建了一个文件夹 TestGit，里面有两个文件，我按两次分别上传到GitHub上面&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictexample.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -1285,7 +1286,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     
     <summary type="html">
     
-      &lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;p&gt;  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重
+      &lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;p&gt;  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重复了几次，最后导致Github上面的代码乱码，而我却把上面乱码的代码pull下来，导致我的也乱码。&lt;/p&gt;
     
     </summary>
     
