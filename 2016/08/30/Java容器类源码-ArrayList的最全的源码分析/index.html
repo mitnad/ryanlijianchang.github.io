@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ArrayList," />
 
 
 
@@ -69,7 +69,7 @@
 源代码public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
     implements Lis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ryane's Blog">
+<meta property="og:title" content="Java容器类源码-ArrayList的最全的源码分析">
 <meta property="og:url" content="lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
 <meta property="og:description" content="写在前面本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。
@@ -81,9 +81,9 @@
 
 源代码public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
     implements Lis">
-<meta property="og:updated_time" content="2016-07-26T15:06:25.754Z">
+<meta property="og:updated_time" content="2016-08-30T03:42:16.738Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ryane's Blog">
+<meta name="twitter:title" content="Java容器类源码-ArrayList的最全的源码分析">
 <meta name="twitter:description" content="写在前面本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。
 一、继承和实现
 继承：AbstractList
@@ -110,7 +110,7 @@
   };
 </script>
 
-  <title>  | Ryane's Blog </title>
+  <title> Java容器类源码-ArrayList的最全的源码分析 | Ryane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +240,7 @@
             
             
               
-                
+                Java容器类源码-ArrayList的最全的源码分析
               
             
           </h1>
@@ -257,6 +257,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java源码/" itemprop="url" rel="index">
+                    <span itemprop="name">Java源码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -704,13 +723,19 @@ private void grow(int minCapacity) {
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/ArrayList/" rel="tag">#ArrayList</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/30/Android学习-创建圆角的DialogActivity/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/08/30/Android学习-创建圆角的DialogActivity/" rel="next" title="Android学习-创建圆角的DialogActivity">
+                <i class="fa fa-chevron-left"></i> Android学习-创建圆角的DialogActivity
               </a>
             
           </div>
@@ -742,7 +767,7 @@ private void grow(int minCapacity) {
   <div class="comments" id="comments">
     
       <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" data-title="" data-url="lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/"></div>
+	<div class="ds-thread" data-thread-key="2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" data-title="Java容器类源码-ArrayList的最全的源码分析" data-url="lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -808,7 +833,7 @@ private void grow(int minCapacity) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -816,7 +841,7 @@ private void grow(int minCapacity) {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -825,7 +850,7 @@ private void grow(int minCapacity) {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

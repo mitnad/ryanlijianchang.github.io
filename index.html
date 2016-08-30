@@ -219,7 +219,7 @@
               
                 
                 <a class="post-title-link" href="/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" itemprop="url">
-                  未命名
+                  Java容器类源码-ArrayList的最全的源码分析
                 </a>
               
             
@@ -237,6 +237,25 @@
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java源码/" itemprop="url" rel="index">
+                    <span itemprop="name">Java源码</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -720,7 +739,7 @@ private void grow(int minCapacity) {
               
                 
                 <a class="post-title-link" href="/2016/08/30/Android学习-创建圆角的DialogActivity/" itemprop="url">
-                  未命名
+                  Android学习-创建圆角的DialogActivity
                 </a>
               
             
@@ -738,6 +757,25 @@ private void grow(int minCapacity) {
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -772,7 +810,7 @@ private void grow(int minCapacity) {
       
         
           
-            <h1 id="Android学习-创建圆角的DialogActivity"><a href="#Android学习-创建圆角的DialogActivity" class="headerlink" title="Android学习-创建圆角的DialogActivity"></a>Android学习-创建圆角的DialogActivity</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。</p>
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。</p>
 <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png" alt=""></p>
 <h2 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h2><p>示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity</p>
 <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png" alt=""></p>
@@ -864,8 +902,316 @@ private void grow(int minCapacity) {
             
               
                 
+                <a class="post-title-link" href="/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/" itemprop="url">
+                  Android学习-使用Async-Http实现图片压缩并上传功能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T09:49:43+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+		  
+		 
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>(转载请注明出处，谢谢！)</p>
+<p>最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。</p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><center><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png" alt=""></center><br><center>安卓端</center>
+
+<center><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png" alt=""></center><br><center>服务器端</center>
+
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="安卓端"><a href="#安卓端" class="headerlink" title="安卓端"></a>安卓端</h3><p>一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。</p>
+<pre><code>    //点击图片打开选择图片界面
+photo.setOnClickListener(new OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+        //使用Intent触发选择Action
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        //打开系统提供的图片选择界面
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &quot;image/*&quot;);
+        //传参以在返回本界面时触发加载图片的功能
+        startActivityForResult(intent, 0x1);
+    }
+});
+</code></pre><hr>
+<pre><code>//在选择图片后返回本界面调用此方法
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == 0x1 &amp;&amp; resultCode == RESULT_OK) {
+        if (data != null) {
+
+            ContentResolver resolver = getContentResolver();
+            try {
+                // 获取圖片URI
+                Uri uri = data.getData();
+                // 将URI转换为路径：
+                String[] proj = { MediaStore.Images.Media.DATA };
+                Cursor cursor = managedQuery(uri, proj, null, null, null);
+                //  这个是获得用户选择的图片的索引值
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                // 最后根据索引值获取图片路径
+                photoPath = cursor.getString(column_index);
+
+                // 压缩成800*480
+                bitmap = BitmapUtils.decodeSampledBitmapFromFd(photoPath, 480, 800);
+                // 设置imageview显示图片
+                photo.setImageBitmap(bitmap);
+                // 设置textview显示路径
+                path.setText(photoPath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
+</code></pre><p>二、图片压缩。在我们需要上传图片时，我们不可能直接把原图上传到服务器，因为一般图片的大小都超过3，4M，所以我们在上传之前需要对图片进行压缩，我是把图片压缩放到了一个工具类，主要是对图片进行尺寸压缩。</p>
+<pre><code>public class BitmapUtils {
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &gt; reqHeight || width &gt; reqWidth) {
+            //首先获取原图高度和宽度的一半
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+            //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+            while ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth 最小宽度
+     * @param reqHeight 最小高度
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true才能进行Option的修改
+        options.inJustDecodeBounds = true;
+        // 第一次decodeFile是获取到options.outHeight和options.outWidth
+        BitmapFactory.decodeFile(pathName, options);
+        // options.inSampleSize是图片的压缩比，例如原来大小是100*100，options.inSampleSize为1，则不变，
+        // options.inSampleSize为2，则压缩成50*50
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // 重新设置options.inJustDecodeBounds为false，不能修改option
+        options.inJustDecodeBounds = false;
+        // 根据options重新加载图片
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
+}
+</code></pre><p>三、将Bitmap转为String，同时使用BASE64加密，使传输更加安全，这是我的工具类,里面再一次进行压缩是质量压缩，压缩比例是30%，具体自己调</p>
+<pre><code>public class Utils {
+    // 将bitmap转成string类型通过Base64
+    public static String BitmapToString(Bitmap bitmap) {
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        // 将bitmap压缩成30%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+        // 将bitmap转化为一个byte数组
+        byte[] bs = bao.toByteArray();
+        // 将byte数组用BASE64加密
+        String photoStr = Base64.encodeToString(bs, Base64.DEFAULT);
+        // 返回String
+        return photoStr;
+    }
+}
+</code></pre><p>四、通过Async-Http实现图片上传</p>
+<pre><code>public void upload(String url) {
+    // 将bitmap转为string，并使用BASE64加密
+    String photo = Utils.BitmapToString(bitmap);
+    // 获取到图片的名字
+    String name = photoPath.substring(photoPath.lastIndexOf(&quot;/&quot;)).substring(1);
+    // new一个请求参数
+    RequestParams params = new RequestParams();
+    // 将图片和名字添加到参数中
+    params.put(&quot;photo&quot;, photo);
+    params.put(&quot;name&quot;, name);
+    AsyncHttpClient client = new AsyncHttpClient();
+    // 调用AsyncHttpClient的post方法
+    client.post(url, params, new AsyncHttpResponseHandler() {
+
+        @Override
+        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+            Toast.makeText(getApplicationContext(), &quot;上传失败!&quot;, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
+            Toast.makeText(getApplicationContext(), &quot;上传成功!&quot;, Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+</code></pre><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><p>一、创建一个新的Servlet，在doget方法里面实现</p>
+<pre><code>public class UpLoadPhotoServlet extends HttpServlet {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        // 获取文件名
+        String name = request.getParameter(&quot;name&quot;);
+        // 获取图片
+        String photo = request.getParameter(&quot;photo&quot;);
+        // 将传进来的图片的string格式进行处理
+        byte[] bs = new BASE64Decoder().decodeBuffer(photo);
+        // 写到E盘Img文件夹下的a.jpg文件。注：Img文件夹一定要存在
+        FileOutputStream fos = new FileOutputStream(&quot;E:/Img/&quot; + name);
+        fos.write(bs);
+        fos.flush();
+        fos.close();
+
+        PrintWriter writer = response.getWriter();
+        writer.print(&quot;上传成功&quot;);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+</code></pre><h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p><a href="http://download.csdn.net/detail/ljcitworld/9548619" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9548619</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/" itemprop="url">
-                  未命名
+                  Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计
                 </a>
               
             
@@ -883,6 +1229,25 @@ private void grow(int minCapacity) {
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -917,8 +1282,7 @@ private void grow(int minCapacity) {
       
         
           
-            <p>#Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计#</p>
-<h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。</p>
+            <h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。</p>
 <p>当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：<a href="http://blog.csdn.net/ljcitworld/article/details/51670910" target="_blank" rel="external">Android学习-使用Async-Http实现图片压缩并上传功能</a>。个人水平有限，如有不足的地方，欢迎交流，勿喷。</p>
 <h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>按照惯例，先上效果图。</p>
 <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png" alt=""></p>
@@ -1224,7 +1588,7 @@ adapter.notifyDataSetChanged();
               
                 
                 <a class="post-title-link" href="/2016/08/30/Android技能-创建Json文本及Json解析/" itemprop="url">
-                  未命名
+                  Android技能-创建Json文本及Json解析
                 </a>
               
             
@@ -1242,6 +1606,25 @@ adapter.notifyDataSetChanged();
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android技能/" itemprop="url" rel="index">
+                    <span itemprop="name">Android技能</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -1276,7 +1659,7 @@ adapter.notifyDataSetChanged();
       
         
           
-            <p>#Android技能-创建Json文本及Json解析 #<br>摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。</p>
+            <p>摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。</p>
 <h2 id="什么是JSON"><a href="#什么是JSON" class="headerlink" title="什么是JSON"></a>什么是JSON</h2><p>JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：</p>
 <pre><code>var person = {firstName:&quot;John&quot;, lastName:&quot;Doe&quot;, age:50, eyeColor:&quot;blue&quot;};
 </code></pre><p>很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。</p>
@@ -1558,7 +1941,7 @@ public String jsonToBean(String json) {
               
                 
                 <a class="post-title-link" href="/2016/08/30/Android学习-简易ViewPager的使用教程与Demo演示/" itemprop="url">
-                  未命名
+                  Android学习-简易ViewPager的使用教程与Demo演示
                 </a>
               
             
@@ -1576,6 +1959,25 @@ public String jsonToBean(String json) {
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
 
@@ -1610,15 +2012,12 @@ public String jsonToBean(String json) {
       
         
           
-            <p>#Android学习-简易ViewPager的使用教程与Demo演示<br>摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。</p>
-<p>##实例效果<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif" alt=""></p>
-<p>##前言<br>这是谷歌<a href="http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">官方文档</a>给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png" alt=""></p>
-<p>##Demo剖析</p>
-<p>这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。</p>
-<p>###一、top_bar部分</p>
-<p>这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）</p>
-<p>###二、下标部分</p>
-<p>下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。</p>
+            <p>摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。</p>
+<h2 id="实例效果"><a href="#实例效果" class="headerlink" title="实例效果"></a>实例效果</h2><p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif" alt=""></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是谷歌<a href="http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html" target="_blank" rel="external">官方文档</a>给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。<br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png" alt=""></p>
+<h2 id="Demo剖析"><a href="#Demo剖析" class="headerlink" title="Demo剖析"></a>Demo剖析</h2><p>这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。</p>
+<h3 id="一、top-bar部分"><a href="#一、top-bar部分" class="headerlink" title="一、top_bar部分"></a>一、top_bar部分</h3><p>这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）</p>
+<h3 id="二、下标部分"><a href="#二、下标部分" class="headerlink" title="二、下标部分"></a>二、下标部分</h3><p>下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。</p>
 <p>设置滑动条的宽度</p>
 <pre><code> /**
   * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
@@ -1655,8 +2054,7 @@ private void initTabLineWidth() {
     }
     tablineIv.setLayoutParams(lp);
 }
-</code></pre><p>###三、ViewPager实现部分</p>
-<p>ViewPager的实现主要通过以下步骤：</p>
+</code></pre><h3 id="三、ViewPager实现部分"><a href="#三、ViewPager实现部分" class="headerlink" title="三、ViewPager实现部分"></a>三、ViewPager实现部分</h3><p>ViewPager的实现主要通过以下步骤：</p>
 <ol>
 <li><p>把包含的Fragement存放到一个容器List里面去</p>
 </li>
@@ -1669,8 +2067,7 @@ private void initTabLineWidth() {
 <li><p>ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法  </p>
 </li>
 </ol>
-<p>##代码实现</p>
-<p>###一、界面部分<br>在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="一、界面部分"><a href="#一、界面部分" class="headerlink" title="一、界面部分"></a>一、界面部分</h3><p>在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。</p>
 <p>main.xml</p>
 <pre><code>&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:tools=&quot;http://schemas.android.com/tools&quot;
@@ -1788,7 +2185,7 @@ private void initTabLineWidth() {
         android:text=&quot;设置&quot;/&gt;
 
 &lt;/LinearLayout&gt;
-</code></pre><p>###二、逻辑代码<br>MainActivity.java</p>
+</code></pre><h3 id="二、逻辑代码"><a href="#二、逻辑代码" class="headerlink" title="二、逻辑代码"></a>二、逻辑代码</h3><p>MainActivity.java</p>
 <pre><code>package com.example.ryan.viewpagerdemo;
 
 import android.graphics.Color;
@@ -2001,7 +2398,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     }
 
 }
-</code></pre><p>##源码下载<br>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
+</code></pre><h2 id="源码下载"><a href="#源码下载" class="headerlink" title="源码下载"></a>源码下载</h2><p>ps：此Demo是使用Android Studio编写的，请使用AS打开。</p>
 <p>下载地址：<a href="http://download.csdn.net/detail/ljcitworld/9474994" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9474994</a></p>
 <p>Github地址：<a href="https://github.com/ryanlijianchang/ViewPagerDemo" target="_blank" rel="external">https://github.com/ryanlijianchang/ViewPagerDemo</a></p>
 
@@ -2240,8 +2637,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 
       
         
-          <p>##前言<br>很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。</p>
-<p>##点九图<br>随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。</p>
+<h2 id="点九图"><a href="#点九图" class="headerlink" title="点九图"></a>点九图</h2><p>随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。</p>
 <p>而点九（即.9），是andriod平台的应用软件开发里的一种特殊的图片形式，文件扩展名为：.9.png，正是为了解决我们的图片在不同尺寸屏幕上显示失真而应运而生的一种格式。</p>
 <center><img src="http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-1.jpg" alt=""></center>
 
@@ -2562,7 +2959,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2570,7 +2967,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -2579,7 +2976,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

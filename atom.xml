@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-07-26T15:06:25.754Z</updated>
+  <updated>2016-08-30T03:42:16.738Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Java容器类源码-ArrayList的最全的源码分析</title>
     <link href="lijianchang.xyz/2016/08/30/Java%E5%AE%B9%E5%99%A8%E7%B1%BB%E6%BA%90%E7%A0%81-ArrayList%E7%9A%84%E6%9C%80%E5%85%A8%E7%9A%84%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/</id>
     <published>2016-08-30T01:50:04.617Z</published>
-    <updated>2016-07-26T15:06:25.754Z</updated>
+    <updated>2016-08-30T03:42:16.738Z</updated>
     
     <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
 &lt;h1 id=&quot;一、继承和实现&quot;&gt;&lt;a href=&quot;#一、继承和实现&quot; class=&quot;headerlink&quot; title=&quot;一、继承和实现&quot;&gt;&lt;/a&gt;一、继承和实现&lt;/h1&gt;&lt;ul&gt;
@@ -434,17 +434,21 @@ private void grow(int minCapacity) {
     
     </summary>
     
+      <category term="Java源码" scheme="lijianchang.xyz/categories/Java%E6%BA%90%E7%A0%81/"/>
+    
+    
+      <category term="ArrayList" scheme="lijianchang.xyz/tags/ArrayList/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>Android学习-创建圆角的DialogActivity</title>
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/</id>
     <published>2016-08-30T01:49:47.741Z</published>
-    <updated>2016-05-05T12:34:56.002Z</updated>
+    <updated>2016-08-30T03:45:37.717Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;a href=&quot;#Android学习-创建圆角的DialogActivity&quot; class=&quot;headerlink&quot; title=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;/a&gt;Android学习-创建圆角的DialogActivity&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;示例图&quot;&gt;&lt;a href=&quot;#示例图&quot; class=&quot;headerlink&quot; title=&quot;示例图&quot;&gt;&lt;/a&gt;示例图&lt;/h2&gt;&lt;p&gt;示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -495,22 +499,239 @@ private void grow(int minCapacity) {
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;a href=&quot;#Android学习-创建圆角的DialogActivity&quot; class=&quot;headerlink&quot; title=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;/a
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会
     
     </summary>
     
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="DialogActivity" scheme="lijianchang.xyz/tags/DialogActivity/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>Android学习-使用Async-Http实现图片压缩并上传功能</title>
+    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8Async-Http%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/"/>
+    <id>lijianchang.xyz/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/</id>
+    <published>2016-08-30T01:49:43.160Z</published>
+    <updated>2016-08-30T03:43:38.566Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
+&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
+
+&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;服务器端&lt;/center&gt;
+
+&lt;h2 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h2&gt;&lt;h3 id=&quot;安卓端&quot;&gt;&lt;a href=&quot;#安卓端&quot; class=&quot;headerlink&quot; title=&quot;安卓端&quot;&gt;&lt;/a&gt;安卓端&lt;/h3&gt;&lt;p&gt;一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //点击图片打开选择图片界面
+photo.setOnClickListener(new OnClickListener() {
+
+    @Override
+    public void onClick(View v) {
+        //使用Intent触发选择Action
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        //打开系统提供的图片选择界面
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &amp;quot;image/*&amp;quot;);
+        //传参以在返回本界面时触发加载图片的功能
+        startActivityForResult(intent, 0x1);
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;//在选择图片后返回本界面调用此方法
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == 0x1 &amp;amp;&amp;amp; resultCode == RESULT_OK) {
+        if (data != null) {
+
+            ContentResolver resolver = getContentResolver();
+            try {
+                // 获取圖片URI
+                Uri uri = data.getData();
+                // 将URI转换为路径：
+                String[] proj = { MediaStore.Images.Media.DATA };
+                Cursor cursor = managedQuery(uri, proj, null, null, null);
+                //  这个是获得用户选择的图片的索引值
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                // 最后根据索引值获取图片路径
+                photoPath = cursor.getString(column_index);
+
+                // 压缩成800*480
+                bitmap = BitmapUtils.decodeSampledBitmapFromFd(photoPath, 480, 800);
+                // 设置imageview显示图片
+                photo.setImageBitmap(bitmap);
+                // 设置textview显示路径
+                path.setText(photoPath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;二、图片压缩。在我们需要上传图片时，我们不可能直接把原图上传到服务器，因为一般图片的大小都超过3，4M，所以我们在上传之前需要对图片进行压缩，我是把图片压缩放到了一个工具类，主要是对图片进行尺寸压缩。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class BitmapUtils {
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &amp;gt; reqHeight || width &amp;gt; reqWidth) {
+            //首先获取原图高度和宽度的一半
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+            //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+            while ((halfHeight / inSampleSize) &amp;gt; reqHeight &amp;amp;&amp;amp; (halfWidth / inSampleSize) &amp;gt; reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth 最小宽度
+     * @param reqHeight 最小高度
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true才能进行Option的修改
+        options.inJustDecodeBounds = true;
+        // 第一次decodeFile是获取到options.outHeight和options.outWidth
+        BitmapFactory.decodeFile(pathName, options);
+        // options.inSampleSize是图片的压缩比，例如原来大小是100*100，options.inSampleSize为1，则不变，
+        // options.inSampleSize为2，则压缩成50*50
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // 重新设置options.inJustDecodeBounds为false，不能修改option
+        options.inJustDecodeBounds = false;
+        // 根据options重新加载图片
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三、将Bitmap转为String，同时使用BASE64加密，使传输更加安全，这是我的工具类,里面再一次进行压缩是质量压缩，压缩比例是30%，具体自己调&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Utils {
+    // 将bitmap转成string类型通过Base64
+    public static String BitmapToString(Bitmap bitmap) {
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        // 将bitmap压缩成30%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+        // 将bitmap转化为一个byte数组
+        byte[] bs = bao.toByteArray();
+        // 将byte数组用BASE64加密
+        String photoStr = Base64.encodeToString(bs, Base64.DEFAULT);
+        // 返回String
+        return photoStr;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;四、通过Async-Http实现图片上传&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void upload(String url) {
+    // 将bitmap转为string，并使用BASE64加密
+    String photo = Utils.BitmapToString(bitmap);
+    // 获取到图片的名字
+    String name = photoPath.substring(photoPath.lastIndexOf(&amp;quot;/&amp;quot;)).substring(1);
+    // new一个请求参数
+    RequestParams params = new RequestParams();
+    // 将图片和名字添加到参数中
+    params.put(&amp;quot;photo&amp;quot;, photo);
+    params.put(&amp;quot;name&amp;quot;, name);
+    AsyncHttpClient client = new AsyncHttpClient();
+    // 调用AsyncHttpClient的post方法
+    client.post(url, params, new AsyncHttpResponseHandler() {
+
+        @Override
+        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+            Toast.makeText(getApplicationContext(), &amp;quot;上传失败!&amp;quot;, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
+            Toast.makeText(getApplicationContext(), &amp;quot;上传成功!&amp;quot;, Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;服务器端&quot;&gt;&lt;a href=&quot;#服务器端&quot; class=&quot;headerlink&quot; title=&quot;服务器端&quot;&gt;&lt;/a&gt;服务器端&lt;/h3&gt;&lt;p&gt;一、创建一个新的Servlet，在doget方法里面实现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class UpLoadPhotoServlet extends HttpServlet {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
+        response.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
+        response.setContentType(&amp;quot;text/html&amp;quot;);
+        // 获取文件名
+        String name = request.getParameter(&amp;quot;name&amp;quot;);
+        // 获取图片
+        String photo = request.getParameter(&amp;quot;photo&amp;quot;);
+        // 将传进来的图片的string格式进行处理
+        byte[] bs = new BASE64Decoder().decodeBuffer(photo);
+        // 写到E盘Img文件夹下的a.jpg文件。注：Img文件夹一定要存在
+        FileOutputStream fos = new FileOutputStream(&amp;quot;E:/Img/&amp;quot; + name);
+        fos.write(bs);
+        fos.flush();
+        fos.close();
+
+        PrintWriter writer = response.getWriter();
+        writer.print(&amp;quot;上传成功&amp;quot;);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo地址&quot;&gt;&lt;a href=&quot;#Demo地址&quot; class=&quot;headerlink&quot; title=&quot;Demo地址&quot;&gt;&lt;/a&gt;Demo地址&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9548619&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9548619&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
+&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图
+    
+    </summary>
+    
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="Async-Http" scheme="lijianchang.xyz/tags/Async-Http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计</title>
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
     <published>2016-08-30T01:49:38.466Z</published>
-    <updated>2016-06-14T08:00:36.670Z</updated>
+    <updated>2016-08-30T03:43:09.133Z</updated>
     
-    <content type="html">&lt;p&gt;#Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计#&lt;/p&gt;
-&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
 &lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
 &lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;p&gt;按照惯例，先上效果图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -774,22 +995,25 @@ adapter.notifyDataSetChanged();
     
     <summary type="html">
     
-      &lt;p&gt;#Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计#&lt;/p&gt;
-&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（
+      &lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但
     
     </summary>
     
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="UI设计" scheme="lijianchang.xyz/tags/UI%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>Android技能-创建Json文本及Json解析</title>
     <link href="lijianchang.xyz/2016/08/30/Android%E6%8A%80%E8%83%BD-%E5%88%9B%E5%BB%BAJson%E6%96%87%E6%9C%AC%E5%8F%8AJson%E8%A7%A3%E6%9E%90/"/>
     <id>lijianchang.xyz/2016/08/30/Android技能-创建Json文本及Json解析/</id>
     <published>2016-08-30T01:49:30.348Z</published>
-    <updated>2016-07-15T03:14:24.923Z</updated>
+    <updated>2016-08-30T03:34:29.678Z</updated>
     
-    <content type="html">&lt;p&gt;#Android技能-创建Json文本及Json解析 #&lt;br&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+    <content type="html">&lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
 &lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=&quot;headerlink&quot; title=&quot;什么是JSON&quot;&gt;&lt;/a&gt;什么是JSON&lt;/h2&gt;&lt;p&gt;JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;, age:50, eyeColor:&amp;quot;blue&amp;quot;};
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。&lt;/p&gt;
@@ -1029,30 +1253,31 @@ public String jsonToBean(String json) {
     
     <summary type="html">
     
-      &lt;p&gt;#Android技能-创建Json文本及Json解析 #&lt;br&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
-&lt;h2 id=&quot;什么
+      &lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+&lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=
     
     </summary>
     
+      <category term="Android技能" scheme="lijianchang.xyz/categories/Android%E6%8A%80%E8%83%BD/"/>
+    
+    
+      <category term="JSON" scheme="lijianchang.xyz/tags/JSON/"/>
     
   </entry>
   
   <entry>
-    <title></title>
+    <title>Android学习-简易ViewPager的使用教程与Demo演示</title>
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-简易ViewPager的使用教程与Demo演示/</id>
     <published>2016-08-30T01:49:03.187Z</published>
-    <updated>2016-03-28T19:04:59.532Z</updated>
+    <updated>2016-08-30T03:45:08.441Z</updated>
     
-    <content type="html">&lt;p&gt;#Android学习-简易ViewPager的使用教程与Demo演示&lt;br&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
-&lt;p&gt;##实例效果&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##前言&lt;br&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##Demo剖析&lt;/p&gt;
-&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
-&lt;p&gt;###一、top_bar部分&lt;/p&gt;
-&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
-&lt;p&gt;###二、下标部分&lt;/p&gt;
-&lt;p&gt;下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。&lt;/p&gt;
+    <content type="html">&lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
+&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Demo剖析&quot;&gt;&lt;a href=&quot;#Demo剖析&quot; class=&quot;headerlink&quot; title=&quot;Demo剖析&quot;&gt;&lt;/a&gt;Demo剖析&lt;/h2&gt;&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
+&lt;h3 id=&quot;一、top-bar部分&quot;&gt;&lt;a href=&quot;#一、top-bar部分&quot; class=&quot;headerlink&quot; title=&quot;一、top_bar部分&quot;&gt;&lt;/a&gt;一、top_bar部分&lt;/h3&gt;&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
+&lt;h3 id=&quot;二、下标部分&quot;&gt;&lt;a href=&quot;#二、下标部分&quot; class=&quot;headerlink&quot; title=&quot;二、下标部分&quot;&gt;&lt;/a&gt;二、下标部分&lt;/h3&gt;&lt;p&gt;下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。&lt;/p&gt;
 &lt;p&gt;设置滑动条的宽度&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; /**
   * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
@@ -1089,8 +1314,7 @@ private void initTabLineWidth() {
     }
     tablineIv.setLayoutParams(lp);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###三、ViewPager实现部分&lt;/p&gt;
-&lt;p&gt;ViewPager的实现主要通过以下步骤：&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;三、ViewPager实现部分&quot;&gt;&lt;a href=&quot;#三、ViewPager实现部分&quot; class=&quot;headerlink&quot; title=&quot;三、ViewPager实现部分&quot;&gt;&lt;/a&gt;三、ViewPager实现部分&lt;/h3&gt;&lt;p&gt;ViewPager的实现主要通过以下步骤：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;把包含的Fragement存放到一个容器List里面去&lt;/p&gt;
 &lt;/li&gt;
@@ -1103,8 +1327,7 @@ private void initTabLineWidth() {
 &lt;li&gt;&lt;p&gt;ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法  &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;##代码实现&lt;/p&gt;
-&lt;p&gt;###一、界面部分&lt;br&gt;在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。&lt;/p&gt;
+&lt;h2 id=&quot;代码实现&quot;&gt;&lt;a href=&quot;#代码实现&quot; class=&quot;headerlink&quot; title=&quot;代码实现&quot;&gt;&lt;/a&gt;代码实现&lt;/h2&gt;&lt;h3 id=&quot;一、界面部分&quot;&gt;&lt;a href=&quot;#一、界面部分&quot; class=&quot;headerlink&quot; title=&quot;一、界面部分&quot;&gt;&lt;/a&gt;一、界面部分&lt;/h3&gt;&lt;p&gt;在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。&lt;/p&gt;
 &lt;p&gt;main.xml&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
     xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
@@ -1222,7 +1445,7 @@ private void initTabLineWidth() {
         android:text=&amp;quot;设置&amp;quot;/&amp;gt;
 
 &amp;lt;/LinearLayout&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###二、逻辑代码&lt;br&gt;MainActivity.java&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;二、逻辑代码&quot;&gt;&lt;a href=&quot;#二、逻辑代码&quot; class=&quot;headerlink&quot; title=&quot;二、逻辑代码&quot;&gt;&lt;/a&gt;二、逻辑代码&lt;/h3&gt;&lt;p&gt;MainActivity.java&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;package com.example.ryan.viewpagerdemo;
 
 import android.graphics.Color;
@@ -1435,18 +1658,22 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     }
 
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##源码下载&lt;br&gt;ps：此Demo是使用Android Studio编写的，请使用AS打开。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;源码下载&quot;&gt;&lt;a href=&quot;#源码下载&quot; class=&quot;headerlink&quot; title=&quot;源码下载&quot;&gt;&lt;/a&gt;源码下载&lt;/h2&gt;&lt;p&gt;ps：此Demo是使用Android Studio编写的，请使用AS打开。&lt;/p&gt;
 &lt;p&gt;下载地址：&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9474994&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9474994&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ViewPagerDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ViewPagerDemo&lt;/a&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;#Android学习-简易ViewPager的使用教程与Demo演示&lt;br&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
-&lt;p&gt;##实例效果&lt;br&gt;&lt;img src=&quot;http://7x
+      &lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
+&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果
     
     </summary>
     
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="ViewPager" scheme="lijianchang.xyz/tags/ViewPager/"/>
     
   </entry>
   
@@ -1492,10 +1719,10 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     <link href="lijianchang.xyz/2016/03/17/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%80%85%E6%8A%80%E8%83%BD%E4%B9%8B-%E7%82%B9%E4%B9%9D%E5%9B%BE%E7%9A%84%E5%88%B6%E4%BD%9C/"/>
     <id>lijianchang.xyz/2016/03/17/安卓开发者技能之-点九图的制作/</id>
     <published>2016-03-17T13:37:26.000Z</published>
-    <updated>2016-03-17T15:37:08.675Z</updated>
+    <updated>2016-08-30T03:34:25.787Z</updated>
     
-    <content type="html">&lt;p&gt;##前言&lt;br&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
-&lt;p&gt;##点九图&lt;br&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
+&lt;h2 id=&quot;点九图&quot;&gt;&lt;a href=&quot;#点九图&quot; class=&quot;headerlink&quot; title=&quot;点九图&quot;&gt;&lt;/a&gt;点九图&lt;/h2&gt;&lt;p&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
 &lt;p&gt;而点九（即.9），是andriod平台的应用软件开发里的一种特殊的图片形式，文件扩展名为：.9.png，正是为了解决我们的图片在不同尺寸屏幕上显示失真而应运而生的一种格式。&lt;/p&gt;
 &lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
 
@@ -1505,14 +1732,12 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 &lt;p&gt;经过对比，很明显，使用点九后，仍能保留图像的渐变质感，和圆角的精细度。&lt;/p&gt;
 &lt;p&gt;所以，使用.9图的意义就是为了从自己.png格式的图片中选画出四条线，这四条线相互交错构成了九个部分(这就是叫做点九图的原因)，然后我们的内容只能在其中重复的那个区域显示，而我们的图片在拉伸过程中只有显示内容的部分被拉伸，从而使得我们图片的边缘部分得到了很好的保真效果。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##工具&lt;/p&gt;
-&lt;ol&gt;
+&lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;Android Studio (Android Studio自带制作点九图功能)&lt;/li&gt;
 &lt;li&gt;Draw9path(PC端可以直接&lt;a href=&quot;vdisk.weibo.com/s/t7XO23ZcP4wW&quot;&gt;下载&lt;/a&gt;使用)&lt;/li&gt;
 &lt;li&gt;NinePng(一个安卓应用，使用简单，去手机商店直接搜索就有了)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;##制作.9图&lt;/p&gt;
-&lt;p&gt;###在Android Studio下制作&lt;br&gt;1.打开AS，将你要制作点九图的.png图片放到工程目录的drawable文件夹下（例如我准备了一张word.png），右键，选择 Create 9-Patch file&lt;br&gt;  &lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;制作-9图&quot;&gt;&lt;a href=&quot;#制作-9图&quot; class=&quot;headerlink&quot; title=&quot;制作.9图&quot;&gt;&lt;/a&gt;制作.9图&lt;/h2&gt;&lt;h3 id=&quot;在Android-Studio下制作&quot;&gt;&lt;a href=&quot;#在Android-Studio下制作&quot; class=&quot;headerlink&quot; title=&quot;在Android Studio下制作&quot;&gt;&lt;/a&gt;在Android Studio下制作&lt;/h3&gt;&lt;p&gt;1.打开AS，将你要制作点九图的.png图片放到工程目录的drawable文件夹下（例如我准备了一张word.png），右键，选择 Create 9-Patch file&lt;br&gt;  &lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;2.然后会产生一个同名的以.9.png为后缀的文件。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;3.双击打开 **.9.png图片&lt;/p&gt;
@@ -1521,7 +1746,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-6_.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;5.拉伸右边的预览框，可以看到我们的.9图在不同拉伸情况下的效果。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;###在Draw9path下制作&lt;br&gt;如果你不是安卓开发者，只是一个美工人员，那么Draw9Path是一个不错的选择。&lt;/p&gt;
+&lt;h3 id=&quot;在Draw9path下制作&quot;&gt;&lt;a href=&quot;#在Draw9path下制作&quot; class=&quot;headerlink&quot; title=&quot;在Draw9path下制作&quot;&gt;&lt;/a&gt;在Draw9path下制作&lt;/h3&gt;&lt;p&gt;如果你不是安卓开发者，只是一个美工人员，那么Draw9Path是一个不错的选择。&lt;/p&gt;
 &lt;p&gt;1.安装完成Draw9Path之后打开 draw9patch.bat,然后按 Ctrl+O 打开一张们需要制作的图片。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-9.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;2.将鼠标放到中心区域，可以看到图片已经被打上马赛克，但是四周边缘留下空白的地方，这些地方就是让我们划线用的。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -1533,13 +1758,12 @@ public class FragmentAdapter extends FragmentPagerAdapter {
 &lt;li&gt;点击下边的Show Patches显示当前图片的内容区域。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;4.按Ctrl + S保存图片。&lt;/p&gt;
-&lt;p&gt;###在NinePng下制作&lt;br&gt;网上已经有详细教程，此处就不给具体的教程了。&lt;/p&gt;
+&lt;h3 id=&quot;在NinePng下制作&quot;&gt;&lt;a href=&quot;#在NinePng下制作&quot; class=&quot;headerlink&quot; title=&quot;在NinePng下制作&quot;&gt;&lt;/a&gt;在NinePng下制作&lt;/h3&gt;&lt;p&gt;网上已经有详细教程，此处就不给具体的教程了。&lt;/p&gt;
 &lt;p&gt;详看： &lt;a href=&quot;http://www.zcool.com.cn/article/ZMTgzODUy.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于点九图的介绍及其制作&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;##运行效果&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-17.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;运行效果&quot;&gt;&lt;a href=&quot;#运行效果&quot; class=&quot;headerlink&quot; title=&quot;运行效果&quot;&gt;&lt;/a&gt;运行效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-17.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-18.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-19.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;##参考资料&lt;/p&gt;
-&lt;ul&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/qianxudetianxia/archive/2011/04/17/2017591.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;App自适应draw9patch不失真背景&lt;/a&gt; -by 谦虚的天下&lt;/li&gt;
 &lt;/ul&gt;
 &lt;ul&gt;
@@ -1549,8 +1773,8 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     
     <summary type="html">
     
-      &lt;p&gt;##前言&lt;br&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
-&lt;p&gt;##点九图&lt;br&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
+&lt;h2 id=&quot;点九图&quot;&gt;&lt;a href=&quot;#点九图&quot; class=&quot;headerlink&quot; title=&quot;点九图&quot;&gt;&lt;/a&gt;点九图&lt;/h2&gt;&lt;p&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
 &lt;p&gt;而点九（即.9），是andriod平台的应用软件开发里的一种特殊的图片形式，文件扩展名为：.9.png，正是为了解决我们的图片在不同尺寸屏幕上显示失真而应运而生的一种格式。&lt;/p&gt;
 &lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
 
