@@ -1238,6 +1238,65 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
   </entry>
   
   <entry>
+    <title>Git学习-版本冲突</title>
+    <link href="lijianchang.xyz/2016/05/12/Git%E5%AD%A6%E4%B9%A0-%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81/"/>
+    <id>lijianchang.xyz/2016/05/12/Git学习-版本冲突/</id>
+    <published>2016-05-12T13:37:26.000Z</published>
+    <updated>2016-08-30T06:01:10.338Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;p&gt;  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重复了几次，最后导致Github上面的代码乱码，而我却把上面乱码的代码pull下来，导致我的也乱码。&lt;/p&gt;
+&lt;h1 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot; title=&quot;分析&quot;&gt;&lt;/a&gt;分析&lt;/h1&gt;&lt;p&gt;  因为我们之前的commit的版本没有问题，所以之前的代码没事，那么我们需要解决的就是实现&lt;strong&gt;版本回退&lt;/strong&gt;，就可以把代码恢复至最后一次成功提交的记录。&lt;/p&gt;
+&lt;h1 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h1&gt;&lt;h2 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h2&gt;&lt;p&gt;前提是你已经熟悉掌握如何使用git操作本地仓库和远程仓库的更新。&lt;/p&gt;
+&lt;p&gt;我自己创建了一个文件夹 TestGit，里面有两个文件，我按两次分别上传到GitHub上面&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflictexample.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;然后我们要做的就是把本地的项目文件和Github仓库恢复至只有一个&lt;strong&gt; 一、正常版本.txt&lt;/strong&gt; 文件。&lt;/p&gt;
+&lt;h2 id=&quot;一、本地git仓库版本回退&quot;&gt;&lt;a href=&quot;#一、本地git仓库版本回退&quot; class=&quot;headerlink&quot; title=&quot;一、本地git仓库版本回退&quot;&gt;&lt;/a&gt;一、本地git仓库版本回退&lt;/h2&gt;&lt;h3 id=&quot;查看提交版本&quot;&gt;&lt;a href=&quot;#查看提交版本&quot; class=&quot;headerlink&quot; title=&quot;查看提交版本&quot;&gt;&lt;/a&gt;查看提交版本&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;$ git log
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;通过这个命令可以查看历史提交版本，我提交了两个版本，所以显示两个提交版本&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这些版本都是按提交时间排序的，最后提交的排在最上面。而每一个版本都会有个id，大家可以看到黄色字体commit后面跟着的一寸数字就是每次提交版本的id。&lt;/p&gt;
+&lt;h3 id=&quot;撤回之前的版本&quot;&gt;&lt;a href=&quot;#撤回之前的版本&quot; class=&quot;headerlink&quot; title=&quot;撤回之前的版本&quot;&gt;&lt;/a&gt;撤回之前的版本&lt;/h3&gt;&lt;p&gt;当我们希望退回到上一个版本时可以使用  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD^
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我们希望退回上两个版本时可以使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD^^
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当然，往上100个版本就直接&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard HEAD~100
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;OK,那么我执行一下 &lt;code&gt;git reset --hard HEAD^&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;果然，可以恢复到正常版本了。&lt;/p&gt;
+&lt;h3 id=&quot;恢复新版本&quot;&gt;&lt;a href=&quot;#恢复新版本&quot; class=&quot;headerlink&quot; title=&quot;恢复新版本&quot;&gt;&lt;/a&gt;恢复新版本&lt;/h3&gt;&lt;p&gt;当然，我们也会有可能第二天打开电脑想恢复错误版本，我们使用&lt;code&gt;git log&lt;/code&gt;是不会显示那个版本的，那么我们可以通过以下命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reflog
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个命令可以查看我们每一次的命令，可以看到我们的错误版本在这里可以查看的到，每一行前面的黄色字符串就是我们版本的id，当我们需要恢复这些版本时，可以通过这些id来恢复。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;当我们想恢复到指定版本时，可以通过以下命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git reset --hard commit_id
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;例如，我恢复id为a016fa8的错误版本时，如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;果然恢复了！&lt;/p&gt;
+&lt;h2 id=&quot;二、Github版本回退&quot;&gt;&lt;a href=&quot;#二、Github版本回退&quot; class=&quot;headerlink&quot; title=&quot;二、Github版本回退&quot;&gt;&lt;/a&gt;二、Github版本回退&lt;/h2&gt;&lt;p&gt;我们在本地回退了版本之后，github并没有回退版本，此时我们需要将它push到github仓库中。我们可以通过以下命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push &amp;lt;remote&amp;gt; HEAD --force
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;为此，我将自己的commit回退到只有正常的版本，这是我本地文件状态：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;这是我的github项目中的状态：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;下面我将本地的版本推送到github&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-VersionConflict8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h1 id=&quot;结语&quot;&gt;&lt;a href=&quot;#结语&quot; class=&quot;headerlink&quot; title=&quot;结语&quot;&gt;&lt;/a&gt;结语&lt;/h1&gt;&lt;p&gt;好了，刚失恋，写完这个算是当做一种宣泄吧，大家晚安。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;描述&quot;&gt;&lt;a href=&quot;#描述&quot; class=&quot;headerlink&quot; title=&quot;描述&quot;&gt;&lt;/a&gt;描述&lt;/h1&gt;&lt;p&gt;  是这样的，最近在和别人一起做项目的时候，伙伴在上传他的代码时，因为上传速度比较慢，他以为是卡机了，所以关掉git bash，重新上传，重
+    
+    </summary>
+    
+      <category term="Git学习" scheme="lijianchang.xyz/categories/Git%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="版本冲突, Git" scheme="lijianchang.xyz/tags/%E7%89%88%E6%9C%AC%E5%86%B2%E7%AA%81-Git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android学习-创建圆角的DialogActivity</title>
     <link href="lijianchang.xyz/2016/05/05/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
     <id>lijianchang.xyz/2016/05/05/Android学习-创建圆角的DialogActivity/</id>
