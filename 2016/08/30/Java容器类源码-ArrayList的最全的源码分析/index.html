@@ -1,0 +1,1570 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Ryane's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="写在前面本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。
+一、继承和实现
+继承：AbstractList
+
+实现：List, RandomAccess, Cloneable, Serializable接口
+
+
+源代码public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
+    implements Lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ryane's Blog">
+<meta property="og:url" content="lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/index.html">
+<meta property="og:site_name" content="Ryane's Blog">
+<meta property="og:description" content="写在前面本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。
+一、继承和实现
+继承：AbstractList
+
+实现：List, RandomAccess, Cloneable, Serializable接口
+
+
+源代码public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
+    implements Lis">
+<meta property="og:updated_time" content="2016-07-26T15:06:25.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ryane's Blog">
+<meta name="twitter:description" content="写在前面本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。
+一、继承和实现
+继承：AbstractList
+
+实现：List, RandomAccess, Cloneable, Serializable接口
+
+
+源代码public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
+    implements Lis">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title>  | Ryane's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ryane's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T09:50:04+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+		  
+		 
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。</p>
+<h1 id="一、继承和实现"><a href="#一、继承和实现" class="headerlink" title="一、继承和实现"></a>一、继承和实现</h1><ul>
+<li><p><strong>继承：</strong>AbstractList</p>
+</li>
+<li><p><strong>实现：</strong>List<e>, RandomAccess, Cloneable, Serializable接口</e></p>
+</li>
+</ul>
+<h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><pre><code>public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;
+    implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable{
+}
+</code></pre><h1 id="二、全局变量"><a href="#二、全局变量" class="headerlink" title="二、全局变量"></a>二、全局变量</h1><h3 id="1-默认容量"><a href="#1-默认容量" class="headerlink" title="1. 默认容量"></a>1. 默认容量</h3><pre><code>private static final int DEFAULT_CAPACITY = 10;
+</code></pre><h3 id="2-空的对象数组"><a href="#2-空的对象数组" class="headerlink" title="2. 空的对象数组"></a>2. 空的对象数组</h3><pre><code>private static final Object[] EMPTY_ELEMENTDATA = {};
+</code></pre><h3 id="3-默认的空数组"><a href="#3-默认的空数组" class="headerlink" title="3.默认的空数组"></a>3.默认的空数组</h3><pre><code>// 无参构造函数创建的数组
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+</code></pre><h3 id="4-存放数据的数组的缓存变量，不可序列化"><a href="#4-存放数据的数组的缓存变量，不可序列化" class="headerlink" title="4.存放数据的数组的缓存变量，不可序列化"></a>4.存放数据的数组的缓存变量，不可序列化</h3><pre><code>transient Object[] elementData;
+</code></pre><h3 id="5-数组的大小"><a href="#5-数组的大小" class="headerlink" title="5.数组的大小"></a>5.数组的大小</h3><pre><code>private int size;
+</code></pre><h1 id="三、构造方法"><a href="#三、构造方法" class="headerlink" title="三、构造方法"></a>三、构造方法</h1><h3 id="1-带有容量initialCapacity的构造方法"><a href="#1-带有容量initialCapacity的构造方法" class="headerlink" title="1.带有容量initialCapacity的构造方法"></a>1.带有容量initialCapacity的构造方法</h3><p><strong>源码解释：</strong></p>
+<pre><code>public ArrayList(int initialCapacity) {
+     // 如果初始化时ArrayList大小大于0
+    if (initialCapacity &gt; 0) {
+          // new一个该大小的object数组赋给elementData
+        this.elementData = new Object[initialCapacity];
+    } else if (initialCapacity == 0) { // 如果大小为0
+          // 将空数组赋给elementData
+        this.elementData = EMPTY_ELEMENTDATA;
+    } else { // 小于0
+          // 则抛出IllegalArgumentException异常
+        throw new IllegalArgumentException(&quot;Illegal Capacity: &quot;+
+                                           initialCapacity);
+    }
+}
+</code></pre><h3 id="2-不带参数的构造方法"><a href="#2-不带参数的构造方法" class="headerlink" title="2.不带参数的构造方法"></a>2.不带参数的构造方法</h3><p><strong>源码解释：</strong></p>
+<pre><code>public ArrayList() {
+     // 直接将空数组赋给elementData  
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}
+</code></pre><h3 id="3-带参数Collection的构造方法"><a href="#3-带参数Collection的构造方法" class="headerlink" title="3.带参数Collection的构造方法"></a>3.带参数Collection的构造方法</h3><p><strong>源码解释：</strong></p>
+<p>参数c为一个Collection，Collection的实现类大概有以下几种常用类型：</p>
+<ul>
+<li>List：元素可以重复的容器</li>
+<li>Set: 元素不可重复的容器</li>
+<li>Queue:结构是一个队列，先进先出</li>
+</ul>
+<p>这个构造方法的意思是，将一个Collection实现类的对象转换为一个ArrayList，但是c容器装的内容</p>
+<p>必须为ArrayList装的内容的子类。例如，将一个装了String内容的HashSet转换为装了String内容的</p>
+<p>ArrayList，使得ArrayList的大小和值数组都是HashSet的大小和值数组。具体实现如下代码，首先调</p>
+<p>用c(Collection的具体实现类)的toArray方法，具体大家可以看各个实现类的toArray方法，但是大</p>
+<p>概意思都是将c容器转换为object类型的数组，因为它们的返回值都是object[]。之于下面的两个判断</p>
+<p>是当得到的elementData的类名不是Object类名的时候或者是长度为0的时候才会执行。</p>
+<pre><code>public ArrayList(Collection&lt;? extends E&gt; c) {
+    elementData = c.toArray();
+    if ((size = elementData.length) != 0) {
+        if (elementData.getClass() != Object[].class)
+            elementData = Arrays.copyOf(elementData, size, Object[].class);
+    } else {
+        // replace with empty array.
+        this.elementData = EMPTY_ELEMENTDATA;
+    }
+}  
+</code></pre><h1 id="四、方法"><a href="#四、方法" class="headerlink" title="四、方法"></a>四、方法</h1><h3 id="1-trimToSize"><a href="#1-trimToSize" class="headerlink" title="1.trimToSize()"></a>1.trimToSize()</h3><p><strong>说明：</strong>将ArrayList的容量设置为当前size的大小。首先需要明确一个概念，ArrayList的size就是ArrayList的元素个数，length是ArrayList申请的内容空间长度。ArrayList每次都会预申请多一点空间，以便添加元素的时候不需要每次都进行扩容操作，例如我们的元素个数是10个，它申请的内存空间必定会大于10，即length&gt;size，而这个方法就是把ArrayList的内存空间设置为size，去除没有用到的null值空间。这也就是我们为什么每次在获取数据长度是都是调用list.size()而不是list.length()。</p>
+<p><strong>源码解释：</strong>首先modCount是从类 java.util.AbstractList 继承的字段，这个字段主要是为了防止在多线程操作的情况下，List发生结构性的变化，什么意思呢？就是防止一个线程正在迭代，另外一个线程进行对List进行remove操作，这样当我们迭代到最后一个元素时，很明显此时List的最后一个元素为空，那么这时modCount就会告诉迭代器，让其抛出异常 ConcurrentModificationException。</p>
+<blockquote>
+<p>如果没有这一个变量，那么系统肯定会报异常ArrayIndexOutOfBoundsException，这样的异常显然不是应该出现的(这些运行时错误都是使用者的逻辑错误导致的，我们的JDK那么高端，不会出现使用错误，我们只抛出使用者造成的错误，而这个错误是设计者应该考虑的)，为了避免出现这样的异常，定义了检查。</p>
+</blockquote>
+<p>(引用自：郭无心，详情可以看他在知乎的回答：<a href="https://www.zhihu.com/question/24086463/answer/64717159" target="_blank" rel="external">https://www.zhihu.com/question/24086463/answer/64717159</a>)。</p>
+<pre><code>public void trimToSize() {
+    modCount++;
+     // 如果size小于length
+    if (size &lt; elementData.length) {
+         // 重新将elementData设置大小为size
+        elementData = (size == 0)
+          ? EMPTY_ELEMENTDATA
+          : Arrays.copyOf(elementData, size);
+    }
+}  
+</code></pre><h3 id="2-size"><a href="#2-size" class="headerlink" title="2.size()"></a>2.size()</h3><p><strong>说明：</strong>返回ArrayList的大小</p>
+<p><strong>源码解释：</strong>直接返回size</p>
+<pre><code>public int size() {
+    return size;
+}
+</code></pre><h3 id="3-isEmpty"><a href="#3-isEmpty" class="headerlink" title="3.isEmpty()"></a>3.isEmpty()</h3><p><strong>说明：</strong>返回是否为空</p>
+<p><strong>源码解释： </strong>直接返回判断size==0 </p>
+<pre><code>public boolean isEmpty() {
+    return size == 0;
+}
+</code></pre><h3 id="4-indexOf-Object-o"><a href="#4-indexOf-Object-o" class="headerlink" title="4.indexOf(Object o)"></a>4.indexOf(Object o)</h3><p><strong>说明：</strong>对象o在ArrayList中的下标位置，如果存在返回位置i，不存在返回-1</p>
+<p><strong>源码解释：</strong>遍历ArrayList的大小，比较o和容器内的元素，若相等，则返回位置i，若遍历完都不相等，返回-1</p>
+<pre><code>public int indexOf(Object o) {
+    if (o == null) {
+        for (int i = 0; i &lt; size; i++)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = 0; i &lt; size; i++)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}  
+</code></pre><h3 id="5-contains-Object-o"><a href="#5-contains-Object-o" class="headerlink" title="5.contains(Object o)"></a>5.contains(Object o)</h3><p><strong>说明：</strong>是否包含对象o</p>
+<p><strong>源码解释：</strong>调用indexOf()方法得到下标，存在则下标&gt;=0，不存在为-1，即只要比较下标和0的大小即可。</p>
+<pre><code>public boolean contains(Object o) {
+    return indexOf(o) &gt;= 0;
+}
+</code></pre><h3 id="6-lastIndexOf-Object-o"><a href="#6-lastIndexOf-Object-o" class="headerlink" title="6.lastIndexOf(Object o)"></a>6.lastIndexOf(Object o)</h3><p><strong>说明：</strong>返回容器内出现o的最后一个位置</p>
+<p><strong>源码解释：</strong>从后向前遍历，得到第一个出现对象o的位置，不存在则返回-1</p>
+<pre><code>public int lastIndexOf(Object o) {
+    if (o == null) {
+        for (int i = size-1; i &gt;= 0; i--)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = size-1; i &gt;= 0; i--)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}  
+</code></pre><h3 id="7-clone"><a href="#7-clone" class="headerlink" title="7.clone()"></a>7.clone()</h3><p><strong>说明：</strong>返回此 ArrayList 实例的浅表副本。</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public Object clone() {
+    try {
+         // 调用父类(翻看源码可见是Object类)的clone方法得到一个ArrayList副本
+        ArrayList&lt;?&gt; v = (ArrayList&lt;?&gt;) super.clone();
+         // 调用Arrays类的copyOf，将ArrayList的elementData数组赋值给副本的elementData数组
+        v.elementData = Arrays.copyOf(elementData, size);
+        v.modCount = 0;
+         // 返回副本v
+        return v;
+    } catch (CloneNotSupportedException e) {
+        throw new InternalError(e);
+    }
+ }  
+</code></pre><h3 id="8-toArray"><a href="#8-toArray" class="headerlink" title="8.toArray()"></a>8.toArray()</h3><p><strong>说明：</strong>ArrayList 实例转换为。</p>
+<p><strong>源码解释：</strong>直接调用Arrays类的copyOf。</p>
+<pre><code>public Object[] toArray() {
+    return Arrays.copyOf(elementData, size);
+}  
+</code></pre><h3 id="9-toArray-T-a"><a href="#9-toArray-T-a" class="headerlink" title="9.toArray(T[] a)"></a>9.toArray(T[] a)</h3><p><strong>说明：</strong>将ArrayList里面的元素赋值到一个数组中去</p>
+<p><strong>源码解释：</strong>如果a的长度小于ArrayList的长度，直接调用Arrays类的copyOf，返回一个比a数组长度要大的新数组，里面元素就是ArrayList里面的元素；如果a的长度比ArrayList的长度大，那么就调用System.arraycopy，将ArrayList的elementData数组赋值到a数组，然后把a数组的size位置赋值为空。</p>
+<pre><code>public &lt;T&gt; T[] toArray(T[] a) {
+    if (a.length &lt; size)
+        // Make a new array of a&apos;s runtime type, but my contents:
+        return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+    System.arraycopy(elementData, 0, a, 0, size);
+    if (a.length &gt; size)
+        a[size] = null;
+    return a;
+ }  
+</code></pre><h3 id="10-rangeCheck-int-index"><a href="#10-rangeCheck-int-index" class="headerlink" title="10.rangeCheck(int index)"></a>10.rangeCheck(int index)</h3><p><strong>说明：</strong>测试index是否越界</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>private void rangeCheck(int index) {
+     // 如果下标超过ArrayList的数组长度
+    if (index &gt;= size)
+         // 抛出IndexOutOfBoundsException异常
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}  
+</code></pre><h3 id="11-get-int-index"><a href="#11-get-int-index" class="headerlink" title="11.get(int index)"></a>11.get(int index)</h3><p><strong>说明：</strong>获取index位置的元素</p>
+<p><strong>源码解释：</strong>先检查是否越界，然后返回ArrayList的elementData数组index位置的元素。</p>
+<pre><code>public E get(int index) {
+     // 检查是否越界
+    rangeCheck(index);
+     // 返回ArrayList的elementData数组index位置的元素
+    return elementData(index);
+}  
+</code></pre><h3 id="12-set-int-index-E-element"><a href="#12-set-int-index-E-element" class="headerlink" title="12.set(int index, E element)"></a>12.set(int index, E element)</h3><p><strong>说明：</strong>设置index位置的元素值了element，返回该位置的之前的值</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public E set(int index, E element) {
+     // 检查是否越界  
+    rangeCheck(index);
+     // 调用elementData(index)获取到当前位置的值
+    E oldValue = elementData(index);
+     // 将element赋值到ArrayList的elementData数组的第index位置
+    elementData[index] = element;
+    return oldValue;
+}  
+</code></pre><h3 id="13-ensureCapacityInternal-int-minCapacity"><a href="#13-ensureCapacityInternal-int-minCapacity" class="headerlink" title="13.ensureCapacityInternal(int minCapacity)"></a>13.ensureCapacityInternal(int minCapacity)</h3><p><strong>说明：</strong>得到最小扩容量</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
+         // 获取默认的容量和传入参数的较大值
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+    ensureExplicitCapacity(minCapacity);
+}
+</code></pre><h3 id="14-ensureExplicitCapacity-int-minCapacity"><a href="#14-ensureExplicitCapacity-int-minCapacity" class="headerlink" title="14.ensureExplicitCapacity(int minCapacity)"></a>14.ensureExplicitCapacity(int minCapacity)</h3><p><strong>说明：</strong>判断是否需要扩容</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+    // 如果最小需要空间比elementData的内存空间要大，则需要扩容
+    if (minCapacity - elementData.length &gt; 0)
+        grow(minCapacity);
+} 
+</code></pre><h3 id="15-grow-方法"><a href="#15-grow-方法" class="headerlink" title="15.grow()方法"></a>15.grow()方法</h3><p><strong>说明：</strong>帮助ArrayList动态扩容的核心方法</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>// MAX_VALUE为231-1，MAX_ARRAY_SIZE 就是获取Java中int的最大限制，以防止越界  
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+private void grow(int minCapacity) {
+    // 获取到ArrayList中elementData数组的内存空间长度
+    int oldCapacity = elementData.length;
+    // 扩容至原来的1.5倍
+    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
+    // 再判断一下新数组的容量够不够，够了就直接使用这个长度创建新数组， 
+    // 不够就将数组长度设置为需要的长度
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    // 判断有没超过最大限制
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // 调用Arrays.copyOf方法将elementData数组指向新的内存空间时newCapacity的连续空间
+    // 并将elementData的数据复制到新的内存空间
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}  
+</code></pre><h3 id="16-add-E-e"><a href="#16-add-E-e" class="headerlink" title="16.add(E e)"></a>16.add(E e)</h3><p><strong>说明：</strong>添加元素e</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean add(E e) {
+     // 扩容
+    ensureCapacityInternal(size + 1);  
+    // 将e赋值给elementData的size+1的位置。
+    elementData[size++] = e;
+    return true;
+}  
+</code></pre><h3 id="17-add-int-index-E-element"><a href="#17-add-int-index-E-element" class="headerlink" title="17.add(int index, E element)"></a>17.add(int index, E element)</h3><p><strong>说明：</strong>在ArrayList的index位置，添加元素element</p>
+<p><strong>源码解释:</strong></p>
+<pre><code>public void add(int index, E element) {
+    // 判断index是否越界  
+    rangeCheckForAdd(index);
+     // 扩容
+    ensureCapacityInternal(size + 1);  
+     // 将elementData从index位置开始，复制到elementData的index+1开始的连续空间
+    System.arraycopy(elementData, index, elementData, index + 1,
+                     size - index);
+     // 在elementData的index位置赋值element
+    elementData[index] = element;
+     // ArrayList的大小加一  
+    size++;
+}  
+</code></pre><h3 id="18-remove-int-index"><a href="#18-remove-int-index" class="headerlink" title="18.remove(int index)"></a>18.remove(int index)</h3><p><strong>说明：</strong>在ArrayList的移除index位置的元素</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public E remove(int index) {
+     // 判断是否越界  
+    rangeCheck(index);
+    modCount++;
+     // 读取旧值  
+    E oldValue = elementData(index);
+     // 获取index位置开始到最后一个位置的个数
+    int numMoved = size - index - 1;
+    if (numMoved &gt; 0)
+         // 将elementData数组index+1位置开始拷贝到elementData从index开始的空间
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+     // 使size-1 ，设置elementData的size位置为空，让GC来清理内存空间
+    elementData[--size] = null; // clear to let GC do its work
+    return oldValue;
+}  
+</code></pre><h3 id="19-remove-Object-o"><a href="#19-remove-Object-o" class="headerlink" title="19.remove(Object o)"></a>19.remove(Object o)</h3><p><strong>说明：</strong>在ArrayList的移除对象为O的元素，跟indexOf方法思想基本一致</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean remove(Object o) {
+    if (o == null) {
+        for (int index = 0; index &lt; size; index++)
+            if (elementData[index] == null) {
+                fastRemove(index);
+                return true;
+            }
+    } else {
+        for (int index = 0; index &lt; size; index++)
+            if (o.equals(elementData[index])) {
+                fastRemove(index);
+                return true;
+            }
+    }
+    return false;
+}  
+</code></pre><h3 id="20-clear"><a href="#20-clear" class="headerlink" title="20.clear()"></a>20.clear()</h3><p><strong>说明：</strong>设置全部元素为null值，并设置size为0。</p>
+<p><strong>源码解释：</strong>可见clear操作并不是从空间内删除，只是设置为null值，等待垃圾回收机制来回收而已，把size设置为0，以便我们不会浏览到null值的内存空间。</p>
+<pre><code>public void clear() {
+    modCount++;
+    // clear to let GC do its work
+    for (int i = 0; i &lt; size; i++)
+        elementData[i] = null;
+    size = 0;
+}  
+</code></pre><h3 id="21-addAll-Collection-lt-extends-E-gt-c"><a href="#21-addAll-Collection-lt-extends-E-gt-c" class="headerlink" title="21.addAll(Collection&lt;? extends E&gt; c)"></a>21.addAll(Collection&lt;? extends E&gt; c)</h3><p><strong>说明：</strong>将Collection c的全部元素添加到ArrayList中</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean addAll(Collection&lt;? extends E&gt; c) {
+     // 将c转换为数组a
+    Object[] a = c.toArray();
+     // 获取a占的内存空间长度赋值给numNew
+    int numNew = a.length;
+     // 扩容至size + numNew
+    ensureCapacityInternal(size + numNew);  // Increments modCount
+     // 将a的第0位开始拷贝至elementData的size位开始，拷贝长度为numNew
+    System.arraycopy(a, 0, elementData, size, numNew);
+     // 将size增加numNew  
+    size += numNew;
+     // 如果c为空，返回false，c不为空，返回true
+    return numNew != 0;
+}  
+</code></pre><h3 id="22-addAll-int-index-Collection-lt-extends-E-gt-c"><a href="#22-addAll-int-index-Collection-lt-extends-E-gt-c" class="headerlink" title="22.addAll(int index, Collection&lt;? extends E&gt; c)"></a>22.addAll(int index, Collection&lt;? extends E&gt; c)</h3><p><strong>说明：</strong>从第index位开始，将c全部拷贝到ArrayList</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean addAll(int index, Collection&lt;? extends E&gt; c) {
+     // 判断index大于size或者是小于0,如果是，则抛出IndexOutOfBoundsException异常
+    rangeCheckForAdd(index);
+     // 将c转换为数组a
+    Object[] a = c.toArray();
+    int numNew = a.length;
+     // 扩容至size + numNew
+    ensureCapacityInternal(size + numNew);  // Increments modCount
+      // 获取需要添加的个数
+    int numMoved = size - index;
+    if (numMoved &gt; 0)
+        System.arraycopy(elementData, index, elementData, index + numNew,
+                         numMoved);
+    System.arraycopy(a, 0, elementData, index, numNew);
+    size += numNew;
+    return numNew != 0;
+}  
+</code></pre><h3 id="24-batchRemove-Collection-lt-gt-c-boolean-complement"><a href="#24-batchRemove-Collection-lt-gt-c-boolean-complement" class="headerlink" title="24.batchRemove(Collection&lt;?&gt; c, boolean complement)"></a>24.batchRemove(Collection&lt;?&gt; c, boolean complement)</h3><p><strong>说明：</strong>根据complement值，将ArrayList中包含c中元素的元素删除或者保留</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>private boolean batchRemove(Collection&lt;?&gt; c, boolean complement) {
+    final Object[] elementData = this.elementData;
+     // 定义一个w，一个r，两个同时右移   
+    int r = 0, w = 0;
+    boolean modified = false;
+    try {
+         // r先右移
+        for (; r &lt; size; r++)
+              // 如果c中不包含elementData[r]这个元素
+            if (c.contains(elementData[r]) == complement)
+                  // 则直接将r位置的元素赋值给w位置的元素，w自增
+                elementData[w++] = elementData[r];
+    } finally {
+        // 防止抛出异常导致上面r的右移过程没完成
+        if (r != size) {
+              // 将r未右移完成的位置的元素赋值给w右边位置的元素
+            System.arraycopy(elementData, r,
+                             elementData, w,
+                             size - r);
+              // 修改w值增加size-r
+            w += size - r;
+        }
+        if (w != size) {
+            // 如果有被覆盖掉的元素，则将w后面的元素都赋值为null
+            for (int i = w; i &lt; size; i++)
+                elementData[i] = null;
+            modCount += size - w;
+              // 修改size为w
+            size = w;
+            modified = true;
+        }
+    }
+    return modified;
+}  
+</code></pre><h3 id="25-removeAll-Collection-lt-gt-c"><a href="#25-removeAll-Collection-lt-gt-c" class="headerlink" title="25.removeAll(Collection&lt;?&gt; c)"></a>25.removeAll(Collection&lt;?&gt; c)</h3><p><strong>说明：</strong>ArrayList移除c中的所有元素</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean removeAll(Collection&lt;?&gt; c) {
+     // 如果c为空，则抛出空指针异常
+    Objects.requireNonNull(c);
+     // 调用batchRemove移除c中的元素
+    return batchRemove(c, false);
+}  
+</code></pre><h3 id="26-retainAll-Collection-lt-gt-c"><a href="#26-retainAll-Collection-lt-gt-c" class="headerlink" title="26.retainAll(Collection&lt;?&gt; c)"></a>26.retainAll(Collection&lt;?&gt; c)</h3><p><strong>说明：</strong>和removeAll相反，仅保留c中所有的元素</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public boolean retainAll(Collection&lt;?&gt; c) {
+    Objects.requireNonNull(c);
+     // 调用batchRemove保留c中的元素
+    return batchRemove(c, true);
+}  
+</code></pre><h3 id="27-iterator"><a href="#27-iterator" class="headerlink" title="27.iterator()"></a>27.iterator()</h3><p><strong>说明：</strong>返回一个Iterator对象，Itr为ArrayList的一个内部类，其实现了Iterator<e>接口</e></p>
+<pre><code>public Iterator&lt;E&gt; iterator() {
+    return new Itr();
+}  
+</code></pre><h3 id="28-listIterator"><a href="#28-listIterator" class="headerlink" title="28.listIterator()"></a>28.listIterator()</h3><p><strong>说明：</strong>返回一个ListIterator对象，ListItr为ArrayList的一个内部类，其实现了ListIterator<e>  接口</e></p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public ListIterator&lt;E&gt; listIterator() {
+    return new ListItr(0);
+}  
+</code></pre><h3 id="29-listIterator-int-index"><a href="#29-listIterator-int-index" class="headerlink" title="29.listIterator(int index)"></a>29.listIterator(int index)</h3><p>说明：返回一个从index开始的ListIterator对象</p>
+<p>源码解释：</p>
+<pre><code>public ListIterator&lt;E&gt; listIterator(int index) {
+    if (index &lt; 0 || index &gt; size)
+        throw new IndexOutOfBoundsException(&quot;Index: &quot;+index);
+    return new ListItr(index);
+}  
+</code></pre><h3 id="30-subList-int-fromIndex-int-toIndex"><a href="#30-subList-int-fromIndex-int-toIndex" class="headerlink" title="30.subList(int fromIndex, int toIndex)"></a>30.subList(int fromIndex, int toIndex)</h3><p><strong>说明：</strong>根据两个参数，获取到一个子序列</p>
+<p><strong>源码解释：</strong></p>
+<pre><code>public List&lt;E&gt; subList(int fromIndex, int toIndex) {
+     // 检查异常
+    subListRangeCheck(fromIndex, toIndex, size);
+     // 调用SubList类的构造方法
+    return new SubList(this, 0, fromIndex, toIndex);
+}
+</code></pre><h1 id="五、内部类"><a href="#五、内部类" class="headerlink" title="五、内部类"></a>五、内部类</h1><pre><code>(1)private class Itr implements Iterator&lt;E&gt;
+(2)private class ListItr extends Itr implements ListIterator&lt;E&gt;
+(3)private class SubList extends AbstractList&lt;E&gt; implements RandomAccess
+(4)static final class ArrayListSpliterator&lt;E&gt; implements Spliterator&lt;E&gt;
+</code></pre><p>ArrayList有四个内部类，</p>
+<p>其中的Itr是实现了Iterator接口，同时重写了里面的hasNext()，next()，remove()等方法；</p>
+<p>其中的ListItr继承Itr，实现了ListIterator接口，同时重写了hasPrevious()，nextIndex()，<br>previousIndex()，previous()，set(E e)，add(E e)等方法，所以这也可以看出了Iterator和ListIterator的区别，就是ListIterator在Iterator的基础上增加了添加对象，修改对象，逆向遍历等方法，这些是Iterator不能实现的。具体可以参考<a href="http://blog.csdn.net/a597926661/article/details/7679765。" target="_blank" rel="external">http://blog.csdn.net/a597926661/article/details/7679765。</a></p>
+<p>其中的SubList继承AbstractList，实现了RandmAccess接口，类内部实现了对子序列的增删改查等方法，但它同时也充分利用了内部类的优点，就是共享ArrayList的全局变量，例如检查器变量modCount，数组elementData等，所以SubList进行的增删改查操作都是对ArrayList的数组进行的，并没有创建新的数组。</p>
+<p>最后一个比较个人比较少接触，大家需要自行度娘。</p>
+<h1 id="End"><a href="#End" class="headerlink" title="End"></a>End</h1><p>笔者技术真的是一般般，写这个为了加深理解的同时给害怕看源代码的朋友一点鼓励，所以笔者在写的过程中有查阅很多资料来努力减少错误，但是如有错漏之处，希望大神们指出，我会第一时间修改，以免误人子弟，也希望和笔者一样基础不够好的朋友不要畏惧看源码，源码看起来并不会很难，而且多看源代码会对Java更深刻的理解。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/Android学习-创建圆角的DialogActivity/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" data-title="" data-url="lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"ryane"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0] 
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Ryane Lee" />
+          <p class="site-author-name" itemprop="name">Ryane Lee</p>
+          <p class="site-description motion-element" itemprop="description">Android Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+		
+		
+          <div class="feed-link motion-element"   style="background-color: rgb(255,91,255);">
+            <a  style="color: white;" href='javascript:(       
+												function go() {        
+													function c() {        
+														var e = document.createElement("link");        
+														e.setAttribute("type", "text/css");        
+														e.setAttribute("rel", "stylesheet");        
+														e.setAttribute("href", f);        
+														e.setAttribute("class", l);        
+														document.body.appendChild(e)    }     
+													function h() {        
+														var e = document.getElementsByClassName(l);        
+														for (var t = 0; t < e.length; t++) {            
+															document.body.removeChild(e[t])        
+															}    
+													}     
+													function p() {        
+														var e = document.createElement("div");        
+														e.setAttribute("class", a);        
+														document.body.appendChild(e);        
+														setTimeout(function() {            
+															document.body.removeChild(e)        
+														}, 100)    
+													}     
+													function d(e) {        
+														return {            
+															height : e.offsetHeight,            
+															width : e.offsetWidth        
+														}    
+													}     
+													function v(i) {        
+														var s = d(i);        
+														return s.height > e && s.height < n && s.width > t && s.width < r    
+													}     
+													function m(e) {        
+														var t = e;        
+														var n = 0;        
+														while (!!t) {            
+															n += t.offsetTop;            
+															t = t.offsetParent        
+														}        
+														return n    
+													}     
+													function g() {        
+														var e = document.documentElement;        
+														if (!!window.innerWidth) {            
+															return window.innerHeight        
+														} else if (e && !isNaN(e.clientHeight)) { 
+															return e.clientHeight        
+														}        
+														return 0    
+													}     
+													function y() {        
+														if (window.pageYOffset) {            
+															return window.pageYOffset        
+														}        
+														return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    
+													}     
+													function E(e) {        
+														var t = m(e);        
+														return t >= w && t <= b + w    
+													}     
+													var songs = [ "http://7xs0af.com1.z0.glb.clouddn.com/Pure-River-Flows-In-You.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/Pure-Quiet.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/Pure-Forever.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/Pure-Faylinn.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/Pure-A-Little-Story.mp3"];    																  
+													function S() {        
+														var e = document.getElementById("audio_element_id");        
+														if(e != null){            
+															var index = parseInt(e.getAttribute("curSongIndex"));            
+															if(index > songs.length - 2) {                
+																index = 0;            
+															} else {                
+																index++;            
+															}            
+															e.setAttribute("curSongIndex", index);            
+															N();        
+														}        
+														e.src = i;        
+														e.play()    
+													}     
+													function x(e) {        
+														e.className += " " + s + " " + o    
+													}     
+													function T(e) {        
+														e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]    
+													}     
+													function N() {        
+														var e = document.getElementsByClassName(s);        
+														var t = new RegExp("\\b" + s + "\\b");        
+														for (var n = 0; n < e.length; ) {            
+															e[n].className = e[n].className.replace(t, "")        
+														}    
+													}    
+													function initAudioEle() {        
+														var e = document.getElementById("audio_element_id");        
+														if(e === null){            
+															e = document.createElement("audio");            
+															e.setAttribute("class", l);            
+															e.setAttribute("curSongIndex", 0);            
+															e.id = "audio_element_id";            
+															e.loop = false;            
+															e.bgcolor = 0;            
+															e.addEventListener("canplay", function() {            
+																setTimeout(function() {                
+																	x(k)            
+																}, 500);            
+																setTimeout(function() {                
+																	N();                
+																	p();                
+																	for (var e = 0; e < O.length; e++) {
+																		T(O[e])                
+																	}            
+																}, 15500)       
+															}, true);        
+															e.addEventListener("ended", function() {
+																N();            
+																h();            
+																go();        
+															}, true);        
+															e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";        
+															document.body.appendChild(e);        
+														}    
+													}        
+													initAudioEle();    
+													var e = 30;    
+													var t = 30;    
+													var n = 350;    
+													var r = 350;    
+													var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));    
+													var i = songs[curSongIndex];        
+													var s = "mw-harlem_shake_me";    
+													var o = "im_first";    
+													var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];    
+													var a = "mw-strobe_light";    
+													var f = "//";        
+													var l = "mw_added_css";    var b = g();    
+													var w = y();    
+													var C = document.getElementsByTagName("*");    
+													var k = null;    
+													for (var L = 0; L < C.length; L++) {        
+														var A = C[L];        
+														if (v(A)) {            
+															if (E(A)) {                
+																k = A;                
+																break            
+															}       
+														}   
+													}    
+													if (A === null) {        
+														console.warn("Could not find a node of the right size. Please try a different page.");        
+														return    
+													}    
+													c();    
+													S();    
+													var O = [];    
+													for (var L = 0; L < C.length; L++) {        
+														var A = C[L];        
+														if (v(A)) {            
+															O.push(A)        
+														}    
+													}    
+												})()'>
+              Music
+            </a>
+          </div>
+        
+
+        
+          <div class="feed-link motion-element"   style="background-color: rgb(56,183,234);">
+            <a  style="color: white;"  href='javascript:(       
+												function go() {        
+													function c() {        
+														var e = document.createElement("link");        
+														e.setAttribute("type", "text/css");        
+														e.setAttribute("rel", "stylesheet");        
+														e.setAttribute("href", f);        
+														e.setAttribute("class", l);        
+														document.body.appendChild(e)    }     
+													function h() {        
+														var e = document.getElementsByClassName(l);        
+														for (var t = 0; t < e.length; t++) {            
+															document.body.removeChild(e[t])        
+															}    
+													}     
+													function p() {        
+														var e = document.createElement("div");        
+														e.setAttribute("class", a);        
+														document.body.appendChild(e);        
+														setTimeout(function() {            
+															document.body.removeChild(e)        
+														}, 100)    
+													}     
+													function d(e) {        
+														return {            
+															height : e.offsetHeight,            
+															width : e.offsetWidth        
+														}    
+													}     
+													function v(i) {        
+														var s = d(i);        
+														return s.height > e && s.height < n && s.width > t && s.width < r    
+													}     
+													function m(e) {        
+														var t = e;        
+														var n = 0;        
+														while (!!t) {            
+															n += t.offsetTop;            
+															t = t.offsetParent        
+														}        
+														return n    
+													}     
+													function g() {        
+														var e = document.documentElement;        
+														if (!!window.innerWidth) {            
+															return window.innerHeight        
+														} else if (e && !isNaN(e.clientHeight)) { 
+															return e.clientHeight        
+														}        
+														return 0    
+													}     
+													function y() {        
+														if (window.pageYOffset) {            
+															return window.pageYOffset        
+														}        
+														return Math.max(document.documentElement.scrollTop, document.body.scrollTop)    
+													}     
+													function E(e) {        
+														var t = m(e);        
+														return t >= w && t <= b + w    
+													}     
+													var songs = [ "http://7xs0af.com1.z0.glb.clouddn.com/High-Die-Young.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/High-I-Want-You-to-Know.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/High-Summer-Vibe.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/High-Viva-La-Vida.mp3",
+																  "http://7xs0af.com1.z0.glb.clouddn.com/High-Wake.mp3"];     
+													function S() {        
+														var e = document.getElementById("audio_element_id");        
+														if(e != null){            
+															var index = parseInt(e.getAttribute("curSongIndex"));            
+															if(index > songs.length - 2) {                
+																index = 0;            
+															} else {                
+																index++;            
+															}            
+															e.setAttribute("curSongIndex", index);            
+															N();        
+														}        
+														e.src = i;        
+														e.play()    
+													}     
+													function x(e) {        
+														e.className += " " + s + " " + o    
+													}     
+													function T(e) {        
+														e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]    
+													}     
+													function N() {        
+														var e = document.getElementsByClassName(s);        
+														var t = new RegExp("\\b" + s + "\\b");        
+														for (var n = 0; n < e.length; ) {            
+															e[n].className = e[n].className.replace(t, "")        
+														}    
+													}    
+													function initAudioEle() {        
+														var e = document.getElementById("audio_element_id");        
+														if(e === null){            
+															e = document.createElement("audio");            
+															e.setAttribute("class", l);            
+															e.setAttribute("curSongIndex", 0);            
+															e.id = "audio_element_id";            
+															e.loop = false;            
+															e.bgcolor = 0;            
+															e.addEventListener("canplay", function() {            
+																setTimeout(function() {                
+																	x(k)            
+																}, 500);            
+																setTimeout(function() {                
+																	N();                
+																	p();                
+																	for (var e = 0; e < O.length; e++) {
+																		T(O[e])                
+																	}            
+																}, 15500)       
+															}, true);        
+															e.addEventListener("ended", function() {
+																N();            
+																h();            
+																go();        
+															}, true);        
+															e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";        
+															document.body.appendChild(e);        
+														}    
+													}        
+													initAudioEle();    
+													var e = 30;    
+													var t = 30;    
+													var n = 350;    
+													var r = 350;    
+													var curSongIndex = parseInt(document.getElementById("audio_element_id").getAttribute("curSongIndex"));    
+													var i = songs[curSongIndex];        
+													var s = "mw-harlem_shake_me";    
+													var o = "im_first";    
+													var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];    
+													var a = "mw-strobe_light";    
+													var f = "/harlem-shake-style.css";        
+													var l = "mw_added_css";    var b = g();    
+													var w = y();    
+													var C = document.getElementsByTagName("*");    
+													var k = null;    
+													for (var L = 0; L < C.length; L++) {        
+														var A = C[L];        
+														if (v(A)) {            
+															if (E(A)) {                
+																k = A;                
+																break            
+															}       
+														}   
+													}    
+													if (A === null) {        
+														console.warn("Could not find a node of the right size. Please try a different page.");        
+														return    
+													}    
+													c();    
+													S();    
+													var O = [];    
+													for (var L = 0; L < C.length; L++) {        
+														var A = C[L];        
+														if (v(A)) {            
+															O.push(A)        
+														}    
+													}    
+												})()' >
+              High一下
+            </a>
+          </div>
+        
+		
+
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/ryanlijianchang" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ryan2lee" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/ryane/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> DouBan
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/li-jian-chang-68" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> ZhiHu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/ljcitworld" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CSND
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、继承和实现"><span class="nav-number">2.</span> <span class="nav-text">一、继承和实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源代码"><span class="nav-number">2.0.1.</span> <span class="nav-text">源代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、全局变量"><span class="nav-number">3.</span> <span class="nav-text">二、全局变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-默认容量"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 默认容量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-空的对象数组"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 空的对象数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-默认的空数组"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.默认的空数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-存放数据的数组的缓存变量，不可序列化"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.存放数据的数组的缓存变量，不可序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-数组的大小"><span class="nav-number">3.0.5.</span> <span class="nav-text">5.数组的大小</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、构造方法"><span class="nav-number">4.</span> <span class="nav-text">三、构造方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-带有容量initialCapacity的构造方法"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.带有容量initialCapacity的构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-不带参数的构造方法"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.不带参数的构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-带参数Collection的构造方法"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.带参数Collection的构造方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、方法"><span class="nav-number">5.</span> <span class="nav-text">四、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-trimToSize"><span class="nav-number">5.0.1.</span> <span class="nav-text">1.trimToSize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-size"><span class="nav-number">5.0.2.</span> <span class="nav-text">2.size()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-isEmpty"><span class="nav-number">5.0.3.</span> <span class="nav-text">3.isEmpty()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-indexOf-Object-o"><span class="nav-number">5.0.4.</span> <span class="nav-text">4.indexOf(Object o)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-contains-Object-o"><span class="nav-number">5.0.5.</span> <span class="nav-text">5.contains(Object o)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-lastIndexOf-Object-o"><span class="nav-number">5.0.6.</span> <span class="nav-text">6.lastIndexOf(Object o)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-clone"><span class="nav-number">5.0.7.</span> <span class="nav-text">7.clone()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-toArray"><span class="nav-number">5.0.8.</span> <span class="nav-text">8.toArray()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-toArray-T-a"><span class="nav-number">5.0.9.</span> <span class="nav-text">9.toArray(T[] a)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-rangeCheck-int-index"><span class="nav-number">5.0.10.</span> <span class="nav-text">10.rangeCheck(int index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-get-int-index"><span class="nav-number">5.0.11.</span> <span class="nav-text">11.get(int index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-set-int-index-E-element"><span class="nav-number">5.0.12.</span> <span class="nav-text">12.set(int index, E element)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-ensureCapacityInternal-int-minCapacity"><span class="nav-number">5.0.13.</span> <span class="nav-text">13.ensureCapacityInternal(int minCapacity)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-ensureExplicitCapacity-int-minCapacity"><span class="nav-number">5.0.14.</span> <span class="nav-text">14.ensureExplicitCapacity(int minCapacity)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-grow-方法"><span class="nav-number">5.0.15.</span> <span class="nav-text">15.grow()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-add-E-e"><span class="nav-number">5.0.16.</span> <span class="nav-text">16.add(E e)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-add-int-index-E-element"><span class="nav-number">5.0.17.</span> <span class="nav-text">17.add(int index, E element)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-remove-int-index"><span class="nav-number">5.0.18.</span> <span class="nav-text">18.remove(int index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-remove-Object-o"><span class="nav-number">5.0.19.</span> <span class="nav-text">19.remove(Object o)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-clear"><span class="nav-number">5.0.20.</span> <span class="nav-text">20.clear()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-addAll-Collection-lt-extends-E-gt-c"><span class="nav-number">5.0.21.</span> <span class="nav-text">21.addAll(Collection<? extends E> c)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-addAll-int-index-Collection-lt-extends-E-gt-c"><span class="nav-number">5.0.22.</span> <span class="nav-text">22.addAll(int index, Collection<? extends E> c)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-batchRemove-Collection-lt-gt-c-boolean-complement"><span class="nav-number">5.0.23.</span> <span class="nav-text">24.batchRemove(Collection<?> c, boolean complement)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-removeAll-Collection-lt-gt-c"><span class="nav-number">5.0.24.</span> <span class="nav-text">25.removeAll(Collection<?> c)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-retainAll-Collection-lt-gt-c"><span class="nav-number">5.0.25.</span> <span class="nav-text">26.retainAll(Collection<?> c)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-iterator"><span class="nav-number">5.0.26.</span> <span class="nav-text">27.iterator()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-listIterator"><span class="nav-number">5.0.27.</span> <span class="nav-text">28.listIterator()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-listIterator-int-index"><span class="nav-number">5.0.28.</span> <span class="nav-text">29.listIterator(int index)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-subList-int-fromIndex-int-toIndex"><span class="nav-number">5.0.29.</span> <span class="nav-text">30.subList(int fromIndex, int toIndex)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、内部类"><span class="nav-number">6.</span> <span class="nav-text">五、内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#End"><span class="nav-number">7.</span> <span class="nav-text">End</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ryane Lee</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"ryane"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+
+  
+  
+</body>
+</html>

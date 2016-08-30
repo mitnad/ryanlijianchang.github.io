@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-05-12T15:23:43.438Z</updated>
+  <updated>2016-07-26T15:06:25.754Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -14,6 +14,1441 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="lijianchang.xyz/2016/08/30/Java%E5%AE%B9%E5%99%A8%E7%B1%BB%E6%BA%90%E7%A0%81-ArrayList%E7%9A%84%E6%9C%80%E5%85%A8%E7%9A%84%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <id>lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/</id>
+    <published>2016-08-30T01:50:04.617Z</published>
+    <updated>2016-07-26T15:06:25.754Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
+&lt;h1 id=&quot;一、继承和实现&quot;&gt;&lt;a href=&quot;#一、继承和实现&quot; class=&quot;headerlink&quot; title=&quot;一、继承和实现&quot;&gt;&lt;/a&gt;一、继承和实现&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;继承：&lt;/strong&gt;AbstractList&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;实现：&lt;/strong&gt;List&lt;e&gt;, RandomAccess, Cloneable, Serializable接口&lt;/e&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;源代码&quot;&gt;&lt;a href=&quot;#源代码&quot; class=&quot;headerlink&quot; title=&quot;源代码&quot;&gt;&lt;/a&gt;源代码&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;public class ArrayList&amp;lt;E&amp;gt; extends AbstractList&amp;lt;E&amp;gt;
+    implements List&amp;lt;E&amp;gt;, RandomAccess, Cloneable, java.io.Serializable{
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;二、全局变量&quot;&gt;&lt;a href=&quot;#二、全局变量&quot; class=&quot;headerlink&quot; title=&quot;二、全局变量&quot;&gt;&lt;/a&gt;二、全局变量&lt;/h1&gt;&lt;h3 id=&quot;1-默认容量&quot;&gt;&lt;a href=&quot;#1-默认容量&quot; class=&quot;headerlink&quot; title=&quot;1. 默认容量&quot;&gt;&lt;/a&gt;1. 默认容量&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;private static final int DEFAULT_CAPACITY = 10;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-空的对象数组&quot;&gt;&lt;a href=&quot;#2-空的对象数组&quot; class=&quot;headerlink&quot; title=&quot;2. 空的对象数组&quot;&gt;&lt;/a&gt;2. 空的对象数组&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;private static final Object[] EMPTY_ELEMENTDATA = {};
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-默认的空数组&quot;&gt;&lt;a href=&quot;#3-默认的空数组&quot; class=&quot;headerlink&quot; title=&quot;3.默认的空数组&quot;&gt;&lt;/a&gt;3.默认的空数组&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;// 无参构造函数创建的数组
+private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = {};
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-存放数据的数组的缓存变量，不可序列化&quot;&gt;&lt;a href=&quot;#4-存放数据的数组的缓存变量，不可序列化&quot; class=&quot;headerlink&quot; title=&quot;4.存放数据的数组的缓存变量，不可序列化&quot;&gt;&lt;/a&gt;4.存放数据的数组的缓存变量，不可序列化&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;transient Object[] elementData;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5-数组的大小&quot;&gt;&lt;a href=&quot;#5-数组的大小&quot; class=&quot;headerlink&quot; title=&quot;5.数组的大小&quot;&gt;&lt;/a&gt;5.数组的大小&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;private int size;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;三、构造方法&quot;&gt;&lt;a href=&quot;#三、构造方法&quot; class=&quot;headerlink&quot; title=&quot;三、构造方法&quot;&gt;&lt;/a&gt;三、构造方法&lt;/h1&gt;&lt;h3 id=&quot;1-带有容量initialCapacity的构造方法&quot;&gt;&lt;a href=&quot;#1-带有容量initialCapacity的构造方法&quot; class=&quot;headerlink&quot; title=&quot;1.带有容量initialCapacity的构造方法&quot;&gt;&lt;/a&gt;1.带有容量initialCapacity的构造方法&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public ArrayList(int initialCapacity) {
+     // 如果初始化时ArrayList大小大于0
+    if (initialCapacity &amp;gt; 0) {
+          // new一个该大小的object数组赋给elementData
+        this.elementData = new Object[initialCapacity];
+    } else if (initialCapacity == 0) { // 如果大小为0
+          // 将空数组赋给elementData
+        this.elementData = EMPTY_ELEMENTDATA;
+    } else { // 小于0
+          // 则抛出IllegalArgumentException异常
+        throw new IllegalArgumentException(&amp;quot;Illegal Capacity: &amp;quot;+
+                                           initialCapacity);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-不带参数的构造方法&quot;&gt;&lt;a href=&quot;#2-不带参数的构造方法&quot; class=&quot;headerlink&quot; title=&quot;2.不带参数的构造方法&quot;&gt;&lt;/a&gt;2.不带参数的构造方法&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public ArrayList() {
+     // 直接将空数组赋给elementData  
+    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-带参数Collection的构造方法&quot;&gt;&lt;a href=&quot;#3-带参数Collection的构造方法&quot; class=&quot;headerlink&quot; title=&quot;3.带参数Collection的构造方法&quot;&gt;&lt;/a&gt;3.带参数Collection的构造方法&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;参数c为一个Collection，Collection的实现类大概有以下几种常用类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;List：元素可以重复的容器&lt;/li&gt;
+&lt;li&gt;Set: 元素不可重复的容器&lt;/li&gt;
+&lt;li&gt;Queue:结构是一个队列，先进先出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这个构造方法的意思是，将一个Collection实现类的对象转换为一个ArrayList，但是c容器装的内容&lt;/p&gt;
+&lt;p&gt;必须为ArrayList装的内容的子类。例如，将一个装了String内容的HashSet转换为装了String内容的&lt;/p&gt;
+&lt;p&gt;ArrayList，使得ArrayList的大小和值数组都是HashSet的大小和值数组。具体实现如下代码，首先调&lt;/p&gt;
+&lt;p&gt;用c(Collection的具体实现类)的toArray方法，具体大家可以看各个实现类的toArray方法，但是大&lt;/p&gt;
+&lt;p&gt;概意思都是将c容器转换为object类型的数组，因为它们的返回值都是object[]。之于下面的两个判断&lt;/p&gt;
+&lt;p&gt;是当得到的elementData的类名不是Object类名的时候或者是长度为0的时候才会执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public ArrayList(Collection&amp;lt;? extends E&amp;gt; c) {
+    elementData = c.toArray();
+    if ((size = elementData.length) != 0) {
+        if (elementData.getClass() != Object[].class)
+            elementData = Arrays.copyOf(elementData, size, Object[].class);
+    } else {
+        // replace with empty array.
+        this.elementData = EMPTY_ELEMENTDATA;
+    }
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;四、方法&quot;&gt;&lt;a href=&quot;#四、方法&quot; class=&quot;headerlink&quot; title=&quot;四、方法&quot;&gt;&lt;/a&gt;四、方法&lt;/h1&gt;&lt;h3 id=&quot;1-trimToSize&quot;&gt;&lt;a href=&quot;#1-trimToSize&quot; class=&quot;headerlink&quot; title=&quot;1.trimToSize()&quot;&gt;&lt;/a&gt;1.trimToSize()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;将ArrayList的容量设置为当前size的大小。首先需要明确一个概念，ArrayList的size就是ArrayList的元素个数，length是ArrayList申请的内容空间长度。ArrayList每次都会预申请多一点空间，以便添加元素的时候不需要每次都进行扩容操作，例如我们的元素个数是10个，它申请的内存空间必定会大于10，即length&amp;gt;size，而这个方法就是把ArrayList的内存空间设置为size，去除没有用到的null值空间。这也就是我们为什么每次在获取数据长度是都是调用list.size()而不是list.length()。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;首先modCount是从类 java.util.AbstractList 继承的字段，这个字段主要是为了防止在多线程操作的情况下，List发生结构性的变化，什么意思呢？就是防止一个线程正在迭代，另外一个线程进行对List进行remove操作，这样当我们迭代到最后一个元素时，很明显此时List的最后一个元素为空，那么这时modCount就会告诉迭代器，让其抛出异常 ConcurrentModificationException。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果没有这一个变量，那么系统肯定会报异常ArrayIndexOutOfBoundsException，这样的异常显然不是应该出现的(这些运行时错误都是使用者的逻辑错误导致的，我们的JDK那么高端，不会出现使用错误，我们只抛出使用者造成的错误，而这个错误是设计者应该考虑的)，为了避免出现这样的异常，定义了检查。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(引用自：郭无心，详情可以看他在知乎的回答：&lt;a href=&quot;https://www.zhihu.com/question/24086463/answer/64717159&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.zhihu.com/question/24086463/answer/64717159&lt;/a&gt;)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void trimToSize() {
+    modCount++;
+     // 如果size小于length
+    if (size &amp;lt; elementData.length) {
+         // 重新将elementData设置大小为size
+        elementData = (size == 0)
+          ? EMPTY_ELEMENTDATA
+          : Arrays.copyOf(elementData, size);
+    }
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;2-size&quot;&gt;&lt;a href=&quot;#2-size&quot; class=&quot;headerlink&quot; title=&quot;2.size()&quot;&gt;&lt;/a&gt;2.size()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回ArrayList的大小&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;直接返回size&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public int size() {
+    return size;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-isEmpty&quot;&gt;&lt;a href=&quot;#3-isEmpty&quot; class=&quot;headerlink&quot; title=&quot;3.isEmpty()&quot;&gt;&lt;/a&gt;3.isEmpty()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回是否为空&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释： &lt;/strong&gt;直接返回判断size==0 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean isEmpty() {
+    return size == 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;4-indexOf-Object-o&quot;&gt;&lt;a href=&quot;#4-indexOf-Object-o&quot; class=&quot;headerlink&quot; title=&quot;4.indexOf(Object o)&quot;&gt;&lt;/a&gt;4.indexOf(Object o)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;对象o在ArrayList中的下标位置，如果存在返回位置i，不存在返回-1&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;遍历ArrayList的大小，比较o和容器内的元素，若相等，则返回位置i，若遍历完都不相等，返回-1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public int indexOf(Object o) {
+    if (o == null) {
+        for (int i = 0; i &amp;lt; size; i++)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = 0; i &amp;lt; size; i++)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;5-contains-Object-o&quot;&gt;&lt;a href=&quot;#5-contains-Object-o&quot; class=&quot;headerlink&quot; title=&quot;5.contains(Object o)&quot;&gt;&lt;/a&gt;5.contains(Object o)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;是否包含对象o&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;调用indexOf()方法得到下标，存在则下标&amp;gt;=0，不存在为-1，即只要比较下标和0的大小即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean contains(Object o) {
+    return indexOf(o) &amp;gt;= 0;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;6-lastIndexOf-Object-o&quot;&gt;&lt;a href=&quot;#6-lastIndexOf-Object-o&quot; class=&quot;headerlink&quot; title=&quot;6.lastIndexOf(Object o)&quot;&gt;&lt;/a&gt;6.lastIndexOf(Object o)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回容器内出现o的最后一个位置&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;从后向前遍历，得到第一个出现对象o的位置，不存在则返回-1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public int lastIndexOf(Object o) {
+    if (o == null) {
+        for (int i = size-1; i &amp;gt;= 0; i--)
+            if (elementData[i]==null)
+                return i;
+    } else {
+        for (int i = size-1; i &amp;gt;= 0; i--)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;7-clone&quot;&gt;&lt;a href=&quot;#7-clone&quot; class=&quot;headerlink&quot; title=&quot;7.clone()&quot;&gt;&lt;/a&gt;7.clone()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回此 ArrayList 实例的浅表副本。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public Object clone() {
+    try {
+         // 调用父类(翻看源码可见是Object类)的clone方法得到一个ArrayList副本
+        ArrayList&amp;lt;?&amp;gt; v = (ArrayList&amp;lt;?&amp;gt;) super.clone();
+         // 调用Arrays类的copyOf，将ArrayList的elementData数组赋值给副本的elementData数组
+        v.elementData = Arrays.copyOf(elementData, size);
+        v.modCount = 0;
+         // 返回副本v
+        return v;
+    } catch (CloneNotSupportedException e) {
+        throw new InternalError(e);
+    }
+ }  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;8-toArray&quot;&gt;&lt;a href=&quot;#8-toArray&quot; class=&quot;headerlink&quot; title=&quot;8.toArray()&quot;&gt;&lt;/a&gt;8.toArray()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;ArrayList 实例转换为。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;直接调用Arrays类的copyOf。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public Object[] toArray() {
+    return Arrays.copyOf(elementData, size);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;9-toArray-T-a&quot;&gt;&lt;a href=&quot;#9-toArray-T-a&quot; class=&quot;headerlink&quot; title=&quot;9.toArray(T[] a)&quot;&gt;&lt;/a&gt;9.toArray(T[] a)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;将ArrayList里面的元素赋值到一个数组中去&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;如果a的长度小于ArrayList的长度，直接调用Arrays类的copyOf，返回一个比a数组长度要大的新数组，里面元素就是ArrayList里面的元素；如果a的长度比ArrayList的长度大，那么就调用System.arraycopy，将ArrayList的elementData数组赋值到a数组，然后把a数组的size位置赋值为空。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public &amp;lt;T&amp;gt; T[] toArray(T[] a) {
+    if (a.length &amp;lt; size)
+        // Make a new array of a&amp;apos;s runtime type, but my contents:
+        return (T[]) Arrays.copyOf(elementData, size, a.getClass());
+    System.arraycopy(elementData, 0, a, 0, size);
+    if (a.length &amp;gt; size)
+        a[size] = null;
+    return a;
+ }  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;10-rangeCheck-int-index&quot;&gt;&lt;a href=&quot;#10-rangeCheck-int-index&quot; class=&quot;headerlink&quot; title=&quot;10.rangeCheck(int index)&quot;&gt;&lt;/a&gt;10.rangeCheck(int index)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;测试index是否越界&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private void rangeCheck(int index) {
+     // 如果下标超过ArrayList的数组长度
+    if (index &amp;gt;= size)
+         // 抛出IndexOutOfBoundsException异常
+        throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;11-get-int-index&quot;&gt;&lt;a href=&quot;#11-get-int-index&quot; class=&quot;headerlink&quot; title=&quot;11.get(int index)&quot;&gt;&lt;/a&gt;11.get(int index)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;获取index位置的元素&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;先检查是否越界，然后返回ArrayList的elementData数组index位置的元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E get(int index) {
+     // 检查是否越界
+    rangeCheck(index);
+     // 返回ArrayList的elementData数组index位置的元素
+    return elementData(index);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;12-set-int-index-E-element&quot;&gt;&lt;a href=&quot;#12-set-int-index-E-element&quot; class=&quot;headerlink&quot; title=&quot;12.set(int index, E element)&quot;&gt;&lt;/a&gt;12.set(int index, E element)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;设置index位置的元素值了element，返回该位置的之前的值&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E set(int index, E element) {
+     // 检查是否越界  
+    rangeCheck(index);
+     // 调用elementData(index)获取到当前位置的值
+    E oldValue = elementData(index);
+     // 将element赋值到ArrayList的elementData数组的第index位置
+    elementData[index] = element;
+    return oldValue;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;13-ensureCapacityInternal-int-minCapacity&quot;&gt;&lt;a href=&quot;#13-ensureCapacityInternal-int-minCapacity&quot; class=&quot;headerlink&quot; title=&quot;13.ensureCapacityInternal(int minCapacity)&quot;&gt;&lt;/a&gt;13.ensureCapacityInternal(int minCapacity)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;得到最小扩容量&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private void ensureCapacityInternal(int minCapacity) {
+    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
+         // 获取默认的容量和传入参数的较大值
+        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
+    }
+    ensureExplicitCapacity(minCapacity);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;14-ensureExplicitCapacity-int-minCapacity&quot;&gt;&lt;a href=&quot;#14-ensureExplicitCapacity-int-minCapacity&quot; class=&quot;headerlink&quot; title=&quot;14.ensureExplicitCapacity(int minCapacity)&quot;&gt;&lt;/a&gt;14.ensureExplicitCapacity(int minCapacity)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;判断是否需要扩容&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private void ensureExplicitCapacity(int minCapacity) {
+    modCount++;
+    // 如果最小需要空间比elementData的内存空间要大，则需要扩容
+    if (minCapacity - elementData.length &amp;gt; 0)
+        grow(minCapacity);
+} 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;15-grow-方法&quot;&gt;&lt;a href=&quot;#15-grow-方法&quot; class=&quot;headerlink&quot; title=&quot;15.grow()方法&quot;&gt;&lt;/a&gt;15.grow()方法&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;帮助ArrayList动态扩容的核心方法&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// MAX_VALUE为231-1，MAX_ARRAY_SIZE 就是获取Java中int的最大限制，以防止越界  
+private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
+private void grow(int minCapacity) {
+    // 获取到ArrayList中elementData数组的内存空间长度
+    int oldCapacity = elementData.length;
+    // 扩容至原来的1.5倍
+    int newCapacity = oldCapacity + (oldCapacity &amp;gt;&amp;gt; 1);
+    // 再判断一下新数组的容量够不够，够了就直接使用这个长度创建新数组， 
+    // 不够就将数组长度设置为需要的长度
+    if (newCapacity - minCapacity &amp;lt; 0)
+        newCapacity = minCapacity;
+    // 判断有没超过最大限制
+    if (newCapacity - MAX_ARRAY_SIZE &amp;gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // 调用Arrays.copyOf方法将elementData数组指向新的内存空间时newCapacity的连续空间
+    // 并将elementData的数据复制到新的内存空间
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;16-add-E-e&quot;&gt;&lt;a href=&quot;#16-add-E-e&quot; class=&quot;headerlink&quot; title=&quot;16.add(E e)&quot;&gt;&lt;/a&gt;16.add(E e)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;添加元素e&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean add(E e) {
+     // 扩容
+    ensureCapacityInternal(size + 1);  
+    // 将e赋值给elementData的size+1的位置。
+    elementData[size++] = e;
+    return true;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;17-add-int-index-E-element&quot;&gt;&lt;a href=&quot;#17-add-int-index-E-element&quot; class=&quot;headerlink&quot; title=&quot;17.add(int index, E element)&quot;&gt;&lt;/a&gt;17.add(int index, E element)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;在ArrayList的index位置，添加元素element&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void add(int index, E element) {
+    // 判断index是否越界  
+    rangeCheckForAdd(index);
+     // 扩容
+    ensureCapacityInternal(size + 1);  
+     // 将elementData从index位置开始，复制到elementData的index+1开始的连续空间
+    System.arraycopy(elementData, index, elementData, index + 1,
+                     size - index);
+     // 在elementData的index位置赋值element
+    elementData[index] = element;
+     // ArrayList的大小加一  
+    size++;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;18-remove-int-index&quot;&gt;&lt;a href=&quot;#18-remove-int-index&quot; class=&quot;headerlink&quot; title=&quot;18.remove(int index)&quot;&gt;&lt;/a&gt;18.remove(int index)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;在ArrayList的移除index位置的元素&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public E remove(int index) {
+     // 判断是否越界  
+    rangeCheck(index);
+    modCount++;
+     // 读取旧值  
+    E oldValue = elementData(index);
+     // 获取index位置开始到最后一个位置的个数
+    int numMoved = size - index - 1;
+    if (numMoved &amp;gt; 0)
+         // 将elementData数组index+1位置开始拷贝到elementData从index开始的空间
+        System.arraycopy(elementData, index+1, elementData, index,
+                         numMoved);
+     // 使size-1 ，设置elementData的size位置为空，让GC来清理内存空间
+    elementData[--size] = null; // clear to let GC do its work
+    return oldValue;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;19-remove-Object-o&quot;&gt;&lt;a href=&quot;#19-remove-Object-o&quot; class=&quot;headerlink&quot; title=&quot;19.remove(Object o)&quot;&gt;&lt;/a&gt;19.remove(Object o)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;在ArrayList的移除对象为O的元素，跟indexOf方法思想基本一致&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean remove(Object o) {
+    if (o == null) {
+        for (int index = 0; index &amp;lt; size; index++)
+            if (elementData[index] == null) {
+                fastRemove(index);
+                return true;
+            }
+    } else {
+        for (int index = 0; index &amp;lt; size; index++)
+            if (o.equals(elementData[index])) {
+                fastRemove(index);
+                return true;
+            }
+    }
+    return false;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;20-clear&quot;&gt;&lt;a href=&quot;#20-clear&quot; class=&quot;headerlink&quot; title=&quot;20.clear()&quot;&gt;&lt;/a&gt;20.clear()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;设置全部元素为null值，并设置size为0。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;可见clear操作并不是从空间内删除，只是设置为null值，等待垃圾回收机制来回收而已，把size设置为0，以便我们不会浏览到null值的内存空间。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void clear() {
+    modCount++;
+    // clear to let GC do its work
+    for (int i = 0; i &amp;lt; size; i++)
+        elementData[i] = null;
+    size = 0;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;21-addAll-Collection-lt-extends-E-gt-c&quot;&gt;&lt;a href=&quot;#21-addAll-Collection-lt-extends-E-gt-c&quot; class=&quot;headerlink&quot; title=&quot;21.addAll(Collection&amp;lt;? extends E&amp;gt; c)&quot;&gt;&lt;/a&gt;21.addAll(Collection&amp;lt;? extends E&amp;gt; c)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;将Collection c的全部元素添加到ArrayList中&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean addAll(Collection&amp;lt;? extends E&amp;gt; c) {
+     // 将c转换为数组a
+    Object[] a = c.toArray();
+     // 获取a占的内存空间长度赋值给numNew
+    int numNew = a.length;
+     // 扩容至size + numNew
+    ensureCapacityInternal(size + numNew);  // Increments modCount
+     // 将a的第0位开始拷贝至elementData的size位开始，拷贝长度为numNew
+    System.arraycopy(a, 0, elementData, size, numNew);
+     // 将size增加numNew  
+    size += numNew;
+     // 如果c为空，返回false，c不为空，返回true
+    return numNew != 0;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;22-addAll-int-index-Collection-lt-extends-E-gt-c&quot;&gt;&lt;a href=&quot;#22-addAll-int-index-Collection-lt-extends-E-gt-c&quot; class=&quot;headerlink&quot; title=&quot;22.addAll(int index, Collection&amp;lt;? extends E&amp;gt; c)&quot;&gt;&lt;/a&gt;22.addAll(int index, Collection&amp;lt;? extends E&amp;gt; c)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;从第index位开始，将c全部拷贝到ArrayList&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean addAll(int index, Collection&amp;lt;? extends E&amp;gt; c) {
+     // 判断index大于size或者是小于0,如果是，则抛出IndexOutOfBoundsException异常
+    rangeCheckForAdd(index);
+     // 将c转换为数组a
+    Object[] a = c.toArray();
+    int numNew = a.length;
+     // 扩容至size + numNew
+    ensureCapacityInternal(size + numNew);  // Increments modCount
+      // 获取需要添加的个数
+    int numMoved = size - index;
+    if (numMoved &amp;gt; 0)
+        System.arraycopy(elementData, index, elementData, index + numNew,
+                         numMoved);
+    System.arraycopy(a, 0, elementData, index, numNew);
+    size += numNew;
+    return numNew != 0;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;24-batchRemove-Collection-lt-gt-c-boolean-complement&quot;&gt;&lt;a href=&quot;#24-batchRemove-Collection-lt-gt-c-boolean-complement&quot; class=&quot;headerlink&quot; title=&quot;24.batchRemove(Collection&amp;lt;?&amp;gt; c, boolean complement)&quot;&gt;&lt;/a&gt;24.batchRemove(Collection&amp;lt;?&amp;gt; c, boolean complement)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;根据complement值，将ArrayList中包含c中元素的元素删除或者保留&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private boolean batchRemove(Collection&amp;lt;?&amp;gt; c, boolean complement) {
+    final Object[] elementData = this.elementData;
+     // 定义一个w，一个r，两个同时右移   
+    int r = 0, w = 0;
+    boolean modified = false;
+    try {
+         // r先右移
+        for (; r &amp;lt; size; r++)
+              // 如果c中不包含elementData[r]这个元素
+            if (c.contains(elementData[r]) == complement)
+                  // 则直接将r位置的元素赋值给w位置的元素，w自增
+                elementData[w++] = elementData[r];
+    } finally {
+        // 防止抛出异常导致上面r的右移过程没完成
+        if (r != size) {
+              // 将r未右移完成的位置的元素赋值给w右边位置的元素
+            System.arraycopy(elementData, r,
+                             elementData, w,
+                             size - r);
+              // 修改w值增加size-r
+            w += size - r;
+        }
+        if (w != size) {
+            // 如果有被覆盖掉的元素，则将w后面的元素都赋值为null
+            for (int i = w; i &amp;lt; size; i++)
+                elementData[i] = null;
+            modCount += size - w;
+              // 修改size为w
+            size = w;
+            modified = true;
+        }
+    }
+    return modified;
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;25-removeAll-Collection-lt-gt-c&quot;&gt;&lt;a href=&quot;#25-removeAll-Collection-lt-gt-c&quot; class=&quot;headerlink&quot; title=&quot;25.removeAll(Collection&amp;lt;?&amp;gt; c)&quot;&gt;&lt;/a&gt;25.removeAll(Collection&amp;lt;?&amp;gt; c)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;ArrayList移除c中的所有元素&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean removeAll(Collection&amp;lt;?&amp;gt; c) {
+     // 如果c为空，则抛出空指针异常
+    Objects.requireNonNull(c);
+     // 调用batchRemove移除c中的元素
+    return batchRemove(c, false);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;26-retainAll-Collection-lt-gt-c&quot;&gt;&lt;a href=&quot;#26-retainAll-Collection-lt-gt-c&quot; class=&quot;headerlink&quot; title=&quot;26.retainAll(Collection&amp;lt;?&amp;gt; c)&quot;&gt;&lt;/a&gt;26.retainAll(Collection&amp;lt;?&amp;gt; c)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;和removeAll相反，仅保留c中所有的元素&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public boolean retainAll(Collection&amp;lt;?&amp;gt; c) {
+    Objects.requireNonNull(c);
+     // 调用batchRemove保留c中的元素
+    return batchRemove(c, true);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;27-iterator&quot;&gt;&lt;a href=&quot;#27-iterator&quot; class=&quot;headerlink&quot; title=&quot;27.iterator()&quot;&gt;&lt;/a&gt;27.iterator()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回一个Iterator对象，Itr为ArrayList的一个内部类，其实现了Iterator&lt;e&gt;接口&lt;/e&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public Iterator&amp;lt;E&amp;gt; iterator() {
+    return new Itr();
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;28-listIterator&quot;&gt;&lt;a href=&quot;#28-listIterator&quot; class=&quot;headerlink&quot; title=&quot;28.listIterator()&quot;&gt;&lt;/a&gt;28.listIterator()&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;返回一个ListIterator对象，ListItr为ArrayList的一个内部类，其实现了ListIterator&lt;e&gt;  接口&lt;/e&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public ListIterator&amp;lt;E&amp;gt; listIterator() {
+    return new ListItr(0);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;29-listIterator-int-index&quot;&gt;&lt;a href=&quot;#29-listIterator-int-index&quot; class=&quot;headerlink&quot; title=&quot;29.listIterator(int index)&quot;&gt;&lt;/a&gt;29.listIterator(int index)&lt;/h3&gt;&lt;p&gt;说明：返回一个从index开始的ListIterator对象&lt;/p&gt;
+&lt;p&gt;源码解释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public ListIterator&amp;lt;E&amp;gt; listIterator(int index) {
+    if (index &amp;lt; 0 || index &amp;gt; size)
+        throw new IndexOutOfBoundsException(&amp;quot;Index: &amp;quot;+index);
+    return new ListItr(index);
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;30-subList-int-fromIndex-int-toIndex&quot;&gt;&lt;a href=&quot;#30-subList-int-fromIndex-int-toIndex&quot; class=&quot;headerlink&quot; title=&quot;30.subList(int fromIndex, int toIndex)&quot;&gt;&lt;/a&gt;30.subList(int fromIndex, int toIndex)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt;根据两个参数，获取到一个子序列&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;源码解释：&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public List&amp;lt;E&amp;gt; subList(int fromIndex, int toIndex) {
+     // 检查异常
+    subListRangeCheck(fromIndex, toIndex, size);
+     // 调用SubList类的构造方法
+    return new SubList(this, 0, fromIndex, toIndex);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;五、内部类&quot;&gt;&lt;a href=&quot;#五、内部类&quot; class=&quot;headerlink&quot; title=&quot;五、内部类&quot;&gt;&lt;/a&gt;五、内部类&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;(1)private class Itr implements Iterator&amp;lt;E&amp;gt;
+(2)private class ListItr extends Itr implements ListIterator&amp;lt;E&amp;gt;
+(3)private class SubList extends AbstractList&amp;lt;E&amp;gt; implements RandomAccess
+(4)static final class ArrayListSpliterator&amp;lt;E&amp;gt; implements Spliterator&amp;lt;E&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ArrayList有四个内部类，&lt;/p&gt;
+&lt;p&gt;其中的Itr是实现了Iterator接口，同时重写了里面的hasNext()，next()，remove()等方法；&lt;/p&gt;
+&lt;p&gt;其中的ListItr继承Itr，实现了ListIterator接口，同时重写了hasPrevious()，nextIndex()，&lt;br&gt;previousIndex()，previous()，set(E e)，add(E e)等方法，所以这也可以看出了Iterator和ListIterator的区别，就是ListIterator在Iterator的基础上增加了添加对象，修改对象，逆向遍历等方法，这些是Iterator不能实现的。具体可以参考&lt;a href=&quot;http://blog.csdn.net/a597926661/article/details/7679765。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/a597926661/article/details/7679765。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;其中的SubList继承AbstractList，实现了RandmAccess接口，类内部实现了对子序列的增删改查等方法，但它同时也充分利用了内部类的优点，就是共享ArrayList的全局变量，例如检查器变量modCount，数组elementData等，所以SubList进行的增删改查操作都是对ArrayList的数组进行的，并没有创建新的数组。&lt;/p&gt;
+&lt;p&gt;最后一个比较个人比较少接触，大家需要自行度娘。&lt;/p&gt;
+&lt;h1 id=&quot;End&quot;&gt;&lt;a href=&quot;#End&quot; class=&quot;headerlink&quot; title=&quot;End&quot;&gt;&lt;/a&gt;End&lt;/h1&gt;&lt;p&gt;笔者技术真的是一般般，写这个为了加深理解的同时给害怕看源代码的朋友一点鼓励，所以笔者在写的过程中有查阅很多资料来努力减少错误，但是如有错漏之处，希望大神们指出，我会第一时间修改，以免误人子弟，也希望和笔者一样基础不够好的朋友不要畏惧看源码，源码看起来并不会很难，而且多看源代码会对Java更深刻的理解。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
+&lt;h1 id=&quot;一、继承和实现&quot;&gt;&lt;a h
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
+    <id>lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/</id>
+    <published>2016-08-30T01:49:47.741Z</published>
+    <updated>2016-05-05T12:34:56.002Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;a href=&quot;#Android学习-创建圆角的DialogActivity&quot; class=&quot;headerlink&quot; title=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;/a&gt;Android学习-创建圆角的DialogActivity&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;示例图&quot;&gt;&lt;a href=&quot;#示例图&quot; class=&quot;headerlink&quot; title=&quot;示例图&quot;&gt;&lt;/a&gt;示例图&lt;/h2&gt;&lt;p&gt;示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:&lt;/p&gt;
+&lt;p&gt;dialog_theme.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; &amp;gt;
+
+    &amp;lt;!-- 填充颜色 --&amp;gt;
+    &amp;lt;solid android:color=&amp;quot;#ffffffff&amp;quot; /&amp;gt;
+
+    &amp;lt;!-- 边框宽度 --&amp;gt;
+    &amp;lt;!-- &amp;lt;stroke android:width=&amp;quot;3dp&amp;quot; /&amp;gt; --&amp;gt;
+
+
+    &amp;lt;!-- 圆角半径 --&amp;gt;
+    &amp;lt;corners android:radius=&amp;quot;10dp&amp;quot; /&amp;gt;
+
+    &amp;lt;!-- 内边距 --&amp;gt;
+    &amp;lt;padding
+        android:bottom=&amp;quot;13dp&amp;quot;
+        android:left=&amp;quot;13dp&amp;quot;
+        android:right=&amp;quot;13dp&amp;quot;
+        android:top=&amp;quot;13dp&amp;quot; /&amp;gt;
+
+&amp;lt;/shape&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.然后自定义Activity的style为如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style name=&amp;quot;DialogTheme&amp;quot; parent=&amp;quot;@android:style/Theme.Dialog&amp;quot;&amp;gt;
+
+    &amp;lt;!-- 边框 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowFrame&amp;quot;&amp;gt;@null&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 是否浮现在activity之上 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowIsFloating&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 半透明 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowIsTranslucent&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 无标题 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowNoTitle&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 背景透明 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowBackground&amp;quot;&amp;gt;@android:color/transparent&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 模糊 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:backgroundDimEnabled&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;p&gt;1.Demo效果图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.github地址&lt;br&gt;&lt;a href=&quot;https://github.com/ryanlijianchang/DialogActivityDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/DialogActivityDemo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.下载地址&lt;br&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9510717&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9510717&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;a href=&quot;#Android学习-创建圆角的DialogActivity&quot; class=&quot;headerlink&quot; title=&quot;Android学习-创建圆角的DialogActivity&quot;&gt;&lt;/a
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
+    <id>lijianchang.xyz/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
+    <published>2016-08-30T01:49:38.466Z</published>
+    <updated>2016-06-14T08:00:36.670Z</updated>
+    
+    <content type="html">&lt;p&gt;#Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计#&lt;/p&gt;
+&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
+&lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;p&gt;按照惯例，先上效果图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;困难&quot;&gt;&lt;a href=&quot;#困难&quot; class=&quot;headerlink&quot; title=&quot;困难&quot;&gt;&lt;/a&gt;困难&lt;/h2&gt;&lt;p&gt;在自己开发学习过程中，主要遇到了两个难点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;添加过多图片时，会出现OOM。&lt;/li&gt;
+&lt;li&gt;如何动态修改图片展示栏的高度。&lt;/li&gt;
+&lt;li&gt;加号如何伴随图片的增加而后移。&lt;/li&gt;
+&lt;li&gt;如何保证最多添加照片为9张。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;难点解决&quot;&gt;&lt;a href=&quot;#难点解决&quot; class=&quot;headerlink&quot; title=&quot;难点解决&quot;&gt;&lt;/a&gt;难点解决&lt;/h2&gt;&lt;h3 id=&quot;添加过多图片时，会出现OOM&quot;&gt;&lt;a href=&quot;#添加过多图片时，会出现OOM&quot; class=&quot;headerlink&quot; title=&quot;添加过多图片时，会出现OOM&quot;&gt;&lt;/a&gt;添加过多图片时，会出现OOM&lt;/h3&gt;&lt;p&gt;出现第一种情况的原因很简单，就是随着我们手机的像素越来越高，图片的大小也越来越大，我们普通的机拍出来照片至少也有1~2M，更不说像素高的手机。而对于一个安卓应用来说，由于手机设备的限制，一般应用使用的RAM不能超过某个设定值，不同产商默认值不太一样，一般常见的有16M，24M，32M,48M。所以一个Activity中加载几张高清原图，就会报Out Of Memory 错误，也就是所谓的OOM错误。所以知道了这个问题之后我们就很容易解决了，我们就可以先将图片压缩，然后再使用ImageView加载压缩后的图片即可。而我们这里是通过对图片的尺寸进行压缩实现图片的压缩，这里大概说一下。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;要对图片压缩，首先要先将BitmapFactory.Options中的inJustDecodeBounds设置为true。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;final BitmapFactory.Options options = new BitmapFactory.Options();
+// 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true
+options.inJustDecodeBounds = true;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;然后通过BitmapFactory中decodeFile方法来获取到照片的高度和宽度，这里只要存进一个图片地址即可。获取图片地址这里就不详讲了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BitmapFactory.decodeFile(pathName，options)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;然后需要对BitmapFactory.Options中的inSampleSize根据你需要压缩比例进行设置，options.inSampleSize是图片的压缩比，例如原来大小是100 &lt;em&gt; 100，options.inSampleSize为1，则不变，options.inSampleSize为2，则压缩成50 &lt;/em&gt; 50。而我这里是根据自己设置最低宽度和最低高度来获取inSampleSize的值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    final int height = options.outHeight;
+    final int width = options.outWidth;
+    int inSampleSize = 1;
+    if (height &amp;gt; reqHeight || width &amp;gt; reqWidth) {
+        //首先获取原图高度和宽度的一半
+        final int halfHeight = height / 2;
+        final int halfWidth = width / 2;
+        //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+        //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+        while ((halfHeight / inSampleSize) &amp;gt; reqHeight &amp;amp;&amp;amp; (halfWidth / inSampleSize) &amp;gt; reqWidth) {
+            inSampleSize *= 2;
+        }
+    }
+    return inSampleSize;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;获取到inSampleSize值之后，重新设置options.inJustDecodeBounds为false，不能修改option，调用BitmapFactory中的decodeFile方法即可获取到压缩后的照片，这样在加载图片时就可以避免OOM的出现了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;options.inJustDecodeBounds = false;
+// 根据options重新加载图片
+Bitmap src = BitmapFactory.decodeFile(pathName, options);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综上，我将按尺寸压缩照片的功能包装成BitmapUtil类，在使用时直接调用即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class BitmapUtils {
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &amp;gt; reqHeight || width &amp;gt; reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            while ((halfHeight / inSampleSize) &amp;gt; reqHeight &amp;amp;&amp;amp; (halfWidth / inSampleSize) &amp;gt; reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(pathName, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;如何动态修改图片展示栏的高度&quot;&gt;&lt;a href=&quot;#如何动态修改图片展示栏的高度&quot; class=&quot;headerlink&quot; title=&quot;如何动态修改图片展示栏的高度&quot;&gt;&lt;/a&gt;如何动态修改图片展示栏的高度&lt;/h3&gt;&lt;p&gt;如何动态修改图片展示栏的高度，首先我说一下我是使用GridView来实现图片栏的展示，所以我们可以在第一次加载GridView时可以获取到下图的参数，大家看图会容易理解一点。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;我们的照片如果只有一栏，则GridView的高度不变&lt;/li&gt;
+&lt;li&gt;如果照片有两栏，则高度设置为gridViewH * 2 - (gridViewH - imageViewH) / 2&lt;/li&gt;
+&lt;li&gt;如果有三栏，则GrideView的高度设置为gridViewH * 3 - (gridViewH - imageViewH)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;我们在第一次加载GridView时记录GridView的高度GridViewH。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LinearLayout.LayoutParams params =(android.widget.LinearLayout.LayoutParams) mGridView.getLayoutParams();
+
+gridViewH = params.height;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;同时记录ImageView的高度&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) holder.imageView
+            .getLayoutParams();
+imageViewH = params.height;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;则上下的边距为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(gridViewH - imageViewH) / 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;将它写成一个方法，在每次getView()方法中调用即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;private void setGridView() {
+    LinearLayout.LayoutParams lp = (android.widget.LinearLayout.LayoutParams) mGridView.getLayoutParams();
+    if (data.size() &amp;lt; 4) {
+        lp.height = gridViewH;
+    } else if (data.size() &amp;lt; 8) {
+        lp.height = gridViewH * 2 - (gridViewH - imageViewH) / 2;
+    } else {
+        lp.height = gridViewH * 3 - (gridViewH - imageViewH);
+    }
+    mGridView.setLayoutParams(lp);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;加号如何伴随图片的增加而后移&quot;&gt;&lt;a href=&quot;#加号如何伴随图片的增加而后移&quot; class=&quot;headerlink&quot; title=&quot;加号如何伴随图片的增加而后移&quot;&gt;&lt;/a&gt;加号如何伴随图片的增加而后移&lt;/h3&gt;&lt;p&gt;因为我的数据源是List&lt;bitmap&gt;，所以可以这么做：&lt;/bitmap&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;当第一次加载时，List中只有一张加号的照片&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当添加了照片之后，List先移除加号照片，再添加照片，最后再把加号照片添加进去&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data.remove(data.size() - 1);
+Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_addpic);
+data.add(newBp);
+data.add(bp);
+//将路径设置为空，防止在手机休眠后返回Activity调用此方法时添加照片
+photoPath = null;
+adapter.notifyDataSetChanged();
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;如何保证最多添加照片为9张&quot;&gt;&lt;a href=&quot;#如何保证最多添加照片为9张&quot; class=&quot;headerlink&quot; title=&quot;如何保证最多添加照片为9张&quot;&gt;&lt;/a&gt;如何保证最多添加照片为9张&lt;/h3&gt;&lt;p&gt;这个问题只需要在每次添加之前判断数据源的大小是否为10（包括加号照片，大小就为10）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (data.size() == 10) {
+    Toast.makeText(MainActivity.this, &amp;quot;图片数9张已满&amp;quot;, Toast.LENGTH_SHORT).show();
+} else {
+    if (position == data.size() - 1) {
+        Toast.makeText(MainActivity.this, &amp;quot;添加图片&amp;quot;, Toast.LENGTH_SHORT).show();
+        // 选择图片
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &amp;quot;image/*&amp;quot;);
+        startActivityForResult(intent, 0x1);
+    } else {
+        Toast.makeText(MainActivity.this, &amp;quot;点击第&amp;quot; + (position + 1) + &amp;quot; 号图片&amp;quot;, Toast.LENGTH_SHORT).show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;界面&quot;&gt;&lt;a href=&quot;#界面&quot; class=&quot;headerlink&quot; title=&quot;界面&quot;&gt;&lt;/a&gt;界面&lt;/h2&gt;&lt;p&gt;activity_main.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ScrollView xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:background=&amp;quot;#F3F6F8&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot; &amp;gt;
+
+    &amp;lt;LinearLayout
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:orientation=&amp;quot;vertical&amp;quot; &amp;gt;
+
+        &amp;lt;ImageView
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;1dp&amp;quot;
+            android:layout_marginTop=&amp;quot;2dp&amp;quot;
+            android:src=&amp;quot;#E4E3E3&amp;quot; /&amp;gt;
+
+        &amp;lt;EditText
+            android:id=&amp;quot;@+id/content_et&amp;quot;
+            android:layout_width=&amp;quot;fill_parent&amp;quot;
+            android:layout_height=&amp;quot;120dp&amp;quot;
+            android:background=&amp;quot;#FFFFFF&amp;quot;
+            android:gravity=&amp;quot;top&amp;quot;
+            android:hint=&amp;quot;随手说出你此刻的心声...&amp;quot;
+            android:maxLength=&amp;quot;500&amp;quot;
+            android:padding=&amp;quot;5dp&amp;quot;
+            android:singleLine=&amp;quot;false&amp;quot;
+            android:textColor=&amp;quot;#000000&amp;quot;
+            android:textSize=&amp;quot;20sp&amp;quot; /&amp;gt;
+
+        &amp;lt;ImageView
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;1dp&amp;quot;
+            android:src=&amp;quot;#E4E3E3&amp;quot; /&amp;gt;
+
+        &amp;lt;ImageView
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;1dp&amp;quot;
+            android:layout_marginTop=&amp;quot;10dp&amp;quot;
+            android:src=&amp;quot;#E4E3E3&amp;quot; /&amp;gt;
+
+        &amp;lt;GridView
+            android:id=&amp;quot;@+id/gridView1&amp;quot;
+            android:layout_width=&amp;quot;fill_parent&amp;quot;
+            android:layout_height=&amp;quot;100dp&amp;quot;
+            android:background=&amp;quot;#FFFFFF&amp;quot;
+            android:columnWidth=&amp;quot;90dp&amp;quot;
+            android:gravity=&amp;quot;center&amp;quot;
+            android:horizontalSpacing=&amp;quot;5dp&amp;quot;
+            android:numColumns=&amp;quot;4&amp;quot;
+            android:padding=&amp;quot;10dp&amp;quot;
+            android:stretchMode=&amp;quot;columnWidth&amp;quot;
+            android:verticalSpacing=&amp;quot;5dp&amp;quot; &amp;gt;
+        &amp;lt;/GridView&amp;gt;
+
+        &amp;lt;ImageView
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;1dp&amp;quot;
+            android:src=&amp;quot;#E4E3E3&amp;quot; /&amp;gt;
+
+        &amp;lt;Button
+            android:id=&amp;quot;@+id/send_btn&amp;quot;
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;wrap_content&amp;quot;
+            android:layout_gravity=&amp;quot;center&amp;quot;
+            android:layout_marginLeft=&amp;quot;35dp&amp;quot;
+            android:layout_marginRight=&amp;quot;35dp&amp;quot;
+            android:layout_marginTop=&amp;quot;20dp&amp;quot;
+            android:background=&amp;quot;@drawable/send_btn_selector&amp;quot;
+            android:gravity=&amp;quot;center&amp;quot;
+            android:text=&amp;quot;发送&amp;quot;
+            android:textColor=&amp;quot;#FFFFFF&amp;quot;
+            android:textSize=&amp;quot;20sp&amp;quot; /&amp;gt;
+    &amp;lt;/LinearLayout&amp;gt;
+
+&amp;lt;/ScrollView&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;griditem.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;80dp&amp;quot;
+    android:layout_height=&amp;quot;80dp&amp;quot;
+    android:descendantFocusability=&amp;quot;blocksDescendants&amp;quot;
+    android:gravity=&amp;quot;center&amp;quot; &amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/imageView1&amp;quot;
+        android:layout_width=&amp;quot;80dp&amp;quot;
+        android:layout_height=&amp;quot;80dp&amp;quot;
+        android:scaleType=&amp;quot;centerCrop&amp;quot;
+        android:src=&amp;quot;@drawable/ic_addpic&amp;quot; /&amp;gt;
+
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo下载&quot;&gt;&lt;a href=&quot;#Demo下载&quot; class=&quot;headerlink&quot; title=&quot;Demo下载&quot;&gt;&lt;/a&gt;Demo下载&lt;/h2&gt;&lt;p&gt;Github:&lt;a href=&quot;https://github.com/ryanlijianchang/TestUpload&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/TestUpload&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CSDN: &lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9549313&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9549313&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;后话&quot;&gt;&lt;a href=&quot;#后话&quot; class=&quot;headerlink&quot; title=&quot;后话&quot;&gt;&lt;/a&gt;后话&lt;/h2&gt;&lt;p&gt;博主只是实现了这一个UI界面，我们开发过程中肯定要实现图片，文字的上传等，这里博主就不再详述了，大家可以看我的另一篇博文&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;，就这个例子而言，大家如果需要上传多张照片，就可以在添加完照片之后将bitmap存起来，然后通过循环容器的大小，然后每一张图片再上传到服务器即可。还是那句话，&lt;strong&gt;个人能力有限，欢迎大家一起交流学习，我也会虚心接纳大家的指教，不喜勿喷。&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://developer.android.com/training/displaying-bitmaps/load-bitmap.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android Developer:Loading Large Bitmaps Efficiently&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计#&lt;/p&gt;
+&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="lijianchang.xyz/2016/08/30/Android%E6%8A%80%E8%83%BD-%E5%88%9B%E5%BB%BAJson%E6%96%87%E6%9C%AC%E5%8F%8AJson%E8%A7%A3%E6%9E%90/"/>
+    <id>lijianchang.xyz/2016/08/30/Android技能-创建Json文本及Json解析/</id>
+    <published>2016-08-30T01:49:30.348Z</published>
+    <updated>2016-07-15T03:14:24.923Z</updated>
+    
+    <content type="html">&lt;p&gt;#Android技能-创建Json文本及Json解析 #&lt;br&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+&lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=&quot;headerlink&quot; title=&quot;什么是JSON&quot;&gt;&lt;/a&gt;什么是JSON&lt;/h2&gt;&lt;p&gt;JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;, age:50, eyeColor:&amp;quot;blue&amp;quot;};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。&lt;/p&gt;
+&lt;h2 id=&quot;JSON的数据类型&quot;&gt;&lt;a href=&quot;#JSON的数据类型&quot; class=&quot;headerlink&quot; title=&quot;JSON的数据类型&quot;&gt;&lt;/a&gt;JSON的数据类型&lt;/h2&gt;&lt;p&gt;json一共有两种数据结构。&lt;/p&gt;
+&lt;h3 id=&quot;JsonObject&quot;&gt;&lt;a href=&quot;#JsonObject&quot; class=&quot;headerlink&quot; title=&quot;JsonObject&quot;&gt;&lt;/a&gt;JsonObject&lt;/h3&gt;&lt;p&gt;一种是以 (key/value)对形式存在的无序的jsonObject对象。对象使用大括号括起来，属性之间使用逗号分隔开。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202314-f6689071fd2444f18e2db818071ad990.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;例如：{“name”: “jack”}， 这就是一个最简单的json对象，对于这种数据格式，key值必须要是string类型，而对于value，则可以是string、number、object、array等数据类型。&lt;/p&gt;
+&lt;h3 id=&quot;JsonArray&quot;&gt;&lt;a href=&quot;#JsonArray&quot; class=&quot;headerlink&quot; title=&quot;JsonArray&quot;&gt;&lt;/a&gt;JsonArray&lt;/h3&gt;&lt;p&gt;另一种数据格式就是有序的value的集合，这种形式被称为是JsonArray。数组是值的有序集合，值与值之间使用逗号分隔开，集合用中括号括起来。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202539-5ecbee4dffaa4388998dd3118948ec48.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;创建JSON文本&quot;&gt;&lt;a href=&quot;#创建JSON文本&quot; class=&quot;headerlink&quot; title=&quot;创建JSON文本&quot;&gt;&lt;/a&gt;创建JSON文本&lt;/h2&gt;&lt;p&gt;例如我们要创建以下类型的Jjson数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;a href=&quot;#使用JSONOject和JSONArray创建&quot; class=&quot;headerlink&quot; title=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;/a&gt;使用JSONOject和JSONArray创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * 使用JsonObject和JsonArray创建JSON对象
+ */
+public void makeJson() {
+    try {
+        JSONObject object = new JSONObject();
+
+        JSONObject person = new JSONObject();
+        //名字
+        person.put(&amp;quot;name&amp;quot;, &amp;quot;zhangsan&amp;quot;);
+        //电话
+        JSONArray phone = new JSONArray();
+        phone.put(&amp;quot;123&amp;quot;).put(&amp;quot;456&amp;quot;);
+        person.put(&amp;quot;phone&amp;quot;, phone);
+        //地址
+        person.put(&amp;quot;address&amp;quot;, &amp;quot;guangdong&amp;quot;);
+
+        object.put(&amp;quot;person&amp;quot;, person);
+
+        Log.i(&amp;quot;JSON_LOG&amp;quot;, object.toString());
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用JsonStringer创建&quot;&gt;&lt;a href=&quot;#使用JsonStringer创建&quot; class=&quot;headerlink&quot; title=&quot;使用JsonStringer创建&quot;&gt;&lt;/a&gt;使用JsonStringer创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * 通过JsonStringer创建JSON对象
+ */
+public void makeJsonStringer() {
+    try {
+        JSONStringer jsonText = new JSONStringer();
+        // 首先是{，对象开始。object和endObject必须配对使用
+        jsonText.object();
+
+        jsonText.key(&amp;quot;person&amp;quot;);
+
+        jsonText.object();
+
+        jsonText.key(&amp;quot;name&amp;quot;);
+        jsonText.value(&amp;quot;zhangsan&amp;quot;);
+
+        jsonText.key(&amp;quot;phone&amp;quot;);
+        // 键phone的值是数组。array和endArray必须配对使用
+        jsonText.array();
+        jsonText.value(&amp;quot;123&amp;quot;).value(&amp;quot;456&amp;quot;);
+        jsonText.endArray();
+
+        jsonText.key(&amp;quot;address&amp;quot;);
+        jsonText.value(&amp;quot;Guangdong&amp;quot;);
+
+        jsonText.endObject();
+
+        jsonText.endObject();
+
+
+        Log.i(&amp;quot;JSON_LOG&amp;quot;, jsonText.toString());
+    } catch (JSONException ex) {
+        throw new RuntimeException(ex);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;JSON解析&quot;&gt;&lt;a href=&quot;#JSON解析&quot; class=&quot;headerlink&quot; title=&quot;JSON解析&quot;&gt;&lt;/a&gt;JSON解析&lt;/h2&gt;&lt;h3 id=&quot;1-解析-“key”-“Object”-类型的&quot;&gt;&lt;a href=&quot;#1-解析-“key”-“Object”-类型的&quot; class=&quot;headerlink&quot; title=&quot;1. 解析{“key”, “Object”}类型的&quot;&gt;&lt;/a&gt;1. 解析{“key”, “Object”}类型的&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * JSON解析
+ * @param json
+ * @return
+ */
+public static String JsonToString(String json) {
+    Person person = new Person();
+    try {
+        //获取到整个Json数据
+        JSONObject object = new JSONObject(json);
+        //解析最外层，获得person键对应的object值
+        JSONObject personObject = object.getJSONObject(&amp;quot;person&amp;quot;);
+        //解析object值里面的每一个属性
+        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
+        //属性值是数组，则使用JSONArray获取
+        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
+        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
+            phone.add((String) phoneArray.get(i));
+        }
+        person.setPhone(phone);
+        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    return person.toString();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-解析-“Object”-类型&quot;&gt;&lt;a href=&quot;#2-解析-“Object”-类型&quot; class=&quot;headerlink&quot; title=&quot;2. 解析{“Object”}类型&quot;&gt;&lt;/a&gt;2. 解析{“Object”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么解析：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /**
+ * 解析单个对象的JSON数据
+ * @param json
+ * @return
+ */
+public static String JsonParse(String json) {
+    Person person = new Person();
+    try {
+        JSONObject personObject = new JSONObject(json);
+        //解析object值里面的每一个属性
+        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
+        //属性值是数组，则使用JSONArray获取
+        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
+        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
+            phone.add((String) phoneArray.get(i));
+        }
+        person.setPhone(phone);
+        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+
+    return person.toString();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-解析-“value”-类型&quot;&gt;&lt;a href=&quot;#3-解析-“value”-类型&quot; class=&quot;headerlink&quot; title=&quot;3. 解析{“value”}类型&quot;&gt;&lt;/a&gt;3. 解析{“value”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;, &amp;quot;789&amp;quot;];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * 解析数组型的JSON数据
+ * @param json
+ * @return
+ */
+public static List&amp;lt;String&amp;gt; JsonParseToArray(String json){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+    try {
+        JSONArray array = new JSONArray(json);
+        for (int i=0; i&amp;lt;array.length(); i++){
+            list.add((String) array.get(i));
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    return list;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解析总结&quot;&gt;&lt;a href=&quot;#解析总结&quot; class=&quot;headerlink&quot; title=&quot;解析总结&quot;&gt;&lt;/a&gt;解析总结&lt;/h3&gt;&lt;p&gt;JSON解析无非就是通过JSONObject和JSONArray不断地对数据进行解析，归根结底每一种数据都是可以分解为以上的三种最基本的解析，所以大家只要掌握好JSONObject和JSONArray，即便再复杂的数据类型，大家也可以解析得得心应手。&lt;/p&gt;
+&lt;h2 id=&quot;GSON&quot;&gt;&lt;a href=&quot;#GSON&quot; class=&quot;headerlink&quot; title=&quot;GSON&quot;&gt;&lt;/a&gt;GSON&lt;/h2&gt;&lt;p&gt;GSON是Google开发的开源的JAVA API，可以用于JSON的创建和JSON的解析。下面对GSON做一个最基本的介绍。更多了解 &lt;a href=&quot;http://sites.google.com/site/gson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sites.google.com/site/gson/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先需要下载GSON的jar包，自行度娘。&lt;/p&gt;
+&lt;p&gt;其次，我们使用GSON来创建JSON和解析JSON都要有相对应的JavaBean，所以GSON可以帮助我们更加简便地实现Bean和JSON的转换。&lt;/p&gt;
+&lt;p&gt;以下例子我们都是用Person类的JavaBean:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Person {
+    private String name;
+    private List&amp;lt;String&amp;gt; phone;
+    private String address;
+
+    public Person() {
+
+    }
+
+    public Person(String name, List&amp;lt;String&amp;gt; phone, String address) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&amp;lt;String&amp;gt; getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List&amp;lt;String&amp;gt; phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return &amp;quot;Person{&amp;quot; +
+                &amp;quot;name=&amp;apos;&amp;quot; + name + &amp;apos;\&amp;apos;&amp;apos; +
+                &amp;quot;, phone=&amp;quot; + phone +
+                &amp;quot;, address=&amp;apos;&amp;quot; + address + &amp;apos;\&amp;apos;&amp;apos; +
+                &amp;apos;}&amp;apos;;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Bean转换为JSON&quot;&gt;&lt;a href=&quot;#Bean转换为JSON&quot; class=&quot;headerlink&quot; title=&quot;Bean转换为JSON&quot;&gt;&lt;/a&gt;Bean转换为JSON&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * GSON转换为JSON
+ *
+ * @return json
+ */
+public String beanToJson() {
+
+    //赋值给一个person实例
+    List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+    phone.add(&amp;quot;123&amp;quot;);
+    phone.add(&amp;quot;456&amp;quot;);
+    Person person = new Person(&amp;quot;jack&amp;quot;, phone, &amp;quot;Guangzhou&amp;quot;);
+
+    //实例化GSON
+    Gson gson = new Gson();
+    //调用gson.toJson将Bean转为JSON
+    String json = gson.toJson(person);
+    return json;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;JSON转换为Bean&quot;&gt;&lt;a href=&quot;#JSON转换为Bean&quot; class=&quot;headerlink&quot; title=&quot;JSON转换为Bean&quot;&gt;&lt;/a&gt;JSON转换为Bean&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * JSON转换为Bean
+ * @param json
+ * @return
+ */
+public String jsonToBean(String json) {
+    Person person = new Person();
+    Gson gson = new Gson();
+    //调用gson.fromJson将json转为bean
+    person = gson.fromJson(json, Person.class);
+    return person.toString();
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Android技能-创建Json文本及Json解析 #&lt;br&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+&lt;h2 id=&quot;什么
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
+    <id>lijianchang.xyz/2016/08/30/Android学习-简易ViewPager的使用教程与Demo演示/</id>
+    <published>2016-08-30T01:49:03.187Z</published>
+    <updated>2016-03-28T19:04:59.532Z</updated>
+    
+    <content type="html">&lt;p&gt;#Android学习-简易ViewPager的使用教程与Demo演示&lt;br&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
+&lt;p&gt;##实例效果&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##前言&lt;br&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##Demo剖析&lt;/p&gt;
+&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
+&lt;p&gt;###一、top_bar部分&lt;/p&gt;
+&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
+&lt;p&gt;###二、下标部分&lt;/p&gt;
+&lt;p&gt;下标部分我们是通过一个imageview来实现。将此ImageView的背景设为一个蓝色的点九图，然后再逻辑文件中设置它的长度以及在滑动时的位置变化即可。&lt;/p&gt;
+&lt;p&gt;设置滑动条的宽度&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /**
+  * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
+  */
+private void initTabLineWidth() {
+    DisplayMetrics dpMetrics = new DisplayMetrics();
+    getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);
+    screenWidth = dpMetrics.widthPixels;
+    LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tab.getLayoutParams();
+    lp.width = screenWidth / 3;
+    tab.setLayoutParams(lp);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在onPagerScrolled方法中设置滑动条的位置变化&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; @Override
+ public void onPageScrolled(int position, float offset,
+                                   int offsetPixels) {
+     LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();
+    Log.i(&amp;quot;mOffset&amp;quot;, &amp;quot;offset:&amp;quot; + offset + &amp;quot;,position:&amp;quot; + position);
+
+    if (currentIndex == 0 &amp;amp;&amp;amp; position == 0)// 0-&amp;gt;1
+    {
+        lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex
+                        * (screenWidth / 3));
+    } else if (currentIndex == 1 &amp;amp;&amp;amp; position == 0) // 1-&amp;gt;0
+    {
+        lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+    } else if (currentIndex == 1 &amp;amp;&amp;amp; position == 1) // 1-&amp;gt;2
+    {
+        lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) + currentIndex
+                        * (screenWidth / 3));
+    } else if (currentIndex == 2 &amp;amp;&amp;amp; position == 1) // 2-&amp;gt;1
+    {
+        lp.leftMargin = (int) (-(1 - offset) * (screenWidth * 1.0 / 3) + currentIndex * (screenWidth / 3));
+    }
+    tablineIv.setLayoutParams(lp);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###三、ViewPager实现部分&lt;/p&gt;
+&lt;p&gt;ViewPager的实现主要通过以下步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;把包含的Fragement存放到一个容器List里面去&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;创建一个FragmentPagerAdapter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;为ViewPager绑定此FragmentPagerAdapter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ViewPager设置默认当前的项&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法  &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##代码实现&lt;/p&gt;
+&lt;p&gt;###一、界面部分&lt;br&gt;在界面部分，需要将我们的顶部的内容和ViewPager分开。如下我们将top_bar内容和ViewPager分开。&lt;/p&gt;
+&lt;p&gt;main.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
+
+    &amp;lt;!-- 顶部的内容 --&amp;gt;
+    &amp;lt;include layout=&amp;quot;@layout/top_bar&amp;quot; /&amp;gt;
+
+    &amp;lt;!-- ViewPager --&amp;gt;
+    &amp;lt;android.support.v4.view.ViewPager
+        android:id=&amp;quot;@+id/viewpager&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;0dp&amp;quot;
+        android:layout_weight=&amp;quot;1&amp;quot; &amp;gt;
+    &amp;lt;/android.support.v4.view.ViewPager&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;top_bar.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+    &amp;lt;!--注意最外层布局的高度不能使用match_parent，不然将会遮挡了ViewPager部分--&amp;gt;
+    &amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;
+
+
+    &amp;lt;LinearLayout
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:baselineAligned=&amp;quot;false&amp;quot;
+        android:orientation=&amp;quot;horizontal&amp;quot;&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&amp;quot;@+id/mainTv&amp;quot;
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;50dp&amp;quot;
+            android:layout_weight=&amp;quot;1&amp;quot;
+            android:gravity=&amp;quot;center&amp;quot;
+            android:text=&amp;quot;首页&amp;quot;
+            android:textColor=&amp;quot;#0000FF&amp;quot;
+            android:textSize=&amp;quot;18dp&amp;quot; /&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&amp;quot;@+id/momentTv&amp;quot;
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;50dp&amp;quot;
+            android:layout_weight=&amp;quot;1&amp;quot;
+            android:gravity=&amp;quot;center&amp;quot;
+            android:text=&amp;quot;朋友圈&amp;quot;
+            android:textColor=&amp;quot;@android:color/black&amp;quot;
+            android:textSize=&amp;quot;18dp&amp;quot; /&amp;gt;
+
+        &amp;lt;TextView
+            android:id=&amp;quot;@+id/settingTv&amp;quot;
+            android:layout_width=&amp;quot;match_parent&amp;quot;
+            android:layout_height=&amp;quot;50dp&amp;quot;
+            android:layout_weight=&amp;quot;1&amp;quot;
+            android:gravity=&amp;quot;center&amp;quot;
+            android:text=&amp;quot;设置&amp;quot;
+            android:textColor=&amp;quot;@android:color/black&amp;quot;
+            android:textSize=&amp;quot;18dp&amp;quot; /&amp;gt;
+
+
+    &amp;lt;/LinearLayout&amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/iv_tabline&amp;quot;
+        android:layout_width=&amp;quot;200dp&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:contentDescription=&amp;quot;tab&amp;quot;
+        android:background=&amp;quot;@drawable/tab&amp;quot; &amp;gt;
+    &amp;lt;/ImageView&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;还有我们的三个Fragment界面，基本一致。&lt;/p&gt;
+&lt;p&gt;fragment_main.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
+
+    &amp;lt;TextView
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;match_parent&amp;quot;
+        android:gravity=&amp;quot;center&amp;quot;
+        android:text=&amp;quot;首页&amp;quot;/&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fragment_moment.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
+
+    &amp;lt;TextView
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;match_parent&amp;quot;
+        android:gravity=&amp;quot;center&amp;quot;
+        android:text=&amp;quot;朋友圈&amp;quot;/&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;fragment_setting.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;&amp;gt;
+
+    &amp;lt;TextView
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;match_parent&amp;quot;
+        android:gravity=&amp;quot;center&amp;quot;
+        android:text=&amp;quot;设置&amp;quot;/&amp;gt;
+
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;###二、逻辑代码&lt;br&gt;MainActivity.java&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package com.example.ryan.viewpagerdemo;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * MainActivity需要继承FragmentActivity
+ */
+public class MainActivity extends FragmentActivity {
+    private ViewPager viewPager;
+    private List&amp;lt;Fragment&amp;gt; mFragmentList = new ArrayList&amp;lt;Fragment&amp;gt;();
+    private FragmentAdapter mFragmentAdapter;
+
+    //Tab显示内容TextView
+    private TextView mainTv, momentTv, settingTv;
+    //Tab的那个引导线
+    private ImageView tablineIv;
+
+    //三个Fragment页面
+    private MainFragment mainFg;
+    private MomentFragment momentFg;
+    private SettingFragment settingFg;
+
+    //ViewPager的当前选中页
+    private int currentIndex;
+
+    //屏幕的宽度
+    private int screenWidth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        findById();
+        init();
+        initTabLineWidth();
+
+    }
+
+    /**
+     * 找到控件ID
+     */
+    private void findById() {
+        mainTv = (TextView) this.findViewById(R.id.mainTv);
+        momentTv = (TextView) this.findViewById(R.id.momentTv);
+        settingTv = (TextView) this.findViewById(R.id.settingTv);
+        tablineIv = (ImageView) this.findViewById(R.id.iv_tabline);
+        viewPager = (ViewPager) this.findViewById(R.id.viewpager);
+    }
+
+    /**
+     * 初始化ViewPager和设置监听器
+     */
+    private void init() {
+        mainFg = new MainFragment();
+        momentFg = new MomentFragment();
+        settingFg = new SettingFragment();
+        //将三个页面添加到容器里面
+        mFragmentList.add(mainFg);
+        mFragmentList.add(momentFg);
+        mFragmentList.add(settingFg);
+
+        //重写一个FragmentAdapter继承FragmentPagerAdapter，需要FragmentManager和存放页面的容器过去
+        mFragmentAdapter = new FragmentAdapter(this.getSupportFragmentManager(), mFragmentList);
+        //ViewPager绑定监听器
+        viewPager.setAdapter(mFragmentAdapter);
+        //ViewPager设置默认当前的项
+        viewPager.setCurrentItem(0);
+        //ViewPager设置监听器，需要重写onPageScrollStateChanged，onPageScrolled，onPageSelected三个方法
+        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
+
+        /**
+         * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。
+         * 三个方法的执行顺序为：用手指拖动翻页时，最先执行一遍onPageScrollStateChanged（1），
+         * 然后不断执行onPageScrolled，放手指的时候，直接立即执行一次onPageScrollStateChanged（2），
+         * 然后立即执行一次onPageSelected，然后再不断执行onPageScrolled，
+         * 最后执行一次onPageScrollStateChanged（0）。
+         */
+
+        /**
+         * state滑动中的状态 有三种状态（0，1，2） 1：正在滑动 2：滑动完毕 0：什么都没做。
+         */
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            Log.i(&amp;quot;PageScroll：&amp;quot;, &amp;quot;onPageScrollStateChanged&amp;quot; + &amp;quot;:&amp;quot; + state);
+        }
+
+        /**
+         * position :当前页面，及你点击滑动的页面 offset:当前页面偏移的百分比
+         * offsetPixels:当前页面偏移的像素位置
+         */
+        @Override
+        public void onPageScrolled(int position, float offset,
+                                   int offsetPixels) {
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) tablineIv.getLayoutParams();
+            Log.i(&amp;quot;mOffset&amp;quot;, &amp;quot;offset:&amp;quot; + offset + &amp;quot;,position:&amp;quot; + position);
+            /**
+              * 利用currentIndex(当前所在页面)和position(下一个页面)以及offset来
+              * 设置mTabLineIv的左边距 滑动场景：
+                 * 记3个页面,
+                 * 从左到右分别为0,1,2
+                 * 0-&amp;gt;1; 1-&amp;gt;2; 2-&amp;gt;1; 1-&amp;gt;0
+                 */
+                if (currentIndex == 0 &amp;amp;&amp;amp; position == 0)// 0-&amp;gt;1
+                {
+                    lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) +     currentIndex
+                            * (screenWidth / 3));
+
+                } else if (currentIndex == 1 &amp;amp;&amp;amp; position == 0) // 1-&amp;gt;0
+                {
+                    lp.leftMargin = (int) (-(1 - offset)
+                            * (screenWidth * 1.0 / 3) + currentIndex
+                            * (screenWidth / 3));
+
+                } else if (currentIndex == 1 &amp;amp;&amp;amp; position == 1) // 1-&amp;gt;2
+                {
+                    lp.leftMargin = (int) (offset * (screenWidth * 1.0 / 3) +     currentIndex
+                            * (screenWidth / 3));
+                } else if (currentIndex == 2 &amp;amp;&amp;amp; position == 1) // 2-&amp;gt;1
+                {
+                       lp.leftMargin = (int) (-(1 - offset)
+                            * (screenWidth * 1.0 / 3) + currentIndex
+                            * (screenWidth / 3));
+                }
+                tablineIv.setLayoutParams(lp);
+            }
+
+            /**
+             * 将当前选择的页面的标题设置字体颜色为蓝色
+             */
+            @Override
+            public void onPageSelected(int position) {
+                Log.i(&amp;quot;PageScroll：&amp;quot;, &amp;quot;onPageSelected&amp;quot; + &amp;quot;:&amp;quot; + position);
+                resetTextView();
+                switch (position) {
+                    case 0:
+                        mainTv.setTextColor(Color.BLUE);
+                        break;
+                    case 1:
+                        momentTv.setTextColor(Color.BLUE);
+                        break;
+                    case 2:
+                        settingTv.setTextColor(Color.BLUE);
+                        break;
+                }
+                currentIndex = position;
+            }
+        });
+
+    }
+
+    /**
+     * 设置滑动条的宽度为屏幕的1/3(根据Tab的个数而定)
+     */
+    private void initTabLineWidth() {
+           DisplayMetrics dpMetrics = new DisplayMetrics();
+        getWindow().getWindowManager().getDefaultDisplay().getMetrics(dpMetrics);
+        screenWidth = dpMetrics.widthPixels;
+        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParam    tablineIv.getLayoutParams();
+        lp.width = screenWidth / 3;
+        tablineIv.setLayoutParams(lp);
+    }
+
+    /**
+     * 重置颜色
+     */
+    private void resetTextView() {
+        mainTv.setTextColor(Color.BLACK);
+        momentTv.setTextColor(Color.BLACK);
+        settingTv.setTextColor(Color.BLACK);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;FragmentAdapter.java&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package com.example.ryan.viewpagerdemo;
+
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FragmentAdapter extends FragmentPagerAdapter {
+
+    List&amp;lt;Fragment&amp;gt; fragmentList = new ArrayList&amp;lt;Fragment&amp;gt;();
+    public FragmentAdapter(FragmentManager fm,List&amp;lt;Fragment&amp;gt; fragmentList) {
+        super(fm);
+        this.fragmentList = fragmentList;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        return fragmentList.get(position);
+    }
+
+    @Override
+    public int getCount() {
+        return fragmentList.size();
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;##源码下载&lt;br&gt;ps：此Demo是使用Android Studio编写的，请使用AS打开。&lt;/p&gt;
+&lt;p&gt;下载地址：&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9474994&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9474994&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github地址：&lt;a href=&quot;https://github.com/ryanlijianchang/ViewPagerDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/ViewPagerDemo&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#Android学习-简易ViewPager的使用教程与Demo演示&lt;br&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
+&lt;p&gt;##实例效果&lt;br&gt;&lt;img src=&quot;http://7x
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>写给大三的自己</title>
@@ -49,6 +1484,84 @@
     
     
       <category term="感想" scheme="lijianchang.xyz/tags/%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓开发者必备技能之-点九图的制作</title>
+    <link href="lijianchang.xyz/2016/03/17/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%80%85%E6%8A%80%E8%83%BD%E4%B9%8B-%E7%82%B9%E4%B9%9D%E5%9B%BE%E7%9A%84%E5%88%B6%E4%BD%9C/"/>
+    <id>lijianchang.xyz/2016/03/17/安卓开发者技能之-点九图的制作/</id>
+    <published>2016-03-17T13:37:26.000Z</published>
+    <updated>2016-03-17T15:37:08.675Z</updated>
+    
+    <content type="html">&lt;p&gt;##前言&lt;br&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
+&lt;p&gt;##点九图&lt;br&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
+&lt;p&gt;而点九（即.9），是andriod平台的应用软件开发里的一种特殊的图片形式，文件扩展名为：.9.png，正是为了解决我们的图片在不同尺寸屏幕上显示失真而应运而生的一种格式。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
+
+&lt;center&gt;普通拉伸和点九拉伸效果对比&lt;/center&gt;
+
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;经过对比，很明显，使用点九后，仍能保留图像的渐变质感，和圆角的精细度。&lt;/p&gt;
+&lt;p&gt;所以，使用.9图的意义就是为了从自己.png格式的图片中选画出四条线，这四条线相互交错构成了九个部分(这就是叫做点九图的原因)，然后我们的内容只能在其中重复的那个区域显示，而我们的图片在拉伸过程中只有显示内容的部分被拉伸，从而使得我们图片的边缘部分得到了很好的保真效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##工具&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Android Studio (Android Studio自带制作点九图功能)&lt;/li&gt;
+&lt;li&gt;Draw9path(PC端可以直接&lt;a href=&quot;vdisk.weibo.com/s/t7XO23ZcP4wW&quot;&gt;下载&lt;/a&gt;使用)&lt;/li&gt;
+&lt;li&gt;NinePng(一个安卓应用，使用简单，去手机商店直接搜索就有了)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##制作.9图&lt;/p&gt;
+&lt;p&gt;###在Android Studio下制作&lt;br&gt;1.打开AS，将你要制作点九图的.png图片放到工程目录的drawable文件夹下（例如我准备了一张word.png），右键，选择 Create 9-Patch file&lt;br&gt;  &lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.然后会产生一个同名的以.9.png为后缀的文件。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3.双击打开 **.9.png图片&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;4.我们可以看到有四条线，就是我们上面所说到的构成九个区域的四条线，那么我们就可以直接通过拖拉着四条线选择我们所需要的区域即可，完成后在图片可以看到左和上有两条黑线，而把鼠标放到中间，就可以看到我们图片实际拉伸的区域。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-6_.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;5.拉伸右边的预览框，可以看到我们的.9图在不同拉伸情况下的效果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;###在Draw9path下制作&lt;br&gt;如果你不是安卓开发者，只是一个美工人员，那么Draw9Path是一个不错的选择。&lt;/p&gt;
+&lt;p&gt;1.安装完成Draw9Path之后打开 draw9patch.bat,然后按 Ctrl+O 打开一张们需要制作的图片。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-9.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.将鼠标放到中心区域，可以看到图片已经被打上马赛克，但是四周边缘留下空白的地方，这些地方就是让我们划线用的。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;3.然后我们按住鼠标，在我们需要划线的区域划线即可(按住shift+鼠标左键为删除点，不支持Ctrl+Z撤销功能)。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-10.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;点击右上角Show bad patches来查看我们画的线是否对齐。&lt;/li&gt;
+&lt;li&gt;点击下边的Show Content显示拉伸的后的内容区域。&lt;/li&gt;
+&lt;li&gt;点击下边的Show Patches显示当前图片的内容区域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.按Ctrl + S保存图片。&lt;/p&gt;
+&lt;p&gt;###在NinePng下制作&lt;br&gt;网上已经有详细教程，此处就不给具体的教程了。&lt;/p&gt;
+&lt;p&gt;详看： &lt;a href=&quot;http://www.zcool.com.cn/article/ZMTgzODUy.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于点九图的介绍及其制作&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;##运行效果&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-17.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-18.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-19.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##参考资料&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/qianxudetianxia/archive/2011/04/17/2017591.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;App自适应draw9patch不失真背景&lt;/a&gt; -by 谦虚的天下&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.zcool.com.cn/article/ZMTgzODUy.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;关于点九图的介绍及其制作&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##前言&lt;br&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
+&lt;p&gt;##点九图&lt;br&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
+&lt;p&gt;而点九（即.9），是andriod平台的应用软件开发里的一种特殊的图片形式，文件扩展名为：.9.png，正是为了解决我们的图片在不同尺寸屏幕上显示失真而应运而生的一种格式。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/post-dianjiu-1.jpg&quot; alt=&quot;&quot;&gt;&lt;/center&gt;
+
+&lt;center&gt;普通拉伸和点九拉伸效果对比&lt;/center&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="lijianchang.xyz/categories/Android/"/>
+    
+    
+      <category term="点九图" scheme="lijianchang.xyz/tags/%E7%82%B9%E4%B9%9D%E5%9B%BE/"/>
     
   </entry>
   
