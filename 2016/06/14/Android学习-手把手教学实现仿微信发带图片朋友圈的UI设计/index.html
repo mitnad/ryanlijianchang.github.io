@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="感想," />
+  <meta name="keywords" content="UI设计," />
 
 
 
@@ -59,24 +59,22 @@
 
 
 
-<meta name="description">
+<meta name="description" content="功能需求最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。
+当然，如果你想知道如何实现图片上传到服务器，请看">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写给大三的自己">
-<meta property="og:url" content="lijianchang.xyz/2016/05/12/写给大三的自己/index.html">
+<meta property="og:title" content="Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计">
+<meta property="og:url" content="lijianchang.xyz/2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
-<meta property="og:description">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan1.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan2.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan3.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan4.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan7.jpg">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan5.jpg">
-<meta property="og:updated_time" content="2016-05-12T15:23:43.438Z">
+<meta property="og:description" content="功能需求最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。
+当然，如果你想知道如何实现图片上传到服务器，请看">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI3.png">
+<meta property="og:updated_time" content="2016-08-30T05:58:18.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写给大三的自己">
-<meta name="twitter:description">
-<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg">
+<meta name="twitter:title" content="Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计">
+<meta name="twitter:description" content="功能需求最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。
+当然，如果你想知道如何实现图片上传到服务器，请看">
+<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png">
 
 
 
@@ -94,7 +92,7 @@
   };
 </script>
 
-  <title> 写给大三的自己 | Ryane's Blog </title>
+  <title> Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计 | Ryane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -224,7 +222,7 @@
             
             
               
-                写给大三的自己
+                Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计
               
             
           </h1>
@@ -236,8 +234,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-12T22:10:54+08:00" content="2016-05-12">
-              2016-05-12
+            <time itemprop="dateCreated" datetime="2016-06-14T21:37:26+08:00" content="2016-06-14">
+              2016-06-14
             </time>
           </span>
 
@@ -250,8 +248,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
+                  <a href="/categories/Android学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Android学习</span>
                   </a>
                 </span>
 
@@ -267,8 +265,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/12/写给大三的自己/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/12/写给大三的自己/" itemprop="commentsCount"></span>
+                <a href="/2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,21 +290,267 @@
       
 
       
-        <p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg" alt=""></p>
+        <h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。</p>
+<p>当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：<a href="http://blog.csdn.net/ljcitworld/article/details/51670910" target="_blank" rel="external">Android学习-使用Async-Http实现图片压缩并上传功能</a>。个人水平有限，如有不足的地方，欢迎交流，勿喷。</p>
 <a id="more"></a>
-<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>不动笔则已，一动笔发现自己已经三年大学都没有写过东西。呵，多么讽刺！因为自己曾经也是有过作家梦的，然而伴随着工科男的三年生活，渐渐丢失了自己最初的梦。从去年开始，自己就开始记录自己的专业知识，但是发现其实自己的生活还是一团糟，所以现在沉思，就算再忙，也要思考自己走过的路，也要学会沉淀自己的生活。</p>
-<h3 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h3><p>伴随着五月份的到来，自己的大三生活也将进入倒计时，而自己也开始焦虑起来。焦虑自己身边的朋友都找到了不错的实习，焦虑自己仍然还没有拿到offer，连小公司也没有。开学初，错过了腾讯，百度，阿里巴巴，金山，优酷等等这些公司之后，自己也是放下自己的身段，去尝试投一些小公司。先后也面过五六个公司了，自己比较有印象的就是<code>广州逸信科技</code>，<code>凯通科技</code>，<code>CVTE</code>这些公司自己感觉收获都挺多的，而且自己面试的时候感觉也是比较良好，但是自己最后还是没有拿到offer。现在回想起来，我想很大原因就是<strong>过于自信</strong>，<strong>对自己定位不够</strong>。因为自己一直是把自己放置在很高的位置，但是自己认真想起来自己还是很空， 掌握的东西真的还很少，所以接下来要好好总结。虽然心情还是很down，但是如果连这点苦都受不了，还怎么走向大海和星辰？</p>
-<h3 id="朋友"><a href="#朋友" class="headerlink" title="朋友"></a>朋友</h3><p>大学三年，可以说没交到几个知心朋友，有我把他们真心对待的，但是我不确定我在他们心里是不是同样这么想。跟一个朋友最近也是没什么交流，因为我很讨厌他混着一些经常玩游戏的人，我又在忙着实习，哎，友谊真是很难把握的一个东西，但是想想自己三年来跟他一起做过的事情还是很多的，所以自己也不要就此丢失了这份友谊吧。不过我很感谢两个人，耀叔和靓妹，其实友情就是经得起岁月和时间的摧残，但是依然互相保存在自己的心理。而且跟他们在一起的时候自己是非常放松的，上周自己面试cvte之后，自己也是找了他们high了一天，谢谢他们在最失意的时候陪着自己。</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan1.jpg" alt=""></p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan2.jpg" alt=""></p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan3.jpg" alt=""></p>
-<h3 id="篮球兄弟"><a href="#篮球兄弟" class="headerlink" title="篮球兄弟"></a>篮球兄弟</h3><p>认真数数自己这一个月，真的没打几次球，因为自己都在忙着实习和做项目、复习，所以都没什么心情去打球，但是自己还是很感谢广工封开球队的人，虽然自己不是经常跟他们打球，但是依然每次打球都很开心，因为跟着一群同声同气的人真是很轻松，打球时也可以丢掉自己平时沉重的盔甲。今天是我们第二次去跟污水厂的员工打球，打到第二个加时输了，虽然这样，但是在场上跑动的时候，真是把所有的烦恼都丢在身后。我想这次打完之后我们也很难有机会真正地在一起打球了，毕竟我们都大三了，都要为自己的未来拼搏了，但是希望我们都不要丢失了自己一直的篮球梦，不能为命运折服自己仅剩的一点兴趣。</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan4.jpg" alt=""></p>
-<h3 id="孔慧师姐"><a href="#孔慧师姐" class="headerlink" title="孔慧师姐"></a>孔慧师姐</h3><p>其实自己一直很想认真感谢一些孔慧师姐，她是我踏进校园认识的第一位女生，当时我刚到学校，人生路不熟，然后她就打到了我的电话，嘘寒问暖的，超级温暖。当时真的把她当做自己的大姐姐，遇到了问题都是问她，记得当时做班干部什么的都是问她，感觉自己的心超级脆弱，也正是她给我的建议，让我轻松地度过了大学的适应期。而今年也是她的毕业季，真心希望她未来可以事业爱情双丰收，我坚信好人一生平安，哈哈，谢谢你，孔慧师姐！</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan7.jpg" alt=""><br><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan5.jpg" alt=""></p>
-<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>人生或许就是很多的不完美组成，正是这些不完美，才组成了我们精彩的人生；</p>
-<p>人生或许会遭遇到很多的挫败，正是这些挫败，才为我们日后的成功打下基础！</p>
-<p>—-献给所有和我遇到一样问题的人，共勉！</p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p>按照惯例，先上效果图。</p>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png" alt=""></p>
+<h2 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h2><p>在自己开发学习过程中，主要遇到了两个难点：</p>
+<ol>
+<li>添加过多图片时，会出现OOM。</li>
+<li>如何动态修改图片展示栏的高度。</li>
+<li>加号如何伴随图片的增加而后移。</li>
+<li>如何保证最多添加照片为9张。</li>
+</ol>
+<h2 id="难点解决"><a href="#难点解决" class="headerlink" title="难点解决"></a>难点解决</h2><h3 id="添加过多图片时，会出现OOM"><a href="#添加过多图片时，会出现OOM" class="headerlink" title="添加过多图片时，会出现OOM"></a>添加过多图片时，会出现OOM</h3><p>出现第一种情况的原因很简单，就是随着我们手机的像素越来越高，图片的大小也越来越大，我们普通的机拍出来照片至少也有1~2M，更不说像素高的手机。而对于一个安卓应用来说，由于手机设备的限制，一般应用使用的RAM不能超过某个设定值，不同产商默认值不太一样，一般常见的有16M，24M，32M,48M。所以一个Activity中加载几张高清原图，就会报Out Of Memory 错误，也就是所谓的OOM错误。所以知道了这个问题之后我们就很容易解决了，我们就可以先将图片压缩，然后再使用ImageView加载压缩后的图片即可。而我们这里是通过对图片的尺寸进行压缩实现图片的压缩，这里大概说一下。</p>
+<ol>
+<li><p>要对图片压缩，首先要先将BitmapFactory.Options中的inJustDecodeBounds设置为true。</p>
+<pre><code>final BitmapFactory.Options options = new BitmapFactory.Options();
+// 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true
+options.inJustDecodeBounds = true;
+</code></pre></li>
+<li><p>然后通过BitmapFactory中decodeFile方法来获取到照片的高度和宽度，这里只要存进一个图片地址即可。获取图片地址这里就不详讲了。</p>
+<pre><code>BitmapFactory.decodeFile(pathName，options)
+</code></pre></li>
+</ol>
+<ol>
+<li><p>然后需要对BitmapFactory.Options中的inSampleSize根据你需要压缩比例进行设置，options.inSampleSize是图片的压缩比，例如原来大小是100 <em> 100，options.inSampleSize为1，则不变，options.inSampleSize为2，则压缩成50 </em> 50。而我这里是根据自己设置最低宽度和最低高度来获取inSampleSize的值：</p>
+<pre><code>private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    final int height = options.outHeight;
+    final int width = options.outWidth;
+    int inSampleSize = 1;
+    if (height &gt; reqHeight || width &gt; reqWidth) {
+        //首先获取原图高度和宽度的一半
+        final int halfHeight = height / 2;
+        final int halfWidth = width / 2;
+        //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+        //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+        while ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {
+            inSampleSize *= 2;
+        }
+    }
+    return inSampleSize;
+}
+</code></pre></li>
+<li><p>获取到inSampleSize值之后，重新设置options.inJustDecodeBounds为false，不能修改option，调用BitmapFactory中的decodeFile方法即可获取到压缩后的照片，这样在加载图片时就可以避免OOM的出现了。</p>
+<pre><code>options.inJustDecodeBounds = false;
+// 根据options重新加载图片
+Bitmap src = BitmapFactory.decodeFile(pathName, options);
+</code></pre></li>
+</ol>
+<p>综上，我将按尺寸压缩照片的功能包装成BitmapUtil类，在使用时直接调用即可。</p>
+<pre><code>public class BitmapUtils {
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &gt; reqHeight || width &gt; reqWidth) {
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            while ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
+
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(pathName, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
+}
+</code></pre><h3 id="如何动态修改图片展示栏的高度"><a href="#如何动态修改图片展示栏的高度" class="headerlink" title="如何动态修改图片展示栏的高度"></a>如何动态修改图片展示栏的高度</h3><p>如何动态修改图片展示栏的高度，首先我说一下我是使用GridView来实现图片栏的展示，所以我们可以在第一次加载GridView时可以获取到下图的参数，大家看图会容易理解一点。</p>
+<ul>
+<li>我们的照片如果只有一栏，则GridView的高度不变</li>
+<li>如果照片有两栏，则高度设置为gridViewH * 2 - (gridViewH - imageViewH) / 2</li>
+<li>如果有三栏，则GrideView的高度设置为gridViewH * 3 - (gridViewH - imageViewH)</li>
+</ul>
+<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI3.png" alt=""></p>
+<ol>
+<li><p>我们在第一次加载GridView时记录GridView的高度GridViewH。</p>
+<pre><code>LinearLayout.LayoutParams params =(android.widget.LinearLayout.LayoutParams) mGridView.getLayoutParams();
+
+gridViewH = params.height;
+</code></pre></li>
+<li><p>同时记录ImageView的高度</p>
+<pre><code>RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) holder.imageView
+            .getLayoutParams();
+imageViewH = params.height;
+</code></pre></li>
+<li><p>则上下的边距为</p>
+<pre><code>(gridViewH - imageViewH) / 2
+</code></pre></li>
+<li><p>将它写成一个方法，在每次getView()方法中调用即可。</p>
+<pre><code>private void setGridView() {
+    LinearLayout.LayoutParams lp = (android.widget.LinearLayout.LayoutParams) mGridView.getLayoutParams();
+    if (data.size() &lt; 4) {
+        lp.height = gridViewH;
+    } else if (data.size() &lt; 8) {
+        lp.height = gridViewH * 2 - (gridViewH - imageViewH) / 2;
+    } else {
+        lp.height = gridViewH * 3 - (gridViewH - imageViewH);
+    }
+    mGridView.setLayoutParams(lp);
+}
+</code></pre></li>
+</ol>
+<h3 id="加号如何伴随图片的增加而后移"><a href="#加号如何伴随图片的增加而后移" class="headerlink" title="加号如何伴随图片的增加而后移"></a>加号如何伴随图片的增加而后移</h3><p>因为我的数据源是List<bitmap>，所以可以这么做：</bitmap></p>
+<ul>
+<li>当第一次加载时，List中只有一张加号的照片</li>
+<li><p>当添加了照片之后，List先移除加号照片，再添加照片，最后再把加号照片添加进去</p>
+<pre><code>data.remove(data.size() - 1);
+Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_addpic);
+data.add(newBp);
+data.add(bp);
+//将路径设置为空，防止在手机休眠后返回Activity调用此方法时添加照片
+photoPath = null;
+adapter.notifyDataSetChanged();
+</code></pre></li>
+</ul>
+<h3 id="如何保证最多添加照片为9张"><a href="#如何保证最多添加照片为9张" class="headerlink" title="如何保证最多添加照片为9张"></a>如何保证最多添加照片为9张</h3><p>这个问题只需要在每次添加之前判断数据源的大小是否为10（包括加号照片，大小就为10）。</p>
+<pre><code>if (data.size() == 10) {
+    Toast.makeText(MainActivity.this, &quot;图片数9张已满&quot;, Toast.LENGTH_SHORT).show();
+} else {
+    if (position == data.size() - 1) {
+        Toast.makeText(MainActivity.this, &quot;添加图片&quot;, Toast.LENGTH_SHORT).show();
+        // 选择图片
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &quot;image/*&quot;);
+        startActivityForResult(intent, 0x1);
+    } else {
+        Toast.makeText(MainActivity.this, &quot;点击第&quot; + (position + 1) + &quot; 号图片&quot;, Toast.LENGTH_SHORT).show();
+    }
+}
+</code></pre><h2 id="界面"><a href="#界面" class="headerlink" title="界面"></a>界面</h2><p>activity_main.xml</p>
+<pre><code>&lt;ScrollView xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:background=&quot;#F3F6F8&quot;
+    android:orientation=&quot;vertical&quot; &gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:orientation=&quot;vertical&quot; &gt;
+
+        &lt;ImageView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;1dp&quot;
+            android:layout_marginTop=&quot;2dp&quot;
+            android:src=&quot;#E4E3E3&quot; /&gt;
+
+        &lt;EditText
+            android:id=&quot;@+id/content_et&quot;
+            android:layout_width=&quot;fill_parent&quot;
+            android:layout_height=&quot;120dp&quot;
+            android:background=&quot;#FFFFFF&quot;
+            android:gravity=&quot;top&quot;
+            android:hint=&quot;随手说出你此刻的心声...&quot;
+            android:maxLength=&quot;500&quot;
+            android:padding=&quot;5dp&quot;
+            android:singleLine=&quot;false&quot;
+            android:textColor=&quot;#000000&quot;
+            android:textSize=&quot;20sp&quot; /&gt;
+
+        &lt;ImageView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;1dp&quot;
+            android:src=&quot;#E4E3E3&quot; /&gt;
+
+        &lt;ImageView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;1dp&quot;
+            android:layout_marginTop=&quot;10dp&quot;
+            android:src=&quot;#E4E3E3&quot; /&gt;
+
+        &lt;GridView
+            android:id=&quot;@+id/gridView1&quot;
+            android:layout_width=&quot;fill_parent&quot;
+            android:layout_height=&quot;100dp&quot;
+            android:background=&quot;#FFFFFF&quot;
+            android:columnWidth=&quot;90dp&quot;
+            android:gravity=&quot;center&quot;
+            android:horizontalSpacing=&quot;5dp&quot;
+            android:numColumns=&quot;4&quot;
+            android:padding=&quot;10dp&quot;
+            android:stretchMode=&quot;columnWidth&quot;
+            android:verticalSpacing=&quot;5dp&quot; &gt;
+        &lt;/GridView&gt;
+
+        &lt;ImageView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;1dp&quot;
+            android:src=&quot;#E4E3E3&quot; /&gt;
+
+        &lt;Button
+            android:id=&quot;@+id/send_btn&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_gravity=&quot;center&quot;
+            android:layout_marginLeft=&quot;35dp&quot;
+            android:layout_marginRight=&quot;35dp&quot;
+            android:layout_marginTop=&quot;20dp&quot;
+            android:background=&quot;@drawable/send_btn_selector&quot;
+            android:gravity=&quot;center&quot;
+            android:text=&quot;发送&quot;
+            android:textColor=&quot;#FFFFFF&quot;
+            android:textSize=&quot;20sp&quot; /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/ScrollView&gt;
+</code></pre><p>griditem.xml</p>
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;80dp&quot;
+    android:layout_height=&quot;80dp&quot;
+    android:descendantFocusability=&quot;blocksDescendants&quot;
+    android:gravity=&quot;center&quot; &gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/imageView1&quot;
+        android:layout_width=&quot;80dp&quot;
+        android:layout_height=&quot;80dp&quot;
+        android:scaleType=&quot;centerCrop&quot;
+        android:src=&quot;@drawable/ic_addpic&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre><h2 id="Demo下载"><a href="#Demo下载" class="headerlink" title="Demo下载"></a>Demo下载</h2><p>Github:<a href="https://github.com/ryanlijianchang/TestUpload" target="_blank" rel="external">https://github.com/ryanlijianchang/TestUpload</a></p>
+<p>CSDN: <a href="http://download.csdn.net/detail/ljcitworld/9549313" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9549313</a></p>
+<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>博主只是实现了这一个UI界面，我们开发过程中肯定要实现图片，文字的上传等，这里博主就不再详述了，大家可以看我的另一篇博文<a href="http://blog.csdn.net/ljcitworld/article/details/51670910" target="_blank" rel="external">Android学习-使用Async-Http实现图片压缩并上传功能</a>，就这个例子而言，大家如果需要上传多张照片，就可以在添加完照片之后将bitmap存起来，然后通过循环容器的大小，然后每一张图片再上传到服务器即可。还是那句话，<strong>个人能力有限，欢迎大家一起交流学习，我也会虚心接纳大家的指教，不喜勿喷。</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://developer.android.com/training/displaying-bitmaps/load-bitmap.html" target="_blank" rel="external">Android Developer:Loading Large Bitmaps Efficiently</a></p>
 
       
     </div>
@@ -321,7 +565,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/感想/" rel="tag">#感想</a>
+            <a href="/tags/UI设计/" rel="tag">#UI设计</a>
           
         </div>
       
@@ -330,16 +574,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/05/Android学习-创建圆角的DialogActivity/" rel="next" title="Android学习-创建圆角的DialogActivity">
-                <i class="fa fa-chevron-left"></i> Android学习-创建圆角的DialogActivity
+              <a href="/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/" rel="next" title="Android学习-使用Async-Http实现图片压缩并上传功能">
+                <i class="fa fa-chevron-left"></i> Android学习-使用Async-Http实现图片压缩并上传功能
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/" rel="prev" title="Android学习-使用Async-Http实现图片压缩并上传功能">
-                Android学习-使用Async-Http实现图片压缩并上传功能 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/15/Android技能-创建Json文本及Json解析/" rel="prev" title="Android技能-创建Json文本及Json解析">
+                Android技能-创建Json文本及Json解析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -367,7 +611,7 @@
   <div class="comments" id="comments">
     
       <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/05/12/写给大三的自己/" data-title="写给大三的自己" data-url="lijianchang.xyz/2016/05/12/写给大三的自己/"></div>
+	<div class="ds-thread" data-thread-key="2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/" data-title="Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计" data-url="lijianchang.xyz/2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -865,7 +1109,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实习"><span class="nav-number">2.</span> <span class="nav-text">实习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#朋友"><span class="nav-number">3.</span> <span class="nav-text">朋友</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#篮球兄弟"><span class="nav-number">4.</span> <span class="nav-text">篮球兄弟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#孔慧师姐"><span class="nav-number">5.</span> <span class="nav-text">孔慧师姐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写在最后"><span class="nav-number">6.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#功能需求"><span class="nav-number">1.</span> <span class="nav-text">功能需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#困难"><span class="nav-number">3.</span> <span class="nav-text">困难</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#难点解决"><span class="nav-number">4.</span> <span class="nav-text">难点解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加过多图片时，会出现OOM"><span class="nav-number">4.1.</span> <span class="nav-text">添加过多图片时，会出现OOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何动态修改图片展示栏的高度"><span class="nav-number">4.2.</span> <span class="nav-text">如何动态修改图片展示栏的高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加号如何伴随图片的增加而后移"><span class="nav-number">4.3.</span> <span class="nav-text">加号如何伴随图片的增加而后移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保证最多添加照片为9张"><span class="nav-number">4.4.</span> <span class="nav-text">如何保证最多添加照片为9张</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#界面"><span class="nav-number">5.</span> <span class="nav-text">界面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo下载"><span class="nav-number">6.</span> <span class="nav-text">Demo下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后话"><span class="nav-number">7.</span> <span class="nav-text">后话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

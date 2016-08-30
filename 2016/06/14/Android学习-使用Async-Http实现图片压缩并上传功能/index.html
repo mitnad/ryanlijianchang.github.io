@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="DialogActivity," />
+  <meta name="keywords" content="Async-Http," />
 
 
 
@@ -59,20 +59,25 @@
 
 
 
-<meta name="description" content="前言在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。">
+<meta name="description" content="前言(转载请注明出处，谢谢！)
+最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。
+效果图安卓端">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android学习-创建圆角的DialogActivity">
-<meta property="og:url" content="lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/index.html">
+<meta property="og:title" content="Android学习-使用Async-Http实现图片压缩并上传功能">
+<meta property="og:url" content="lijianchang.xyz/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/index.html">
 <meta property="og:site_name" content="Ryane's Blog">
-<meta property="og:description" content="前言在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png">
-<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif">
-<meta property="og:updated_time" content="2016-08-30T03:52:34.968Z">
+<meta property="og:description" content="前言(转载请注明出处，谢谢！)
+最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。
+效果图安卓端">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png">
+<meta property="og:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png">
+<meta property="og:updated_time" content="2016-08-30T05:57:38.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android学习-创建圆角的DialogActivity">
-<meta name="twitter:description" content="前言在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。">
-<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png">
+<meta name="twitter:title" content="Android学习-使用Async-Http实现图片压缩并上传功能">
+<meta name="twitter:description" content="前言(转载请注明出处，谢谢！)
+最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。
+效果图安卓端">
+<meta name="twitter:image" content="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png">
 
 
 
@@ -90,7 +95,7 @@
   };
 </script>
 
-  <title> Android学习-创建圆角的DialogActivity | Ryane's Blog </title>
+  <title> Android学习-使用Async-Http实现图片压缩并上传功能 | Ryane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -220,7 +225,7 @@
             
             
               
-                Android学习-创建圆角的DialogActivity
+                Android学习-使用Async-Http实现图片压缩并上传功能
               
             
           </h1>
@@ -232,8 +237,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T09:49:47+08:00" content="2016-08-30">
-              2016-08-30
+            <time itemprop="dateCreated" datetime="2016-06-14T21:37:26+08:00" content="2016-06-14">
+              2016-06-14
             </time>
           </span>
 
@@ -263,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/30/Android学习-创建圆角的DialogActivity/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/30/Android学习-创建圆角的DialogActivity/" itemprop="commentsCount"></span>
+                <a href="/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -288,54 +293,198 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png" alt=""></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>(转载请注明出处，谢谢！)</p>
+<p>最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。</p>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><center><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png" alt=""></center><br><center>安卓端</center>
+
 <a id="more"></a>
-<h2 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h2><p>示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png" alt=""></p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:</p>
-<p>dialog_theme.xml</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;shape xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;
+<center><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png" alt=""></center><br><center>服务器端</center>
 
-    &lt;!-- 填充颜色 --&gt;
-    &lt;solid android:color=&quot;#ffffffff&quot; /&gt;
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="安卓端"><a href="#安卓端" class="headerlink" title="安卓端"></a>安卓端</h3><p>一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。</p>
+<pre><code>    //点击图片打开选择图片界面
+photo.setOnClickListener(new OnClickListener() {
 
-    &lt;!-- 边框宽度 --&gt;
-    &lt;!-- &lt;stroke android:width=&quot;3dp&quot; /&gt; --&gt;
+    @Override
+    public void onClick(View v) {
+        //使用Intent触发选择Action
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        //打开系统提供的图片选择界面
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &quot;image/*&quot;);
+        //传参以在返回本界面时触发加载图片的功能
+        startActivityForResult(intent, 0x1);
+    }
+});
+</code></pre><hr>
+<pre><code>//在选择图片后返回本界面调用此方法
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == 0x1 &amp;&amp; resultCode == RESULT_OK) {
+        if (data != null) {
 
+            ContentResolver resolver = getContentResolver();
+            try {
+                // 获取圖片URI
+                Uri uri = data.getData();
+                // 将URI转换为路径：
+                String[] proj = { MediaStore.Images.Media.DATA };
+                Cursor cursor = managedQuery(uri, proj, null, null, null);
+                //  这个是获得用户选择的图片的索引值
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                // 最后根据索引值获取图片路径
+                photoPath = cursor.getString(column_index);
 
-    &lt;!-- 圆角半径 --&gt;
-    &lt;corners android:radius=&quot;10dp&quot; /&gt;
+                // 压缩成800*480
+                bitmap = BitmapUtils.decodeSampledBitmapFromFd(photoPath, 480, 800);
+                // 设置imageview显示图片
+                photo.setImageBitmap(bitmap);
+                // 设置textview显示路径
+                path.setText(photoPath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-    &lt;!-- 内边距 --&gt;
-    &lt;padding
-        android:bottom=&quot;13dp&quot;
-        android:left=&quot;13dp&quot;
-        android:right=&quot;13dp&quot;
-        android:top=&quot;13dp&quot; /&gt;
+        }
+    }
+}
+</code></pre><p>二、图片压缩。在我们需要上传图片时，我们不可能直接把原图上传到服务器，因为一般图片的大小都超过3，4M，所以我们在上传之前需要对图片进行压缩，我是把图片压缩放到了一个工具类，主要是对图片进行尺寸压缩。</p>
+<pre><code>public class BitmapUtils {
 
-&lt;/shape&gt;
-</code></pre><p>2.然后自定义Activity的style为如下：</p>
-<pre><code>&lt;style name=&quot;DialogTheme&quot; parent=&quot;@android:style/Theme.Dialog&quot;&gt;
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &gt; reqHeight || width &gt; reqWidth) {
+            //首先获取原图高度和宽度的一半
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+            //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+            while ((halfHeight / inSampleSize) &gt; reqHeight &amp;&amp; (halfWidth / inSampleSize) &gt; reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+        return inSampleSize;
+    }
 
-    &lt;!-- 边框 --&gt;
-    &lt;item name=&quot;android:windowFrame&quot;&gt;@null&lt;/item&gt;
-    &lt;!-- 是否浮现在activity之上 --&gt;
-    &lt;item name=&quot;android:windowIsFloating&quot;&gt;true&lt;/item&gt;
-    &lt;!-- 半透明 --&gt;
-    &lt;item name=&quot;android:windowIsTranslucent&quot;&gt;false&lt;/item&gt;
-    &lt;!-- 无标题 --&gt;
-    &lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;
-    &lt;!-- 背景透明 --&gt;
-    &lt;item name=&quot;android:windowBackground&quot;&gt;@android:color/transparent&lt;/item&gt;
-    &lt;!-- 模糊 --&gt;
-    &lt;item name=&quot;android:backgroundDimEnabled&quot;&gt;false&lt;/item&gt;
-&lt;/style&gt;
-</code></pre><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p>1.Demo效果图</p>
-<p><img src="http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif" alt=""></p>
-<p>2.github地址<br><a href="https://github.com/ryanlijianchang/DialogActivityDemo" target="_blank" rel="external">https://github.com/ryanlijianchang/DialogActivityDemo</a></p>
-<p>3.下载地址<br><a href="http://download.csdn.net/detail/ljcitworld/9510717" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9510717</a></p>
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth 最小宽度
+     * @param reqHeight 最小高度
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true才能进行Option的修改
+        options.inJustDecodeBounds = true;
+        // 第一次decodeFile是获取到options.outHeight和options.outWidth
+        BitmapFactory.decodeFile(pathName, options);
+        // options.inSampleSize是图片的压缩比，例如原来大小是100*100，options.inSampleSize为1，则不变，
+        // options.inSampleSize为2，则压缩成50*50
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // 重新设置options.inJustDecodeBounds为false，不能修改option
+        options.inJustDecodeBounds = false;
+        // 根据options重新加载图片
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
+}
+</code></pre><p>三、将Bitmap转为String，同时使用BASE64加密，使传输更加安全，这是我的工具类,里面再一次进行压缩是质量压缩，压缩比例是30%，具体自己调</p>
+<pre><code>public class Utils {
+    // 将bitmap转成string类型通过Base64
+    public static String BitmapToString(Bitmap bitmap) {
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        // 将bitmap压缩成30%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+        // 将bitmap转化为一个byte数组
+        byte[] bs = bao.toByteArray();
+        // 将byte数组用BASE64加密
+        String photoStr = Base64.encodeToString(bs, Base64.DEFAULT);
+        // 返回String
+        return photoStr;
+    }
+}
+</code></pre><p>四、通过Async-Http实现图片上传</p>
+<pre><code>public void upload(String url) {
+    // 将bitmap转为string，并使用BASE64加密
+    String photo = Utils.BitmapToString(bitmap);
+    // 获取到图片的名字
+    String name = photoPath.substring(photoPath.lastIndexOf(&quot;/&quot;)).substring(1);
+    // new一个请求参数
+    RequestParams params = new RequestParams();
+    // 将图片和名字添加到参数中
+    params.put(&quot;photo&quot;, photo);
+    params.put(&quot;name&quot;, name);
+    AsyncHttpClient client = new AsyncHttpClient();
+    // 调用AsyncHttpClient的post方法
+    client.post(url, params, new AsyncHttpResponseHandler() {
+
+        @Override
+        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+            Toast.makeText(getApplicationContext(), &quot;上传失败!&quot;, Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
+            Toast.makeText(getApplicationContext(), &quot;上传成功!&quot;, Toast.LENGTH_SHORT).show();
+        }
+    });
+}
+</code></pre><h3 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h3><p>一、创建一个新的Servlet，在doget方法里面实现</p>
+<pre><code>public class UpLoadPhotoServlet extends HttpServlet {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setCharacterEncoding(&quot;utf-8&quot;);
+        response.setContentType(&quot;text/html&quot;);
+        // 获取文件名
+        String name = request.getParameter(&quot;name&quot;);
+        // 获取图片
+        String photo = request.getParameter(&quot;photo&quot;);
+        // 将传进来的图片的string格式进行处理
+        byte[] bs = new BASE64Decoder().decodeBuffer(photo);
+        // 写到E盘Img文件夹下的a.jpg文件。注：Img文件夹一定要存在
+        FileOutputStream fos = new FileOutputStream(&quot;E:/Img/&quot; + name);
+        fos.write(bs);
+        fos.flush();
+        fos.close();
+
+        PrintWriter writer = response.getWriter();
+        writer.print(&quot;上传成功&quot;);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+}
+</code></pre><h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p><a href="http://download.csdn.net/detail/ljcitworld/9548619" target="_blank" rel="external">http://download.csdn.net/detail/ljcitworld/9548619</a></p>
 
       
     </div>
@@ -350,7 +499,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/DialogActivity/" rel="tag">#DialogActivity</a>
+            <a href="/tags/Async-Http/" rel="tag">#Async-Http</a>
           
         </div>
       
@@ -359,16 +508,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/" rel="next" title="Android学习-使用Async-Http实现图片压缩并上传功能">
-                <i class="fa fa-chevron-left"></i> Android学习-使用Async-Http实现图片压缩并上传功能
+              <a href="/2016/05/12/写给大三的自己/" rel="next" title="写给大三的自己">
+                <i class="fa fa-chevron-left"></i> 写给大三的自己
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/" rel="prev" title="Java容器类源码-ArrayList的最全的源码分析">
-                Java容器类源码-ArrayList的最全的源码分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/" rel="prev" title="Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计">
+                Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -396,7 +545,7 @@
   <div class="comments" id="comments">
     
       <!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016/08/30/Android学习-创建圆角的DialogActivity/" data-title="Android学习-创建圆角的DialogActivity" data-url="lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/"></div>
+	<div class="ds-thread" data-thread-key="2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/" data-title="Android学习-使用Async-Http实现图片压缩并上传功能" data-url="lijianchang.xyz/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -894,7 +1043,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例图"><span class="nav-number">2.</span> <span class="nav-text">示例图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">4.</span> <span class="nav-text">Demo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果图"><span class="nav-number">2.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">3.</span> <span class="nav-text">解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安卓端"><span class="nav-number">3.1.</span> <span class="nav-text">安卓端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器端"><span class="nav-number">3.2.</span> <span class="nav-text">服务器端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo地址"><span class="nav-number">4.</span> <span class="nav-text">Demo地址</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

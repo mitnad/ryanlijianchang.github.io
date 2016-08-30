@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-08-30T03:59:09.351Z</updated>
+  <updated>2016-08-30T05:55:32.666Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Java容器类源码-ArrayList的最全的源码分析</title>
-    <link href="lijianchang.xyz/2016/08/30/Java%E5%AE%B9%E5%99%A8%E7%B1%BB%E6%BA%90%E7%A0%81-ArrayList%E7%9A%84%E6%9C%80%E5%85%A8%E7%9A%84%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    <id>lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/</id>
-    <published>2016-08-30T01:50:04.617Z</published>
-    <updated>2016-08-30T03:59:09.351Z</updated>
+    <link href="lijianchang.xyz/2016/07/25/Java%E5%AE%B9%E5%99%A8%E7%B1%BB%E6%BA%90%E7%A0%81-ArrayList%E7%9A%84%E6%9C%80%E5%85%A8%E7%9A%84%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <id>lijianchang.xyz/2016/07/25/Java容器类源码-ArrayList的最全的源码分析/</id>
+    <published>2016-07-25T13:37:26.000Z</published>
+    <updated>2016-08-30T05:55:32.666Z</updated>
     
     <content type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -442,298 +442,270 @@ private void grow(int minCapacity) {
   </entry>
   
   <entry>
-    <title>Android学习-创建圆角的DialogActivity</title>
-    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
-    <id>lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/</id>
-    <published>2016-08-30T01:49:47.741Z</published>
-    <updated>2016-08-30T03:52:34.968Z</updated>
+    <title>Android技能-创建Json文本及Json解析</title>
+    <link href="lijianchang.xyz/2016/07/15/Android%E6%8A%80%E8%83%BD-%E5%88%9B%E5%BB%BAJson%E6%96%87%E6%9C%AC%E5%8F%8AJson%E8%A7%A3%E6%9E%90/"/>
+    <id>lijianchang.xyz/2016/07/15/Android技能-创建Json文本及Json解析/</id>
+    <published>2016-07-15T13:37:26.000Z</published>
+    <updated>2016-08-30T05:55:50.253Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;示例图&quot;&gt;&lt;a href=&quot;#示例图&quot; class=&quot;headerlink&quot; title=&quot;示例图&quot;&gt;&lt;/a&gt;示例图&lt;/h2&gt;&lt;p&gt;示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:&lt;/p&gt;
-&lt;p&gt;dialog_theme.xml&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
-&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; &amp;gt;
+&lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=&quot;headerlink&quot; title=&quot;什么是JSON&quot;&gt;&lt;/a&gt;什么是JSON&lt;/h2&gt;&lt;p&gt;JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;, age:50, eyeColor:&amp;quot;blue&amp;quot;};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。&lt;/p&gt;
+&lt;h2 id=&quot;JSON的数据类型&quot;&gt;&lt;a href=&quot;#JSON的数据类型&quot; class=&quot;headerlink&quot; title=&quot;JSON的数据类型&quot;&gt;&lt;/a&gt;JSON的数据类型&lt;/h2&gt;&lt;p&gt;json一共有两种数据结构。&lt;/p&gt;
+&lt;h3 id=&quot;JsonObject&quot;&gt;&lt;a href=&quot;#JsonObject&quot; class=&quot;headerlink&quot; title=&quot;JsonObject&quot;&gt;&lt;/a&gt;JsonObject&lt;/h3&gt;&lt;p&gt;一种是以 (key/value)对形式存在的无序的jsonObject对象。对象使用大括号括起来，属性之间使用逗号分隔开。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202314-f6689071fd2444f18e2db818071ad990.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;例如：{“name”: “jack”}， 这就是一个最简单的json对象，对于这种数据格式，key值必须要是string类型，而对于value，则可以是string、number、object、array等数据类型。&lt;/p&gt;
+&lt;h3 id=&quot;JsonArray&quot;&gt;&lt;a href=&quot;#JsonArray&quot; class=&quot;headerlink&quot; title=&quot;JsonArray&quot;&gt;&lt;/a&gt;JsonArray&lt;/h3&gt;&lt;p&gt;另一种数据格式就是有序的value的集合，这种形式被称为是JsonArray。数组是值的有序集合，值与值之间使用逗号分隔开，集合用中括号括起来。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202539-5ecbee4dffaa4388998dd3118948ec48.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;创建JSON文本&quot;&gt;&lt;a href=&quot;#创建JSON文本&quot; class=&quot;headerlink&quot; title=&quot;创建JSON文本&quot;&gt;&lt;/a&gt;创建JSON文本&lt;/h2&gt;&lt;p&gt;例如我们要创建以下类型的Jjson数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;a href=&quot;#使用JSONOject和JSONArray创建&quot; class=&quot;headerlink&quot; title=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;/a&gt;使用JSONOject和JSONArray创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * 使用JsonObject和JsonArray创建JSON对象
+ */
+public void makeJson() {
+    try {
+        JSONObject object = new JSONObject();
 
-    &amp;lt;!-- 填充颜色 --&amp;gt;
-    &amp;lt;solid android:color=&amp;quot;#ffffffff&amp;quot; /&amp;gt;
+        JSONObject person = new JSONObject();
+        //名字
+        person.put(&amp;quot;name&amp;quot;, &amp;quot;zhangsan&amp;quot;);
+        //电话
+        JSONArray phone = new JSONArray();
+        phone.put(&amp;quot;123&amp;quot;).put(&amp;quot;456&amp;quot;);
+        person.put(&amp;quot;phone&amp;quot;, phone);
+        //地址
+        person.put(&amp;quot;address&amp;quot;, &amp;quot;guangdong&amp;quot;);
 
-    &amp;lt;!-- 边框宽度 --&amp;gt;
-    &amp;lt;!-- &amp;lt;stroke android:width=&amp;quot;3dp&amp;quot; /&amp;gt; --&amp;gt;
+        object.put(&amp;quot;person&amp;quot;, person);
 
-
-    &amp;lt;!-- 圆角半径 --&amp;gt;
-    &amp;lt;corners android:radius=&amp;quot;10dp&amp;quot; /&amp;gt;
-
-    &amp;lt;!-- 内边距 --&amp;gt;
-    &amp;lt;padding
-        android:bottom=&amp;quot;13dp&amp;quot;
-        android:left=&amp;quot;13dp&amp;quot;
-        android:right=&amp;quot;13dp&amp;quot;
-        android:top=&amp;quot;13dp&amp;quot; /&amp;gt;
-
-&amp;lt;/shape&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.然后自定义Activity的style为如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;style name=&amp;quot;DialogTheme&amp;quot; parent=&amp;quot;@android:style/Theme.Dialog&amp;quot;&amp;gt;
-
-    &amp;lt;!-- 边框 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:windowFrame&amp;quot;&amp;gt;@null&amp;lt;/item&amp;gt;
-    &amp;lt;!-- 是否浮现在activity之上 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:windowIsFloating&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
-    &amp;lt;!-- 半透明 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:windowIsTranslucent&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
-    &amp;lt;!-- 无标题 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:windowNoTitle&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
-    &amp;lt;!-- 背景透明 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:windowBackground&amp;quot;&amp;gt;@android:color/transparent&amp;lt;/item&amp;gt;
-    &amp;lt;!-- 模糊 --&amp;gt;
-    &amp;lt;item name=&amp;quot;android:backgroundDimEnabled&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
-&amp;lt;/style&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;p&gt;1.Demo效果图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;2.github地址&lt;br&gt;&lt;a href=&quot;https://github.com/ryanlijianchang/DialogActivityDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/DialogActivityDemo&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;3.下载地址&lt;br&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9510717&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9510717&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="DialogActivity" scheme="lijianchang.xyz/tags/DialogActivity/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android学习-使用Async-Http实现图片压缩并上传功能</title>
-    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8Async-Http%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/"/>
-    <id>lijianchang.xyz/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/</id>
-    <published>2016-08-30T01:49:43.160Z</published>
-    <updated>2016-08-30T03:52:04.557Z</updated>
-    
-    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
-&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
-&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
-
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;服务器端&lt;/center&gt;
-
-&lt;h2 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h2&gt;&lt;h3 id=&quot;安卓端&quot;&gt;&lt;a href=&quot;#安卓端&quot; class=&quot;headerlink&quot; title=&quot;安卓端&quot;&gt;&lt;/a&gt;安卓端&lt;/h3&gt;&lt;p&gt;一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    //点击图片打开选择图片界面
-photo.setOnClickListener(new OnClickListener() {
-
-    @Override
-    public void onClick(View v) {
-        //使用Intent触发选择Action
-        Intent intent = new Intent(Intent.ACTION_PICK, null);
-        //打开系统提供的图片选择界面
-        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &amp;quot;image/*&amp;quot;);
-        //传参以在返回本界面时触发加载图片的功能
-        startActivityForResult(intent, 0x1);
-    }
-});
-&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;pre&gt;&lt;code&gt;//在选择图片后返回本界面调用此方法
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    if (requestCode == 0x1 &amp;amp;&amp;amp; resultCode == RESULT_OK) {
-        if (data != null) {
-
-            ContentResolver resolver = getContentResolver();
-            try {
-                // 获取圖片URI
-                Uri uri = data.getData();
-                // 将URI转换为路径：
-                String[] proj = { MediaStore.Images.Media.DATA };
-                Cursor cursor = managedQuery(uri, proj, null, null, null);
-                //  这个是获得用户选择的图片的索引值
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                cursor.moveToFirst();
-                // 最后根据索引值获取图片路径
-                photoPath = cursor.getString(column_index);
-
-                // 压缩成800*480
-                bitmap = BitmapUtils.decodeSampledBitmapFromFd(photoPath, 480, 800);
-                // 设置imageview显示图片
-                photo.setImageBitmap(bitmap);
-                // 设置textview显示路径
-                path.setText(photoPath);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
+        Log.i(&amp;quot;JSON_LOG&amp;quot;, object.toString());
+    } catch (JSONException e) {
+        e.printStackTrace();
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;二、图片压缩。在我们需要上传图片时，我们不可能直接把原图上传到服务器，因为一般图片的大小都超过3，4M，所以我们在上传之前需要对图片进行压缩，我是把图片压缩放到了一个工具类，主要是对图片进行尺寸压缩。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public class BitmapUtils {
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用JsonStringer创建&quot;&gt;&lt;a href=&quot;#使用JsonStringer创建&quot; class=&quot;headerlink&quot; title=&quot;使用JsonStringer创建&quot;&gt;&lt;/a&gt;使用JsonStringer创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * 通过JsonStringer创建JSON对象
+ */
+public void makeJsonStringer() {
+    try {
+        JSONStringer jsonText = new JSONStringer();
+        // 首先是{，对象开始。object和endObject必须配对使用
+        jsonText.object();
 
-    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-        if (height &amp;gt; reqHeight || width &amp;gt; reqWidth) {
-            //首先获取原图高度和宽度的一半
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-            //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
-            //最后得到的宽或者高都是最接近最小宽度或者最小高度的
-            while ((halfHeight / inSampleSize) &amp;gt; reqHeight &amp;amp;&amp;amp; (halfWidth / inSampleSize) &amp;gt; reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-        return inSampleSize;
-    }
+        jsonText.key(&amp;quot;person&amp;quot;);
 
-    /**
-     * 根据Resources压缩图片
-     * 
-     * @param res
-     * @param resId
-     * @param reqWidth
-     * @param reqHeight
-     * @return
-     */
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        options.inJustDecodeBounds = false;
-        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
-        return src;
-    }
+        jsonText.object();
 
-    /**
-     * 根据地址压缩图片
-     * 
-     * @param pathName
-     * @param reqWidth 最小宽度
-     * @param reqHeight 最小高度
-     * @return
-     */
-    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        // 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true才能进行Option的修改
-        options.inJustDecodeBounds = true;
-        // 第一次decodeFile是获取到options.outHeight和options.outWidth
-        BitmapFactory.decodeFile(pathName, options);
-        // options.inSampleSize是图片的压缩比，例如原来大小是100*100，options.inSampleSize为1，则不变，
-        // options.inSampleSize为2，则压缩成50*50
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-        // 重新设置options.inJustDecodeBounds为false，不能修改option
-        options.inJustDecodeBounds = false;
-        // 根据options重新加载图片
-        Bitmap src = BitmapFactory.decodeFile(pathName, options);
-        return src;
+        jsonText.key(&amp;quot;name&amp;quot;);
+        jsonText.value(&amp;quot;zhangsan&amp;quot;);
+
+        jsonText.key(&amp;quot;phone&amp;quot;);
+        // 键phone的值是数组。array和endArray必须配对使用
+        jsonText.array();
+        jsonText.value(&amp;quot;123&amp;quot;).value(&amp;quot;456&amp;quot;);
+        jsonText.endArray();
+
+        jsonText.key(&amp;quot;address&amp;quot;);
+        jsonText.value(&amp;quot;Guangdong&amp;quot;);
+
+        jsonText.endObject();
+
+        jsonText.endObject();
+
+
+        Log.i(&amp;quot;JSON_LOG&amp;quot;, jsonText.toString());
+    } catch (JSONException ex) {
+        throw new RuntimeException(ex);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三、将Bitmap转为String，同时使用BASE64加密，使传输更加安全，这是我的工具类,里面再一次进行压缩是质量压缩，压缩比例是30%，具体自己调&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public class Utils {
-    // 将bitmap转成string类型通过Base64
-    public static String BitmapToString(Bitmap bitmap) {
-
-        ByteArrayOutputStream bao = new ByteArrayOutputStream();
-        // 将bitmap压缩成30%
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bao);
-        // 将bitmap转化为一个byte数组
-        byte[] bs = bao.toByteArray();
-        // 将byte数组用BASE64加密
-        String photoStr = Base64.encodeToString(bs, Base64.DEFAULT);
-        // 返回String
-        return photoStr;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;JSON解析&quot;&gt;&lt;a href=&quot;#JSON解析&quot; class=&quot;headerlink&quot; title=&quot;JSON解析&quot;&gt;&lt;/a&gt;JSON解析&lt;/h2&gt;&lt;h3 id=&quot;1-解析-“key”-“Object”-类型的&quot;&gt;&lt;a href=&quot;#1-解析-“key”-“Object”-类型的&quot; class=&quot;headerlink&quot; title=&quot;1. 解析{“key”, “Object”}类型的&quot;&gt;&lt;/a&gt;1. 解析{“key”, “Object”}类型的&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * JSON解析
+ * @param json
+ * @return
+ */
+public static String JsonToString(String json) {
+    Person person = new Person();
+    try {
+        //获取到整个Json数据
+        JSONObject object = new JSONObject(json);
+        //解析最外层，获得person键对应的object值
+        JSONObject personObject = object.getJSONObject(&amp;quot;person&amp;quot;);
+        //解析object值里面的每一个属性
+        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
+        //属性值是数组，则使用JSONArray获取
+        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
+        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
+            phone.add((String) phoneArray.get(i));
+        }
+        person.setPhone(phone);
+        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
+    } catch (JSONException e) {
+        e.printStackTrace();
     }
+    return person.toString();
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;四、通过Async-Http实现图片上传&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public void upload(String url) {
-    // 将bitmap转为string，并使用BASE64加密
-    String photo = Utils.BitmapToString(bitmap);
-    // 获取到图片的名字
-    String name = photoPath.substring(photoPath.lastIndexOf(&amp;quot;/&amp;quot;)).substring(1);
-    // new一个请求参数
-    RequestParams params = new RequestParams();
-    // 将图片和名字添加到参数中
-    params.put(&amp;quot;photo&amp;quot;, photo);
-    params.put(&amp;quot;name&amp;quot;, name);
-    AsyncHttpClient client = new AsyncHttpClient();
-    // 调用AsyncHttpClient的post方法
-    client.post(url, params, new AsyncHttpResponseHandler() {
-
-        @Override
-        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
-            Toast.makeText(getApplicationContext(), &amp;quot;上传失败!&amp;quot;, Toast.LENGTH_SHORT).show();
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;2-解析-“Object”-类型&quot;&gt;&lt;a href=&quot;#2-解析-“Object”-类型&quot; class=&quot;headerlink&quot; title=&quot;2. 解析{“Object”}类型&quot;&gt;&lt;/a&gt;2. 解析{“Object”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么解析：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /**
+ * 解析单个对象的JSON数据
+ * @param json
+ * @return
+ */
+public static String JsonParse(String json) {
+    Person person = new Person();
+    try {
+        JSONObject personObject = new JSONObject(json);
+        //解析object值里面的每一个属性
+        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
+        //属性值是数组，则使用JSONArray获取
+        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
+        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
+            phone.add((String) phoneArray.get(i));
         }
+        person.setPhone(phone);
+        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
 
-        @Override
-        public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
-            Toast.makeText(getApplicationContext(), &amp;quot;上传成功!&amp;quot;, Toast.LENGTH_SHORT).show();
-        }
-    });
+    return person.toString();
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;服务器端&quot;&gt;&lt;a href=&quot;#服务器端&quot; class=&quot;headerlink&quot; title=&quot;服务器端&quot;&gt;&lt;/a&gt;服务器端&lt;/h3&gt;&lt;p&gt;一、创建一个新的Servlet，在doget方法里面实现&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public class UpLoadPhotoServlet extends HttpServlet {
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-解析-“value”-类型&quot;&gt;&lt;a href=&quot;#3-解析-“value”-类型&quot; class=&quot;headerlink&quot; title=&quot;3. 解析{“value”}类型&quot;&gt;&lt;/a&gt;3. 解析{“value”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;, &amp;quot;789&amp;quot;];
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+ * 解析数组型的JSON数据
+ * @param json
+ * @return
+ */
+public static List&amp;lt;String&amp;gt; JsonParseToArray(String json){
+    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
+    try {
+        JSONArray array = new JSONArray(json);
+        for (int i=0; i&amp;lt;array.length(); i++){
+            list.add((String) array.get(i));
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
+    }
+    return list;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解析总结&quot;&gt;&lt;a href=&quot;#解析总结&quot; class=&quot;headerlink&quot; title=&quot;解析总结&quot;&gt;&lt;/a&gt;解析总结&lt;/h3&gt;&lt;p&gt;JSON解析无非就是通过JSONObject和JSONArray不断地对数据进行解析，归根结底每一种数据都是可以分解为以上的三种最基本的解析，所以大家只要掌握好JSONObject和JSONArray，即便再复杂的数据类型，大家也可以解析得得心应手。&lt;/p&gt;
+&lt;h2 id=&quot;GSON&quot;&gt;&lt;a href=&quot;#GSON&quot; class=&quot;headerlink&quot; title=&quot;GSON&quot;&gt;&lt;/a&gt;GSON&lt;/h2&gt;&lt;p&gt;GSON是Google开发的开源的JAVA API，可以用于JSON的创建和JSON的解析。下面对GSON做一个最基本的介绍。更多了解 &lt;a href=&quot;http://sites.google.com/site/gson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sites.google.com/site/gson/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;首先需要下载GSON的jar包，自行度娘。&lt;/p&gt;
+&lt;p&gt;其次，我们使用GSON来创建JSON和解析JSON都要有相对应的JavaBean，所以GSON可以帮助我们更加简便地实现Bean和JSON的转换。&lt;/p&gt;
+&lt;p&gt;以下例子我们都是用Person类的JavaBean:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Person {
+    private String name;
+    private List&amp;lt;String&amp;gt; phone;
+    private String address;
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
-        response.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
-        response.setContentType(&amp;quot;text/html&amp;quot;);
-        // 获取文件名
-        String name = request.getParameter(&amp;quot;name&amp;quot;);
-        // 获取图片
-        String photo = request.getParameter(&amp;quot;photo&amp;quot;);
-        // 将传进来的图片的string格式进行处理
-        byte[] bs = new BASE64Decoder().decodeBuffer(photo);
-        // 写到E盘Img文件夹下的a.jpg文件。注：Img文件夹一定要存在
-        FileOutputStream fos = new FileOutputStream(&amp;quot;E:/Img/&amp;quot; + name);
-        fos.write(bs);
-        fos.flush();
-        fos.close();
+    public Person() {
 
-        PrintWriter writer = response.getWriter();
-        writer.print(&amp;quot;上传成功&amp;quot;);
+    }
+
+    public Person(String name, List&amp;lt;String&amp;gt; phone, String address) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List&amp;lt;String&amp;gt; getPhone() {
+        return phone;
+    }
+
+    public void setPhone(List&amp;lt;String&amp;gt; phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+    public String toString() {
+        return &amp;quot;Person{&amp;quot; +
+                &amp;quot;name=&amp;apos;&amp;quot; + name + &amp;apos;\&amp;apos;&amp;apos; +
+                &amp;quot;, phone=&amp;quot; + phone +
+                &amp;quot;, address=&amp;apos;&amp;quot; + address + &amp;apos;\&amp;apos;&amp;apos; +
+                &amp;apos;}&amp;apos;;
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo地址&quot;&gt;&lt;a href=&quot;#Demo地址&quot; class=&quot;headerlink&quot; title=&quot;Demo地址&quot;&gt;&lt;/a&gt;Demo地址&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9548619&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9548619&lt;/a&gt;&lt;/p&gt;
-</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Bean转换为JSON&quot;&gt;&lt;a href=&quot;#Bean转换为JSON&quot; class=&quot;headerlink&quot; title=&quot;Bean转换为JSON&quot;&gt;&lt;/a&gt;Bean转换为JSON&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * GSON转换为JSON
+ *
+ * @return json
+ */
+public String beanToJson() {
+
+    //赋值给一个person实例
+    List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
+    phone.add(&amp;quot;123&amp;quot;);
+    phone.add(&amp;quot;456&amp;quot;);
+    Person person = new Person(&amp;quot;jack&amp;quot;, phone, &amp;quot;Guangzhou&amp;quot;);
+
+    //实例化GSON
+    Gson gson = new Gson();
+    //调用gson.toJson将Bean转为JSON
+    String json = gson.toJson(person);
+    return json;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;JSON转换为Bean&quot;&gt;&lt;a href=&quot;#JSON转换为Bean&quot; class=&quot;headerlink&quot; title=&quot;JSON转换为Bean&quot;&gt;&lt;/a&gt;JSON转换为Bean&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
+ * JSON转换为Bean
+ * @param json
+ * @return
+ */
+public String jsonToBean(String json) {
+    Person person = new Person();
+    Gson gson = new Gson();
+    //调用gson.fromJson将json转为bean
+    person = gson.fromJson(json, Person.class);
+    return person.toString();
+}
+&lt;/code&gt;&lt;/pre&gt;</content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
-&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
-&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
+      &lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
     
     </summary>
     
-      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+      <category term="Android技能" scheme="lijianchang.xyz/categories/Android%E6%8A%80%E8%83%BD/"/>
     
     
-      <category term="Async-Http" scheme="lijianchang.xyz/tags/Async-Http/"/>
+      <category term="JSON" scheme="lijianchang.xyz/tags/JSON/"/>
     
   </entry>
   
   <entry>
     <title>Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计</title>
-    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
-    <id>lijianchang.xyz/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
-    <published>2016-08-30T01:49:38.466Z</published>
-    <updated>2016-08-30T05:44:30.411Z</updated>
+    <link href="lijianchang.xyz/2016/06/14/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
+    <id>lijianchang.xyz/2016/06/14/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
+    <published>2016-06-14T13:37:26.000Z</published>
+    <updated>2016-08-30T05:58:18.977Z</updated>
     
     <content type="html">&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
 &lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
@@ -1013,270 +985,335 @@ adapter.notifyDataSetChanged();
   </entry>
   
   <entry>
-    <title>Android技能-创建Json文本及Json解析</title>
-    <link href="lijianchang.xyz/2016/08/30/Android%E6%8A%80%E8%83%BD-%E5%88%9B%E5%BB%BAJson%E6%96%87%E6%9C%AC%E5%8F%8AJson%E8%A7%A3%E6%9E%90/"/>
-    <id>lijianchang.xyz/2016/08/30/Android技能-创建Json文本及Json解析/</id>
-    <published>2016-08-30T01:49:30.348Z</published>
-    <updated>2016-08-30T03:52:41.157Z</updated>
+    <title>Android学习-使用Async-Http实现图片压缩并上传功能</title>
+    <link href="lijianchang.xyz/2016/06/14/Android%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8Async-Http%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/"/>
+    <id>lijianchang.xyz/2016/06/14/Android学习-使用Async-Http实现图片压缩并上传功能/</id>
+    <published>2016-06-14T13:37:26.000Z</published>
+    <updated>2016-08-30T05:57:38.706Z</updated>
     
-    <content type="html">&lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
+&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
+
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=&quot;headerlink&quot; title=&quot;什么是JSON&quot;&gt;&lt;/a&gt;什么是JSON&lt;/h2&gt;&lt;p&gt;JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;, age:50, eyeColor:&amp;quot;blue&amp;quot;};
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。&lt;/p&gt;
-&lt;h2 id=&quot;JSON的数据类型&quot;&gt;&lt;a href=&quot;#JSON的数据类型&quot; class=&quot;headerlink&quot; title=&quot;JSON的数据类型&quot;&gt;&lt;/a&gt;JSON的数据类型&lt;/h2&gt;&lt;p&gt;json一共有两种数据结构。&lt;/p&gt;
-&lt;h3 id=&quot;JsonObject&quot;&gt;&lt;a href=&quot;#JsonObject&quot; class=&quot;headerlink&quot; title=&quot;JsonObject&quot;&gt;&lt;/a&gt;JsonObject&lt;/h3&gt;&lt;p&gt;一种是以 (key/value)对形式存在的无序的jsonObject对象。对象使用大括号括起来，属性之间使用逗号分隔开。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202314-f6689071fd2444f18e2db818071ad990.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;例如：{“name”: “jack”}， 这就是一个最简单的json对象，对于这种数据格式，key值必须要是string类型，而对于value，则可以是string、number、object、array等数据类型。&lt;/p&gt;
-&lt;h3 id=&quot;JsonArray&quot;&gt;&lt;a href=&quot;#JsonArray&quot; class=&quot;headerlink&quot; title=&quot;JsonArray&quot;&gt;&lt;/a&gt;JsonArray&lt;/h3&gt;&lt;p&gt;另一种数据格式就是有序的value的集合，这种形式被称为是JsonArray。数组是值的有序集合，值与值之间使用逗号分隔开，集合用中括号括起来。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://images.cnitblog.com/blog/432441/201311/27202539-5ecbee4dffaa4388998dd3118948ec48.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;创建JSON文本&quot;&gt;&lt;a href=&quot;#创建JSON文本&quot; class=&quot;headerlink&quot; title=&quot;创建JSON文本&quot;&gt;&lt;/a&gt;创建JSON文本&lt;/h2&gt;&lt;p&gt;例如我们要创建以下类型的Jjson数据：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;a href=&quot;#使用JSONOject和JSONArray创建&quot; class=&quot;headerlink&quot; title=&quot;使用JSONOject和JSONArray创建&quot;&gt;&lt;/a&gt;使用JSONOject和JSONArray创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
- * 使用JsonObject和JsonArray创建JSON对象
- */
-public void makeJson() {
-    try {
-        JSONObject object = new JSONObject();
+&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;服务器端&lt;/center&gt;
 
-        JSONObject person = new JSONObject();
-        //名字
-        person.put(&amp;quot;name&amp;quot;, &amp;quot;zhangsan&amp;quot;);
-        //电话
-        JSONArray phone = new JSONArray();
-        phone.put(&amp;quot;123&amp;quot;).put(&amp;quot;456&amp;quot;);
-        person.put(&amp;quot;phone&amp;quot;, phone);
-        //地址
-        person.put(&amp;quot;address&amp;quot;, &amp;quot;guangdong&amp;quot;);
+&lt;h2 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h2&gt;&lt;h3 id=&quot;安卓端&quot;&gt;&lt;a href=&quot;#安卓端&quot; class=&quot;headerlink&quot; title=&quot;安卓端&quot;&gt;&lt;/a&gt;安卓端&lt;/h3&gt;&lt;p&gt;一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    //点击图片打开选择图片界面
+photo.setOnClickListener(new OnClickListener() {
 
-        object.put(&amp;quot;person&amp;quot;, person);
-
-        Log.i(&amp;quot;JSON_LOG&amp;quot;, object.toString());
-    } catch (JSONException e) {
-        e.printStackTrace();
+    @Override
+    public void onClick(View v) {
+        //使用Intent触发选择Action
+        Intent intent = new Intent(Intent.ACTION_PICK, null);
+        //打开系统提供的图片选择界面
+        intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, &amp;quot;image/*&amp;quot;);
+        //传参以在返回本界面时触发加载图片的功能
+        startActivityForResult(intent, 0x1);
     }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用JsonStringer创建&quot;&gt;&lt;a href=&quot;#使用JsonStringer创建&quot; class=&quot;headerlink&quot; title=&quot;使用JsonStringer创建&quot;&gt;&lt;/a&gt;使用JsonStringer创建&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
- * 通过JsonStringer创建JSON对象
- */
-public void makeJsonStringer() {
-    try {
-        JSONStringer jsonText = new JSONStringer();
-        // 首先是{，对象开始。object和endObject必须配对使用
-        jsonText.object();
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;//在选择图片后返回本界面调用此方法
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    if (requestCode == 0x1 &amp;amp;&amp;amp; resultCode == RESULT_OK) {
+        if (data != null) {
 
-        jsonText.key(&amp;quot;person&amp;quot;);
+            ContentResolver resolver = getContentResolver();
+            try {
+                // 获取圖片URI
+                Uri uri = data.getData();
+                // 将URI转换为路径：
+                String[] proj = { MediaStore.Images.Media.DATA };
+                Cursor cursor = managedQuery(uri, proj, null, null, null);
+                //  这个是获得用户选择的图片的索引值
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                // 最后根据索引值获取图片路径
+                photoPath = cursor.getString(column_index);
 
-        jsonText.object();
+                // 压缩成800*480
+                bitmap = BitmapUtils.decodeSampledBitmapFromFd(photoPath, 480, 800);
+                // 设置imageview显示图片
+                photo.setImageBitmap(bitmap);
+                // 设置textview显示路径
+                path.setText(photoPath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        jsonText.key(&amp;quot;name&amp;quot;);
-        jsonText.value(&amp;quot;zhangsan&amp;quot;);
-
-        jsonText.key(&amp;quot;phone&amp;quot;);
-        // 键phone的值是数组。array和endArray必须配对使用
-        jsonText.array();
-        jsonText.value(&amp;quot;123&amp;quot;).value(&amp;quot;456&amp;quot;);
-        jsonText.endArray();
-
-        jsonText.key(&amp;quot;address&amp;quot;);
-        jsonText.value(&amp;quot;Guangdong&amp;quot;);
-
-        jsonText.endObject();
-
-        jsonText.endObject();
-
-
-        Log.i(&amp;quot;JSON_LOG&amp;quot;, jsonText.toString());
-    } catch (JSONException ex) {
-        throw new RuntimeException(ex);
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输出结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;JSON解析&quot;&gt;&lt;a href=&quot;#JSON解析&quot; class=&quot;headerlink&quot; title=&quot;JSON解析&quot;&gt;&lt;/a&gt;JSON解析&lt;/h2&gt;&lt;h3 id=&quot;1-解析-“key”-“Object”-类型的&quot;&gt;&lt;a href=&quot;#1-解析-“key”-“Object”-类型的&quot; class=&quot;headerlink&quot; title=&quot;1. 解析{“key”, “Object”}类型的&quot;&gt;&lt;/a&gt;1. 解析{“key”, “Object”}类型的&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;person&amp;quot;:{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析代码&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/**
- * JSON解析
- * @param json
- * @return
- */
-public static String JsonToString(String json) {
-    Person person = new Person();
-    try {
-        //获取到整个Json数据
-        JSONObject object = new JSONObject(json);
-        //解析最外层，获得person键对应的object值
-        JSONObject personObject = object.getJSONObject(&amp;quot;person&amp;quot;);
-        //解析object值里面的每一个属性
-        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
-        //属性值是数组，则使用JSONArray获取
-        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
-        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
-        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
-            phone.add((String) phoneArray.get(i));
         }
-        person.setPhone(phone);
-        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
-    } catch (JSONException e) {
-        e.printStackTrace();
     }
-    return person.toString();
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;结果&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-Json3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-解析-“Object”-类型&quot;&gt;&lt;a href=&quot;#2-解析-“Object”-类型&quot; class=&quot;headerlink&quot; title=&quot;2. 解析{“Object”}类型&quot;&gt;&lt;/a&gt;2. 解析{“Object”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;{&amp;quot;name&amp;quot;:&amp;quot;zhangsan&amp;quot;, &amp;quot;phone&amp;quot;:[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;],&amp;quot;address&amp;quot;:&amp;quot;guangdong&amp;quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这么解析：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; /**
- * 解析单个对象的JSON数据
- * @param json
- * @return
- */
-public static String JsonParse(String json) {
-    Person person = new Person();
-    try {
-        JSONObject personObject = new JSONObject(json);
-        //解析object值里面的每一个属性
-        person.setName(personObject.getString(&amp;quot;name&amp;quot;));
-        //属性值是数组，则使用JSONArray获取
-        JSONArray phoneArray = personObject.getJSONArray(&amp;quot;phone&amp;quot;);
-        List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
-        for (int i = 0; i &amp;lt; phoneArray.length(); i++) {
-            phone.add((String) phoneArray.get(i));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;二、图片压缩。在我们需要上传图片时，我们不可能直接把原图上传到服务器，因为一般图片的大小都超过3，4M，所以我们在上传之前需要对图片进行压缩，我是把图片压缩放到了一个工具类，主要是对图片进行尺寸压缩。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class BitmapUtils {
+
+    private static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+        if (height &amp;gt; reqHeight || width &amp;gt; reqWidth) {
+            //首先获取原图高度和宽度的一半
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+            //循环，如果halfHeight和halfWidth同时大于最小宽度和最小高度时，inSampleSize乘2，
+            //最后得到的宽或者高都是最接近最小宽度或者最小高度的
+            while ((halfHeight / inSampleSize) &amp;gt; reqHeight &amp;amp;&amp;amp; (halfWidth / inSampleSize) &amp;gt; reqWidth) {
+                inSampleSize *= 2;
+            }
         }
-        person.setPhone(phone);
-        person.setAddress(personObject.getString(&amp;quot;address&amp;quot;));
-    } catch (JSONException e) {
-        e.printStackTrace();
+        return inSampleSize;
     }
 
-    return person.toString();
+    /**
+     * 根据Resources压缩图片
+     * 
+     * @param res
+     * @param resId
+     * @param reqWidth
+     * @param reqHeight
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        options.inJustDecodeBounds = false;
+        Bitmap src = BitmapFactory.decodeResource(res, resId, options);
+        return src;
+    }
+
+    /**
+     * 根据地址压缩图片
+     * 
+     * @param pathName
+     * @param reqWidth 最小宽度
+     * @param reqHeight 最小高度
+     * @return
+     */
+    public static Bitmap decodeSampledBitmapFromFd(String pathName, int reqWidth, int reqHeight) {
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        // 若要对图片进行压缩，必须先设置Option的inJustDecodeBounds为true才能进行Option的修改
+        options.inJustDecodeBounds = true;
+        // 第一次decodeFile是获取到options.outHeight和options.outWidth
+        BitmapFactory.decodeFile(pathName, options);
+        // options.inSampleSize是图片的压缩比，例如原来大小是100*100，options.inSampleSize为1，则不变，
+        // options.inSampleSize为2，则压缩成50*50
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+        // 重新设置options.inJustDecodeBounds为false，不能修改option
+        options.inJustDecodeBounds = false;
+        // 根据options重新加载图片
+        Bitmap src = BitmapFactory.decodeFile(pathName, options);
+        return src;
+    }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;3-解析-“value”-类型&quot;&gt;&lt;a href=&quot;#3-解析-“value”-类型&quot; class=&quot;headerlink&quot; title=&quot;3. 解析{“value”}类型&quot;&gt;&lt;/a&gt;3. 解析{“value”}类型&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;[&amp;quot;123&amp;quot;, &amp;quot;456&amp;quot;, &amp;quot;789&amp;quot;];
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;解析方法：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;/**
- * 解析数组型的JSON数据
- * @param json
- * @return
- */
-public static List&amp;lt;String&amp;gt; JsonParseToArray(String json){
-    List&amp;lt;String&amp;gt; list = new ArrayList&amp;lt;&amp;gt;();
-    try {
-        JSONArray array = new JSONArray(json);
-        for (int i=0; i&amp;lt;array.length(); i++){
-            list.add((String) array.get(i));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;三、将Bitmap转为String，同时使用BASE64加密，使传输更加安全，这是我的工具类,里面再一次进行压缩是质量压缩，压缩比例是30%，具体自己调&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class Utils {
+    // 将bitmap转成string类型通过Base64
+    public static String BitmapToString(Bitmap bitmap) {
+
+        ByteArrayOutputStream bao = new ByteArrayOutputStream();
+        // 将bitmap压缩成30%
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, bao);
+        // 将bitmap转化为一个byte数组
+        byte[] bs = bao.toByteArray();
+        // 将byte数组用BASE64加密
+        String photoStr = Base64.encodeToString(bs, Base64.DEFAULT);
+        // 返回String
+        return photoStr;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;四、通过Async-Http实现图片上传&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public void upload(String url) {
+    // 将bitmap转为string，并使用BASE64加密
+    String photo = Utils.BitmapToString(bitmap);
+    // 获取到图片的名字
+    String name = photoPath.substring(photoPath.lastIndexOf(&amp;quot;/&amp;quot;)).substring(1);
+    // new一个请求参数
+    RequestParams params = new RequestParams();
+    // 将图片和名字添加到参数中
+    params.put(&amp;quot;photo&amp;quot;, photo);
+    params.put(&amp;quot;name&amp;quot;, name);
+    AsyncHttpClient client = new AsyncHttpClient();
+    // 调用AsyncHttpClient的post方法
+    client.post(url, params, new AsyncHttpResponseHandler() {
+
+        @Override
+        public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
+            Toast.makeText(getApplicationContext(), &amp;quot;上传失败!&amp;quot;, Toast.LENGTH_SHORT).show();
         }
-    } catch (JSONException e) {
-        e.printStackTrace();
-    }
-    return list;
+
+        @Override
+        public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
+            Toast.makeText(getApplicationContext(), &amp;quot;上传成功!&amp;quot;, Toast.LENGTH_SHORT).show();
+        }
+    });
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;解析总结&quot;&gt;&lt;a href=&quot;#解析总结&quot; class=&quot;headerlink&quot; title=&quot;解析总结&quot;&gt;&lt;/a&gt;解析总结&lt;/h3&gt;&lt;p&gt;JSON解析无非就是通过JSONObject和JSONArray不断地对数据进行解析，归根结底每一种数据都是可以分解为以上的三种最基本的解析，所以大家只要掌握好JSONObject和JSONArray，即便再复杂的数据类型，大家也可以解析得得心应手。&lt;/p&gt;
-&lt;h2 id=&quot;GSON&quot;&gt;&lt;a href=&quot;#GSON&quot; class=&quot;headerlink&quot; title=&quot;GSON&quot;&gt;&lt;/a&gt;GSON&lt;/h2&gt;&lt;p&gt;GSON是Google开发的开源的JAVA API，可以用于JSON的创建和JSON的解析。下面对GSON做一个最基本的介绍。更多了解 &lt;a href=&quot;http://sites.google.com/site/gson/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sites.google.com/site/gson/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;首先需要下载GSON的jar包，自行度娘。&lt;/p&gt;
-&lt;p&gt;其次，我们使用GSON来创建JSON和解析JSON都要有相对应的JavaBean，所以GSON可以帮助我们更加简便地实现Bean和JSON的转换。&lt;/p&gt;
-&lt;p&gt;以下例子我们都是用Person类的JavaBean:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;public class Person {
-    private String name;
-    private List&amp;lt;String&amp;gt; phone;
-    private String address;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;服务器端&quot;&gt;&lt;a href=&quot;#服务器端&quot; class=&quot;headerlink&quot; title=&quot;服务器端&quot;&gt;&lt;/a&gt;服务器端&lt;/h3&gt;&lt;p&gt;一、创建一个新的Servlet，在doget方法里面实现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public class UpLoadPhotoServlet extends HttpServlet {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 
-    public Person() {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
+        response.setCharacterEncoding(&amp;quot;utf-8&amp;quot;);
+        response.setContentType(&amp;quot;text/html&amp;quot;);
+        // 获取文件名
+        String name = request.getParameter(&amp;quot;name&amp;quot;);
+        // 获取图片
+        String photo = request.getParameter(&amp;quot;photo&amp;quot;);
+        // 将传进来的图片的string格式进行处理
+        byte[] bs = new BASE64Decoder().decodeBuffer(photo);
+        // 写到E盘Img文件夹下的a.jpg文件。注：Img文件夹一定要存在
+        FileOutputStream fos = new FileOutputStream(&amp;quot;E:/Img/&amp;quot; + name);
+        fos.write(bs);
+        fos.flush();
+        fos.close();
 
-    }
-
-    public Person(String name, List&amp;lt;String&amp;gt; phone, String address) {
-        this.name = name;
-        this.phone = phone;
-        this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List&amp;lt;String&amp;gt; getPhone() {
-        return phone;
-    }
-
-    public void setPhone(List&amp;lt;String&amp;gt; phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        PrintWriter writer = response.getWriter();
+        writer.print(&amp;quot;上传成功&amp;quot;);
     }
 
     @Override
-    public String toString() {
-        return &amp;quot;Person{&amp;quot; +
-                &amp;quot;name=&amp;apos;&amp;quot; + name + &amp;apos;\&amp;apos;&amp;apos; +
-                &amp;quot;, phone=&amp;quot; + phone +
-                &amp;quot;, address=&amp;apos;&amp;quot; + address + &amp;apos;\&amp;apos;&amp;apos; +
-                &amp;apos;}&amp;apos;;
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;Bean转换为JSON&quot;&gt;&lt;a href=&quot;#Bean转换为JSON&quot; class=&quot;headerlink&quot; title=&quot;Bean转换为JSON&quot;&gt;&lt;/a&gt;Bean转换为JSON&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
- * GSON转换为JSON
- *
- * @return json
- */
-public String beanToJson() {
-
-    //赋值给一个person实例
-    List&amp;lt;String&amp;gt; phone = new ArrayList&amp;lt;&amp;gt;();
-    phone.add(&amp;quot;123&amp;quot;);
-    phone.add(&amp;quot;456&amp;quot;);
-    Person person = new Person(&amp;quot;jack&amp;quot;, phone, &amp;quot;Guangzhou&amp;quot;);
-
-    //实例化GSON
-    Gson gson = new Gson();
-    //调用gson.toJson将Bean转为JSON
-    String json = gson.toJson(person);
-    return json;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;JSON转换为Bean&quot;&gt;&lt;a href=&quot;#JSON转换为Bean&quot; class=&quot;headerlink&quot; title=&quot;JSON转换为Bean&quot;&gt;&lt;/a&gt;JSON转换为Bean&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;/**
- * JSON转换为Bean
- * @param json
- * @return
- */
-public String jsonToBean(String json) {
-    Person person = new Person();
-    Gson gson = new Gson();
-    //调用gson.fromJson将json转为bean
-    person = gson.fromJson(json, Person.class);
-    return person.toString();
-}
-&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo地址&quot;&gt;&lt;a href=&quot;#Demo地址&quot; class=&quot;headerlink&quot; title=&quot;Demo地址&quot;&gt;&lt;/a&gt;Demo地址&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9548619&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9548619&lt;/a&gt;&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
+&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
     
     </summary>
     
-      <category term="Android技能" scheme="lijianchang.xyz/categories/Android%E6%8A%80%E8%83%BD/"/>
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="JSON" scheme="lijianchang.xyz/tags/JSON/"/>
+      <category term="Async-Http" scheme="lijianchang.xyz/tags/Async-Http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>写给大三的自己</title>
+    <link href="lijianchang.xyz/2016/05/12/%E5%86%99%E7%BB%99%E5%A4%A7%E4%B8%89%E7%9A%84%E8%87%AA%E5%B7%B1/"/>
+    <id>lijianchang.xyz/2016/05/12/写给大三的自己/</id>
+    <published>2016-05-12T14:10:54.641Z</published>
+    <updated>2016-05-12T15:23:43.438Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;不动笔则已，一动笔发现自己已经三年大学都没有写过东西。呵，多么讽刺！因为自己曾经也是有过作家梦的，然而伴随着工科男的三年生活，渐渐丢失了自己最初的梦。从去年开始，自己就开始记录自己的专业知识，但是发现其实自己的生活还是一团糟，所以现在沉思，就算再忙，也要思考自己走过的路，也要学会沉淀自己的生活。&lt;/p&gt;
+&lt;h3 id=&quot;实习&quot;&gt;&lt;a href=&quot;#实习&quot; class=&quot;headerlink&quot; title=&quot;实习&quot;&gt;&lt;/a&gt;实习&lt;/h3&gt;&lt;p&gt;伴随着五月份的到来，自己的大三生活也将进入倒计时，而自己也开始焦虑起来。焦虑自己身边的朋友都找到了不错的实习，焦虑自己仍然还没有拿到offer，连小公司也没有。开学初，错过了腾讯，百度，阿里巴巴，金山，优酷等等这些公司之后，自己也是放下自己的身段，去尝试投一些小公司。先后也面过五六个公司了，自己比较有印象的就是&lt;code&gt;广州逸信科技&lt;/code&gt;，&lt;code&gt;凯通科技&lt;/code&gt;，&lt;code&gt;CVTE&lt;/code&gt;这些公司自己感觉收获都挺多的，而且自己面试的时候感觉也是比较良好，但是自己最后还是没有拿到offer。现在回想起来，我想很大原因就是&lt;strong&gt;过于自信&lt;/strong&gt;，&lt;strong&gt;对自己定位不够&lt;/strong&gt;。因为自己一直是把自己放置在很高的位置，但是自己认真想起来自己还是很空， 掌握的东西真的还很少，所以接下来要好好总结。虽然心情还是很down，但是如果连这点苦都受不了，还怎么走向大海和星辰？&lt;/p&gt;
+&lt;h3 id=&quot;朋友&quot;&gt;&lt;a href=&quot;#朋友&quot; class=&quot;headerlink&quot; title=&quot;朋友&quot;&gt;&lt;/a&gt;朋友&lt;/h3&gt;&lt;p&gt;大学三年，可以说没交到几个知心朋友，有我把他们真心对待的，但是我不确定我在他们心里是不是同样这么想。跟一个朋友最近也是没什么交流，因为我很讨厌他混着一些经常玩游戏的人，我又在忙着实习，哎，友谊真是很难把握的一个东西，但是想想自己三年来跟他一起做过的事情还是很多的，所以自己也不要就此丢失了这份友谊吧。不过我很感谢两个人，耀叔和靓妹，其实友情就是经得起岁月和时间的摧残，但是依然互相保存在自己的心理。而且跟他们在一起的时候自己是非常放松的，上周自己面试cvte之后，自己也是找了他们high了一天，谢谢他们在最失意的时候陪着自己。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan3.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;篮球兄弟&quot;&gt;&lt;a href=&quot;#篮球兄弟&quot; class=&quot;headerlink&quot; title=&quot;篮球兄弟&quot;&gt;&lt;/a&gt;篮球兄弟&lt;/h3&gt;&lt;p&gt;认真数数自己这一个月，真的没打几次球，因为自己都在忙着实习和做项目、复习，所以都没什么心情去打球，但是自己还是很感谢广工封开球队的人，虽然自己不是经常跟他们打球，但是依然每次打球都很开心，因为跟着一群同声同气的人真是很轻松，打球时也可以丢掉自己平时沉重的盔甲。今天是我们第二次去跟污水厂的员工打球，打到第二个加时输了，虽然这样，但是在场上跑动的时候，真是把所有的烦恼都丢在身后。我想这次打完之后我们也很难有机会真正地在一起打球了，毕竟我们都大三了，都要为自己的未来拼搏了，但是希望我们都不要丢失了自己一直的篮球梦，不能为命运折服自己仅剩的一点兴趣。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;孔慧师姐&quot;&gt;&lt;a href=&quot;#孔慧师姐&quot; class=&quot;headerlink&quot; title=&quot;孔慧师姐&quot;&gt;&lt;/a&gt;孔慧师姐&lt;/h3&gt;&lt;p&gt;其实自己一直很想认真感谢一些孔慧师姐，她是我踏进校园认识的第一位女生，当时我刚到学校，人生路不熟，然后她就打到了我的电话，嘘寒问暖的，超级温暖。当时真的把她当做自己的大姐姐，遇到了问题都是问她，记得当时做班干部什么的都是问她，感觉自己的心超级脆弱，也正是她给我的建议，让我轻松地度过了大学的适应期。而今年也是她的毕业季，真心希望她未来可以事业爱情双丰收，我坚信好人一生平安，哈哈，谢谢你，孔慧师姐！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan7.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan5.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;写在最后&quot;&gt;&lt;a href=&quot;#写在最后&quot; class=&quot;headerlink&quot; title=&quot;写在最后&quot;&gt;&lt;/a&gt;写在最后&lt;/h3&gt;&lt;p&gt;人生或许就是很多的不完美组成，正是这些不完美，才组成了我们精彩的人生；&lt;/p&gt;
+&lt;p&gt;人生或许会遭遇到很多的挫败，正是这些挫败，才为我们日后的成功打下基础！&lt;/p&gt;
+&lt;p&gt;—-献给所有和我遇到一样问题的人，共勉！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="生活" scheme="lijianchang.xyz/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="感想" scheme="lijianchang.xyz/tags/%E6%84%9F%E6%83%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android学习-创建圆角的DialogActivity</title>
+    <link href="lijianchang.xyz/2016/05/05/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
+    <id>lijianchang.xyz/2016/05/05/Android学习-创建圆角的DialogActivity/</id>
+    <published>2016-05-05T13:37:26.000Z</published>
+    <updated>2016-08-30T05:56:43.366Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;示例图&quot;&gt;&lt;a href=&quot;#示例图&quot; class=&quot;headerlink&quot; title=&quot;示例图&quot;&gt;&lt;/a&gt;示例图&lt;/h2&gt;&lt;p&gt;示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:&lt;/p&gt;
+&lt;p&gt;dialog_theme.xml&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;shape xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot; &amp;gt;
+
+    &amp;lt;!-- 填充颜色 --&amp;gt;
+    &amp;lt;solid android:color=&amp;quot;#ffffffff&amp;quot; /&amp;gt;
+
+    &amp;lt;!-- 边框宽度 --&amp;gt;
+    &amp;lt;!-- &amp;lt;stroke android:width=&amp;quot;3dp&amp;quot; /&amp;gt; --&amp;gt;
+
+
+    &amp;lt;!-- 圆角半径 --&amp;gt;
+    &amp;lt;corners android:radius=&amp;quot;10dp&amp;quot; /&amp;gt;
+
+    &amp;lt;!-- 内边距 --&amp;gt;
+    &amp;lt;padding
+        android:bottom=&amp;quot;13dp&amp;quot;
+        android:left=&amp;quot;13dp&amp;quot;
+        android:right=&amp;quot;13dp&amp;quot;
+        android:top=&amp;quot;13dp&amp;quot; /&amp;gt;
+
+&amp;lt;/shape&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;2.然后自定义Activity的style为如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;style name=&amp;quot;DialogTheme&amp;quot; parent=&amp;quot;@android:style/Theme.Dialog&amp;quot;&amp;gt;
+
+    &amp;lt;!-- 边框 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowFrame&amp;quot;&amp;gt;@null&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 是否浮现在activity之上 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowIsFloating&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 半透明 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowIsTranslucent&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 无标题 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowNoTitle&amp;quot;&amp;gt;true&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 背景透明 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:windowBackground&amp;quot;&amp;gt;@android:color/transparent&amp;lt;/item&amp;gt;
+    &amp;lt;!-- 模糊 --&amp;gt;
+    &amp;lt;item name=&amp;quot;android:backgroundDimEnabled&amp;quot;&amp;gt;false&amp;lt;/item&amp;gt;
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;p&gt;1.Demo效果图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitytest.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;2.github地址&lt;br&gt;&lt;a href=&quot;https://github.com/ryanlijianchang/DialogActivityDemo&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ryanlijianchang/DialogActivityDemo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;3.下载地址&lt;br&gt;&lt;a href=&quot;http://download.csdn.net/detail/ljcitworld/9510717&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://download.csdn.net/detail/ljcitworld/9510717&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Android学习" scheme="lijianchang.xyz/categories/Android%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="DialogActivity" scheme="lijianchang.xyz/tags/DialogActivity/"/>
     
   </entry>
   
   <entry>
     <title>Android学习-简易ViewPager的使用教程与Demo演示</title>
-    <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
-    <id>lijianchang.xyz/2016/08/30/Android学习-简易ViewPager的使用教程与Demo演示/</id>
-    <published>2016-08-30T01:49:03.187Z</published>
-    <updated>2016-08-30T03:52:27.261Z</updated>
+    <link href="lijianchang.xyz/2016/03/29/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
+    <id>lijianchang.xyz/2016/03/29/Android学习-简易ViewPager的使用教程与Demo演示/</id>
+    <published>2016-03-29T13:37:26.000Z</published>
+    <updated>2016-08-30T05:57:03.476Z</updated>
     
     <content type="html">&lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
 &lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -1685,48 +1722,11 @@ public class FragmentAdapter extends FragmentPagerAdapter {
   </entry>
   
   <entry>
-    <title>写给大三的自己</title>
-    <link href="lijianchang.xyz/2016/05/12/%E5%86%99%E7%BB%99%E5%A4%A7%E4%B8%89%E7%9A%84%E8%87%AA%E5%B7%B1/"/>
-    <id>lijianchang.xyz/2016/05/12/写给大三的自己/</id>
-    <published>2016-05-12T14:10:54.641Z</published>
-    <updated>2016-05-12T15:23:43.438Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h3 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h3&gt;&lt;p&gt;不动笔则已，一动笔发现自己已经三年大学都没有写过东西。呵，多么讽刺！因为自己曾经也是有过作家梦的，然而伴随着工科男的三年生活，渐渐丢失了自己最初的梦。从去年开始，自己就开始记录自己的专业知识，但是发现其实自己的生活还是一团糟，所以现在沉思，就算再忙，也要思考自己走过的路，也要学会沉淀自己的生活。&lt;/p&gt;
-&lt;h3 id=&quot;实习&quot;&gt;&lt;a href=&quot;#实习&quot; class=&quot;headerlink&quot; title=&quot;实习&quot;&gt;&lt;/a&gt;实习&lt;/h3&gt;&lt;p&gt;伴随着五月份的到来，自己的大三生活也将进入倒计时，而自己也开始焦虑起来。焦虑自己身边的朋友都找到了不错的实习，焦虑自己仍然还没有拿到offer，连小公司也没有。开学初，错过了腾讯，百度，阿里巴巴，金山，优酷等等这些公司之后，自己也是放下自己的身段，去尝试投一些小公司。先后也面过五六个公司了，自己比较有印象的就是&lt;code&gt;广州逸信科技&lt;/code&gt;，&lt;code&gt;凯通科技&lt;/code&gt;，&lt;code&gt;CVTE&lt;/code&gt;这些公司自己感觉收获都挺多的，而且自己面试的时候感觉也是比较良好，但是自己最后还是没有拿到offer。现在回想起来，我想很大原因就是&lt;strong&gt;过于自信&lt;/strong&gt;，&lt;strong&gt;对自己定位不够&lt;/strong&gt;。因为自己一直是把自己放置在很高的位置，但是自己认真想起来自己还是很空， 掌握的东西真的还很少，所以接下来要好好总结。虽然心情还是很down，但是如果连这点苦都受不了，还怎么走向大海和星辰？&lt;/p&gt;
-&lt;h3 id=&quot;朋友&quot;&gt;&lt;a href=&quot;#朋友&quot; class=&quot;headerlink&quot; title=&quot;朋友&quot;&gt;&lt;/a&gt;朋友&lt;/h3&gt;&lt;p&gt;大学三年，可以说没交到几个知心朋友，有我把他们真心对待的，但是我不确定我在他们心里是不是同样这么想。跟一个朋友最近也是没什么交流，因为我很讨厌他混着一些经常玩游戏的人，我又在忙着实习，哎，友谊真是很难把握的一个东西，但是想想自己三年来跟他一起做过的事情还是很多的，所以自己也不要就此丢失了这份友谊吧。不过我很感谢两个人，耀叔和靓妹，其实友情就是经得起岁月和时间的摧残，但是依然互相保存在自己的心理。而且跟他们在一起的时候自己是非常放松的，上周自己面试cvte之后，自己也是找了他们high了一天，谢谢他们在最失意的时候陪着自己。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan1.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan2.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan3.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;篮球兄弟&quot;&gt;&lt;a href=&quot;#篮球兄弟&quot; class=&quot;headerlink&quot; title=&quot;篮球兄弟&quot;&gt;&lt;/a&gt;篮球兄弟&lt;/h3&gt;&lt;p&gt;认真数数自己这一个月，真的没打几次球，因为自己都在忙着实习和做项目、复习，所以都没什么心情去打球，但是自己还是很感谢广工封开球队的人，虽然自己不是经常跟他们打球，但是依然每次打球都很开心，因为跟着一群同声同气的人真是很轻松，打球时也可以丢掉自己平时沉重的盔甲。今天是我们第二次去跟污水厂的员工打球，打到第二个加时输了，虽然这样，但是在场上跑动的时候，真是把所有的烦恼都丢在身后。我想这次打完之后我们也很难有机会真正地在一起打球了，毕竟我们都大三了，都要为自己的未来拼搏了，但是希望我们都不要丢失了自己一直的篮球梦，不能为命运折服自己仅剩的一点兴趣。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan4.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;孔慧师姐&quot;&gt;&lt;a href=&quot;#孔慧师姐&quot; class=&quot;headerlink&quot; title=&quot;孔慧师姐&quot;&gt;&lt;/a&gt;孔慧师姐&lt;/h3&gt;&lt;p&gt;其实自己一直很想认真感谢一些孔慧师姐，她是我踏进校园认识的第一位女生，当时我刚到学校，人生路不熟，然后她就打到了我的电话，嘘寒问暖的，超级温暖。当时真的把她当做自己的大姐姐，遇到了问题都是问她，记得当时做班干部什么的都是问她，感觉自己的心超级脆弱，也正是她给我的建议，让我轻松地度过了大学的适应期。而今年也是她的毕业季，真心希望她未来可以事业爱情双丰收，我坚信好人一生平安，哈哈，谢谢你，孔慧师姐！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan7.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan5.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;写在最后&quot;&gt;&lt;a href=&quot;#写在最后&quot; class=&quot;headerlink&quot; title=&quot;写在最后&quot;&gt;&lt;/a&gt;写在最后&lt;/h3&gt;&lt;p&gt;人生或许就是很多的不完美组成，正是这些不完美，才组成了我们精彩的人生；&lt;/p&gt;
-&lt;p&gt;人生或许会遭遇到很多的挫败，正是这些挫败，才为我们日后的成功打下基础！&lt;/p&gt;
-&lt;p&gt;—-献给所有和我遇到一样问题的人，共勉！&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-WritingToDaSan8.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="生活" scheme="lijianchang.xyz/categories/%E7%94%9F%E6%B4%BB/"/>
-    
-    
-      <category term="感想" scheme="lijianchang.xyz/tags/%E6%84%9F%E6%83%B3/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安卓开发者必备技能之-点九图的制作</title>
-    <link href="lijianchang.xyz/2016/03/17/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E8%80%85%E6%8A%80%E8%83%BD%E4%B9%8B-%E7%82%B9%E4%B9%9D%E5%9B%BE%E7%9A%84%E5%88%B6%E4%BD%9C/"/>
-    <id>lijianchang.xyz/2016/03/17/安卓开发者技能之-点九图的制作/</id>
+    <title>Android技能-点九图的制作</title>
+    <link href="lijianchang.xyz/2016/03/17/Android%E6%8A%80%E8%83%BD-%E7%82%B9%E4%B9%9D%E5%9B%BE%E7%9A%84%E5%88%B6%E4%BD%9C/"/>
+    <id>lijianchang.xyz/2016/03/17/Android技能-点九图的制作/</id>
     <published>2016-03-17T13:37:26.000Z</published>
-    <updated>2016-08-30T03:34:25.787Z</updated>
+    <updated>2016-08-30T05:56:09.360Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;很多安卓开发者觉得UI制作都是美工的事情，自己只需要完成控件的摆放和功能的实现。但是很多时候，在我们自己写一些小应用或者小Demo的时候，并不会有个美工在我们身边，而点九图之于我们安卓开发者来说再常见不过了，所以这个技能我们掌握了也是非常实用的。以下博文只是带大家入门使用点九图，不敢在美工设计师面前班门弄斧，大神请直接略过。&lt;/p&gt;
 &lt;h2 id=&quot;点九图&quot;&gt;&lt;a href=&quot;#点九图&quot; class=&quot;headerlink&quot; title=&quot;点九图&quot;&gt;&lt;/a&gt;点九图&lt;/h2&gt;&lt;p&gt;随着智能手机的发展,我们的应用需要适应不同屏幕尺寸的手机，同一幅界面会在随着手机(或平板电脑)中的方向传感器的参数不同而改变显示的方向,在界面改变方向后,界面上的图形会因为长宽的变化而产生拉伸,造成图形的失真变形。&lt;/p&gt;
