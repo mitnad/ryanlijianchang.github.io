@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="lijianchang.xyz/"/>
-  <updated>2016-08-30T03:42:16.738Z</updated>
+  <updated>2016-08-30T03:51:20.681Z</updated>
   <id>lijianchang.xyz/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="lijianchang.xyz/2016/08/30/Java%E5%AE%B9%E5%99%A8%E7%B1%BB%E6%BA%90%E7%A0%81-ArrayList%E7%9A%84%E6%9C%80%E5%85%A8%E7%9A%84%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>lijianchang.xyz/2016/08/30/Java容器类源码-ArrayList的最全的源码分析/</id>
     <published>2016-08-30T01:50:04.617Z</published>
-    <updated>2016-08-30T03:42:16.738Z</updated>
+    <updated>2016-08-30T03:51:20.681Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
 &lt;h1 id=&quot;一、继承和实现&quot;&gt;&lt;a href=&quot;#一、继承和实现&quot; class=&quot;headerlink&quot; title=&quot;一、继承和实现&quot;&gt;&lt;/a&gt;一、继承和实现&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;继承：&lt;/strong&gt;AbstractList&lt;/p&gt;
 &lt;/li&gt;
@@ -429,8 +430,9 @@ private void grow(int minCapacity) {
     
     <summary type="html">
     
-      &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
-&lt;h1 id=&quot;一、继承和实现&quot;&gt;&lt;a h
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;本文是针对Java 1.8的源代码进行解析的，可能会和其他版本有所出入。&lt;/p&gt;
+&lt;h1
     
     </summary>
     
@@ -446,10 +448,11 @@ private void grow(int minCapacity) {
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E5%88%9B%E5%BB%BA%E5%9C%86%E8%A7%92%E7%9A%84DialogActivity/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-创建圆角的DialogActivity/</id>
     <published>2016-08-30T01:49:47.741Z</published>
-    <updated>2016-08-30T03:45:37.717Z</updated>
+    <updated>2016-08-30T03:52:34.968Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;示例图&quot;&gt;&lt;a href=&quot;#示例图&quot; class=&quot;headerlink&quot; title=&quot;示例图&quot;&gt;&lt;/a&gt;示例图&lt;/h2&gt;&lt;p&gt;示例图如下，是不是很有苹果风呢？其实在这个基础上大家可以定制成自己风格的DialogActivity&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitychange.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;实现&quot;&gt;&lt;a href=&quot;#实现&quot; class=&quot;headerlink&quot; title=&quot;实现&quot;&gt;&lt;/a&gt;实现&lt;/h2&gt;&lt;p&gt;1.首先设置DialogActivity最外层的的layout背景为一个自定义背景，自定义背景如下:&lt;/p&gt;
@@ -499,7 +502,8 @@ private void grow(int minCapacity) {
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在安卓开发中我们多多少少都会使用到DialogActivity，但是系统自带的效果往往不尽如人意，一般都是下面这种效果，所以我们在使用时都会很蛋疼，最近在做项目需要用到圆角的DialogActivity，所以就参考网上资料，做了一个自己风格的圆角DialogActivit。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post_MakeDialogActivitydefault.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -515,12 +519,13 @@ private void grow(int minCapacity) {
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E4%BD%BF%E7%94%A8Async-Http%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%8E%8B%E7%BC%A9%E5%B9%B6%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-使用Async-Http实现图片压缩并上传功能/</id>
     <published>2016-08-30T01:49:43.160Z</published>
-    <updated>2016-08-30T03:43:38.566Z</updated>
+    <updated>2016-08-30T03:52:04.557Z</updated>
     
     <content type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
 &lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
 &lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
 
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto2.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;服务器端&lt;/center&gt;
 
 &lt;h2 id=&quot;解决&quot;&gt;&lt;a href=&quot;#解决&quot; class=&quot;headerlink&quot; title=&quot;解决&quot;&gt;&lt;/a&gt;解决&lt;/h2&gt;&lt;h3 id=&quot;安卓端&quot;&gt;&lt;a href=&quot;#安卓端&quot; class=&quot;headerlink&quot; title=&quot;安卓端&quot;&gt;&lt;/a&gt;安卓端&lt;/h3&gt;&lt;p&gt;一、点击加载本地相册选择图片，然后加载到ImageView中去，并获取图片地址以供后面图片上传时使用。&lt;/p&gt;
@@ -713,7 +718,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     <summary type="html">
     
       &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;(转载请注明出处，谢谢！)&lt;/p&gt;
-&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图
+&lt;p&gt;最近在做一个小项目，项目中要实现上传图片到服务器，而这个例子是实现图片的尺寸压缩，将获取到的压缩图片转为流，然后使用Async-Http开源框架实现图片流的上传，然后在服务器端将流写入本地。&lt;/p&gt;
+&lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;center&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-UpLoadPhoto3.png&quot; alt=&quot;&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;center&gt;安卓端&lt;/center&gt;
     
     </summary>
     
@@ -729,9 +735,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E5%AD%A6%E5%AE%9E%E7%8E%B0%E4%BB%BF%E5%BE%AE%E4%BF%A1%E5%8F%91%E5%B8%A6%E5%9B%BE%E7%89%87%E6%9C%8B%E5%8F%8B%E5%9C%88%E7%9A%84UI%E8%AE%BE%E8%AE%A1/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-手把手教学实现仿微信发带图片朋友圈的UI设计/</id>
     <published>2016-08-30T01:49:38.466Z</published>
-    <updated>2016-08-30T03:43:09.133Z</updated>
+    <updated>2016-08-30T03:51:27.921Z</updated>
     
-    <content type="html">&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
+    <content type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但是在开发中遇到了一个问题，就是如何绘制一个类似朋友群那样动态添加图片，并加号随着自己的图片增加而后移这一个UI，而这篇小文就是教你如何制作一个仿朋友圈发带图朋友圈的UI设计。注意，这是UI设计，并不是实现图片上传功能。&lt;/p&gt;
 &lt;p&gt;当然，如果你想知道如何实现图片上传到服务器，请看我的另一篇文章：&lt;a href=&quot;http://blog.csdn.net/ljcitworld/article/details/51670910&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android学习-使用Async-Http实现图片压缩并上传功能&lt;/a&gt;。个人水平有限，如有不足的地方，欢迎交流，勿喷。&lt;/p&gt;
 &lt;h2 id=&quot;效果图&quot;&gt;&lt;a href=&quot;#效果图&quot; class=&quot;headerlink&quot; title=&quot;效果图&quot;&gt;&lt;/a&gt;效果图&lt;/h2&gt;&lt;p&gt;按照惯例，先上效果图。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-SendPhotoUI2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -995,7 +1002,8 @@ adapter.notifyDataSetChanged();
     
     <summary type="html">
     
-      &lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在开发过程中也需要开发到这一个功能，但
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;功能需求&quot;&gt;&lt;a href=&quot;#功能需求&quot; class=&quot;headerlink&quot; title=&quot;功能需求&quot;&gt;&lt;/a&gt;功能需求&lt;/h2&gt;&lt;p&gt;最近自己在开发一个社交APP，发送动态（类似朋友圈）是社交APP必备的一个功能，而自己在
     
     </summary>
     
@@ -1011,9 +1019,10 @@ adapter.notifyDataSetChanged();
     <link href="lijianchang.xyz/2016/08/30/Android%E6%8A%80%E8%83%BD-%E5%88%9B%E5%BB%BAJson%E6%96%87%E6%9C%AC%E5%8F%8AJson%E8%A7%A3%E6%9E%90/"/>
     <id>lijianchang.xyz/2016/08/30/Android技能-创建Json文本及Json解析/</id>
     <published>2016-08-30T01:49:30.348Z</published>
-    <updated>2016-08-30T03:34:29.678Z</updated>
+    <updated>2016-08-30T03:52:41.157Z</updated>
     
     <content type="html">&lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=&quot;headerlink&quot; title=&quot;什么是JSON&quot;&gt;&lt;/a&gt;什么是JSON&lt;/h2&gt;&lt;p&gt;JSON：JavaScript Object Notation。顾名思义，JSON数据是源自于JavaScript，学习过JavaScript（以下简称JS）的人都知道，我们在JS脚本里面创建对象时，都是以键值对的形式编写的。例如，我们在JS里面创建一个Json对象时是这么定义的：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var person = {firstName:&amp;quot;John&amp;quot;, lastName:&amp;quot;Doe&amp;quot;, age:50, eyeColor:&amp;quot;blue&amp;quot;};
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很容易看出，属性之间是通过逗号分隔开，键与值之间是通过双引号分隔开，而JSON数据也是如此。&lt;/p&gt;
@@ -1254,7 +1263,6 @@ public String jsonToBean(String json) {
     <summary type="html">
     
       &lt;p&gt;摘要：Json数据在安卓开发过程中是非常常见的，在请求服务器端数据的时候，服务器端返回的无非就是三种类型：HTML，XML，JSON。所以学习JSON对安卓程序员来说是非常重要的。&lt;/p&gt;
-&lt;h2 id=&quot;什么是JSON&quot;&gt;&lt;a href=&quot;#什么是JSON&quot; class=
     
     </summary>
     
@@ -1270,10 +1278,11 @@ public String jsonToBean(String json) {
     <link href="lijianchang.xyz/2016/08/30/Android%E5%AD%A6%E4%B9%A0-%E7%AE%80%E6%98%93ViewPager%E7%9A%84%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B%E4%B8%8EDemo%E6%BC%94%E7%A4%BA/"/>
     <id>lijianchang.xyz/2016/08/30/Android学习-简易ViewPager的使用教程与Demo演示/</id>
     <published>2016-08-30T01:49:03.187Z</published>
-    <updated>2016-08-30T03:45:08.441Z</updated>
+    <updated>2016-08-30T03:52:27.261Z</updated>
     
     <content type="html">&lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
 &lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;这是谷歌&lt;a href=&quot;http://www.android-doc.com/reference/android/support/v4/view/ViewPager.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方文档&lt;/a&gt;给我们提供的一个兼容包里面的类，它说我们的ViewPager通常是配合Fragment使用的，而官方是提供了FragmentPagerAdapter和FragmentStatePagerAdapter两种方便我们将ViewPager和Fragment配合使用。下面我们主要讲ViewPager+Fragment的使用。&lt;br&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-guanfang.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Demo剖析&quot;&gt;&lt;a href=&quot;#Demo剖析&quot; class=&quot;headerlink&quot; title=&quot;Demo剖析&quot;&gt;&lt;/a&gt;Demo剖析&lt;/h2&gt;&lt;p&gt;这个Demo的难点主要在以下三部分，那么我们下面就对这三个部分进行剖析。&lt;/p&gt;
 &lt;h3 id=&quot;一、top-bar部分&quot;&gt;&lt;a href=&quot;#一、top-bar部分&quot; class=&quot;headerlink&quot; title=&quot;一、top_bar部分&quot;&gt;&lt;/a&gt;一、top_bar部分&lt;/h3&gt;&lt;p&gt;这部分我们只需要设置一个外布局为LinearLayout（注意！这个Layout的高度一定不能为match_parent，只能为wrap_content，因为如果你这里使用了match_parent的话，那么就会遮挡了下面的ViewPager控件，详见我的main.xml布局文件以及top_bar.xml 布局文件，我的主布局为了代码布局清晰，所以通过定义了top_bar的layout，然后通过引入即可。）&lt;/p&gt;
@@ -1666,7 +1675,7 @@ public class FragmentAdapter extends FragmentPagerAdapter {
     <summary type="html">
     
       &lt;p&gt;摘要：最近在项目开发中使用到了ViewPager，结合自己几天下来的学习，总结一下ViewPager的使用方法以及实现过程。&lt;/p&gt;
-&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果
+&lt;h2 id=&quot;实例效果&quot;&gt;&lt;a href=&quot;#实例效果&quot; class=&quot;headerlink&quot; title=&quot;实例效果&quot;&gt;&lt;/a&gt;实例效果&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xrwkh.com1.z0.glb.clouddn.com/Post-HowToUseVP-show.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
